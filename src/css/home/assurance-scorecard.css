@@ -1,0 +1,210 @@
+/* --- ASSURANCE SCORECARD SECTION --- */
+.assurance-scorecard-section {
+    padding: 100px 0;
+    /* Clean white background */
+    background-color: #ffffff; 
+    text-align: center;
+}
+
+.scorecard-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.assurance-scorecard-section h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+}
+
+.scorecard-intro {
+    font-size: 1.2rem;
+    color: #525f7f;
+    max-width: 800px;
+    margin: 0 auto 80px; 
+    line-height: 1.6;
+}
+
+/* --- METRIC GRID --- */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+/* --- EPIC HOLOGRAPHIC CARD STYLING --- */
+
+.metric-card {
+    /* Ultra-clean, slightly transparent white background */
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 30px; 
+    border-radius: 12px;
+    /* Subtle, sharp border and shadow */
+    box-shadow: 0 8px 30px rgba(90, 51, 255, 0.1); 
+    border: 1px solid #e0e0e0;
+    text-align: left;
+    transition: all 0.4s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    /* Hover effect uses the primary accent color aggressively */
+    border-color: #5a33ff;
+    box-shadow: 0 15px 40px rgba(90, 51, 255, 0.2); 
+}
+
+/* Internal accent bar/divider (Holographic effect) */
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px; /* Top accent line */
+    background: linear-gradient(90deg, #5a33ff, #7e57ff);
+    transition: all 0.4s ease;
+}
+
+.metric-card:hover::before {
+    height: 100%; /* Expands down the side on hover */
+    width: 5px;
+}
+
+/* --- ICON WRAPPER: Strong Primary Accent --- */
+.metric-icon-wrapper {
+    width: 55px; 
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: #5a33ff; 
+    color: #ffffff; 
+    /* Cleaner shadow, removing the glow effect */
+    box-shadow: 0 4px 10px rgba(90, 51, 255, 0.3); 
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover .metric-icon-wrapper {
+    /* Icon pops out on hover */
+    transform: scale(1.05);
+}
+
+
+/* --- METRIC VALUE: Dark, Authoritative Number --- */
+.metric-value {
+    font-size: clamp(2.8rem, 5vw, 3.8rem);
+    font-weight: 900;
+    /* Primary dark color for high contrast */
+    color: #1a1a1a; 
+    line-height: 1;
+    margin: 0;
+}
+
+.metric-suffix {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #5a33ff; /* Accent color for the suffix */
+    margin-left: 8px;
+}
+
+.metric-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333333;
+    /* Segmented divider line */
+    border-bottom: 1px solid #e0e0e0; 
+    padding-bottom: 10px;
+    margin: 15px 0 15px;
+}
+
+.metric-description {
+    font-size: 1rem;
+    color: #525f7f; 
+    line-height: 1.6;
+}
+
+/* --- SOFTWARE BADGES: Integrated, Clean Look --- */
+
+.software-badges {
+    /* White background to match the cards */
+    background-color: #ffffff; 
+    padding: 25px 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    border: 1px solid #e0e0e0; /* Clean light border */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.software-badges span:first-child {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a; 
+    /* Accent separator */
+    border-right: 2px solid #5a33ff; 
+    padding-right: 25px;
+}
+
+.badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.badge {
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* Brand colors remain */
+}
+
+/* Specific Badge Colors (Simulating brand colors) */
+.badge.xero {
+    background-color: #1377b5;
+    color: #fff;
+}
+.badge.quickbooks {
+    background-color: #2196f3;
+    color: #fff;
+}
+.badge.freeagent {
+    background-color: #795548;
+    color: #fff;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .metric-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .software-badges {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .software-badges span:first-child {
+        border-right: none;
+        border-bottom: 2px solid #5a33ff; /* Line break separator on mobile */
+        padding-right: 0;
+        padding-bottom: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .badge-list {
+        justify-content: center;
+    }
+}
