@@ -1,210 +1,372 @@
-/* --- ASSURANCE SCORECARD SECTION --- */
+/* Assurance Scorecard Section - Modern, Professional Design */
+
+:root {
+  --scorecard-primary: #635bff;
+  --scorecard-secondary: #0a2540;
+  --scorecard-text-light: #525f7f;
+  --scorecard-background: #ffffff;
+}
+
+/* Section Container */
 .assurance-scorecard-section {
-    padding: 100px 0;
-    /* Clean white background */
-    background-color: #ffffff; 
-    text-align: center;
+  width: 100%;
+  background: var(--scorecard-background);
+  padding: 120px 5vw;
+  position: relative;
 }
 
 .scorecard-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 32px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.assurance-scorecard-section h2 {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 800;
-    color: #1a1a1a;
-    margin-bottom: 0.75rem;
+/* Header */
+.scorecard-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.scorecard-header h2 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--scorecard-secondary);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.scorecard-gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--scorecard-primary) 0%,
+    #8b83ff 50%,
+    #00d4ff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
 }
 
 .scorecard-intro {
-    font-size: 1.2rem;
-    color: #525f7f;
-    max-width: 800px;
-    margin: 0 auto 80px; 
-    line-height: 1.6;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--scorecard-text-light);
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-/* --- METRIC GRID --- */
-.metric-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-bottom: 80px;
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 80px;
 }
 
-/* --- EPIC HOLOGRAPHIC CARD STYLING --- */
-
-.metric-card {
-    /* Ultra-clean, slightly transparent white background */
-    background: rgba(255, 255, 255, 0.9); 
-    padding: 30px; 
-    border-radius: 12px;
-    /* Subtle, sharp border and shadow */
-    box-shadow: 0 8px 30px rgba(90, 51, 255, 0.1); 
-    border: 1px solid #e0e0e0;
-    text-align: left;
-    transition: all 0.4s ease-out;
-    position: relative;
-    overflow: hidden;
+/* Stat Card */
+.stat-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 24px;
+  padding: 40px 32px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.metric-card:hover {
-    transform: translateY(-5px);
-    /* Hover effect uses the primary accent color aggressively */
-    border-color: #5a33ff;
-    box-shadow: 0 15px 40px rgba(90, 51, 255, 0.2); 
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  border-color: rgba(99, 91, 255, 0.2);
 }
 
-/* Internal accent bar/divider (Holographic effect) */
-.metric-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px; /* Top accent line */
-    background: linear-gradient(90deg, #5a33ff, #7e57ff);
-    transition: all 0.4s ease;
+.stat-card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.metric-card:hover::before {
-    height: 100%; /* Expands down the side on hover */
-    width: 5px;
+.stat-card:hover .stat-card-glow {
+  opacity: 1;
 }
 
-/* --- ICON WRAPPER: Strong Primary Accent --- */
-.metric-icon-wrapper {
-    width: 55px; 
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    background-color: #5a33ff; 
-    color: #ffffff; 
-    /* Cleaner shadow, removing the glow effect */
-    box-shadow: 0 4px 10px rgba(90, 51, 255, 0.3); 
-    transition: all 0.3s ease;
+/* Icon Wrapper */
+.stat-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
 }
 
-.metric-card:hover .metric-icon-wrapper {
-    /* Icon pops out on hover */
-    transform: scale(1.05);
+.stat-card:hover .stat-icon-wrapper {
+  transform: scale(1.1) rotate(-5deg);
 }
 
-
-/* --- METRIC VALUE: Dark, Authoritative Number --- */
-.metric-value {
-    font-size: clamp(2.8rem, 5vw, 3.8rem);
-    font-weight: 900;
-    /* Primary dark color for high contrast */
-    color: #1a1a1a; 
-    line-height: 1;
-    margin: 0;
+/* Stat Content */
+.stat-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
-.metric-suffix {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #5a33ff; /* Accent color for the suffix */
-    margin-left: 8px;
+.stat-value-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 12px;
+  gap: 4px;
 }
 
-.metric-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #333333;
-    /* Segmented divider line */
-    border-bottom: 1px solid #e0e0e0; 
-    padding-bottom: 10px;
-    margin: 15px 0 15px;
+.stat-value {
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: all 0.3s ease;
 }
 
-.metric-description {
-    font-size: 1rem;
-    color: #525f7f; 
-    line-height: 1.6;
+.stat-suffix {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  opacity: 0.9;
 }
 
-/* --- SOFTWARE BADGES: Integrated, Clean Look --- */
-
-.software-badges {
-    /* White background to match the cards */
-    background-color: #ffffff; 
-    padding: 25px 30px;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    border: 1px solid #e0e0e0; /* Clean light border */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+.stat-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--scorecard-secondary);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 
-.software-badges span:first-child {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #1a1a1a; 
-    /* Accent separator */
-    border-right: 2px solid #5a33ff; 
-    padding-right: 25px;
+.stat-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--scorecard-text-light);
+  margin: 0;
 }
 
-.badge-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+/* Trust Section */
+.scorecard-trust-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 24px;
+  padding: 48px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
 }
 
-.badge {
-    padding: 8px 15px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    /* Brand colors remain */
+.trust-badge-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
 }
 
-/* Specific Badge Colors (Simulating brand colors) */
-.badge.xero {
-    background-color: #1377b5;
-    color: #fff;
-}
-.badge.quickbooks {
-    background-color: #2196f3;
-    color: #fff;
-}
-.badge.freeagent {
-    background-color: #795548;
-    color: #fff;
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-/* --- RESPONSIVE --- */
+.trust-badge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border-color: rgba(99, 91, 255, 0.2);
+}
+
+.trust-badge-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.trust-badge-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trust-badge-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--scorecard-secondary);
+  line-height: 1.2;
+}
+
+.trust-badge-subtitle {
+  font-size: 0.875rem;
+  color: var(--scorecard-text-light);
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .trust-badge-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
 @media (max-width: 768px) {
-    .metric-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .software-badges {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+  .assurance-scorecard-section {
+    padding: 80px 5vw;
+  }
 
-    .software-badges span:first-child {
-        border-right: none;
-        border-bottom: 2px solid #5a33ff; /* Line break separator on mobile */
-        padding-right: 0;
-        padding-bottom: 15px;
-        margin-bottom: 10px;
-    }
-    
-    .badge-list {
-        justify-content: center;
-    }
+  .scorecard-header {
+    margin-bottom: 60px;
+  }
+
+  .scorecard-header h2 {
+    font-size: clamp(2rem, 6vw, 2.75rem);
+  }
+
+  .scorecard-intro {
+    font-size: 1.05rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .stat-card {
+    padding: 32px 24px;
+  }
+
+  .stat-icon-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .scorecard-trust-section {
+    padding: 36px 28px;
+  }
+
+  .trust-badge-wrapper {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .trust-badge {
+    padding: 16px;
+  }
+
+  .trust-badge-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .assurance-scorecard-section {
+    padding: 60px 4vw;
+  }
+
+  .scorecard-header {
+    margin-bottom: 48px;
+  }
+
+  .stat-card {
+    padding: 28px 20px;
+  }
+
+  .stat-icon-wrapper {
+    width: 64px;
+    height: 64px;
+  }
+
+  .stat-value {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+
+  .stat-suffix {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .stat-title {
+    font-size: 1.1rem;
+  }
+
+  .stat-description {
+    font-size: 0.9rem;
+  }
+
+  .scorecard-trust-section {
+    padding: 28px 20px;
+  }
+
+  .trust-badge-title {
+    font-size: 0.95rem;
+  }
+
+  .trust-badge-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .assurance-scorecard-section {
+    padding: 2rem;
+  }
+
+  .stat-card,
+  .trust-badge {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .stat-card-glow {
+    display: none;
+  }
 }

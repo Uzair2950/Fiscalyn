@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle, Zap, Shield } from "lucide-react";
 import "../../css/home/cta.css";
 
 const CTASection = () => {
   const [email, setEmail] = useState("");
-  const [isHovered, setIsHovered] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email submitted:", email);
-    // Add your email submission logic here
-    setEmail("");
+    setIsSubmitting(true);
+    // Simulate submission
+    setTimeout(() => {
+      console.log("Email submitted:", email);
+      setEmail("");
+      setIsSubmitting(false);
+    }, 1500);
   };
 
   const containerVariants = {
@@ -18,7 +23,7 @@ const CTASection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
         delayChildren: 0.2,
       },
     },
@@ -30,54 +35,158 @@ const CTASection = () => {
       opacity: 1, 
       y: 0, 
       transition: { 
-        duration: 0.7, 
+        duration: 0.6, 
         ease: [0.16, 1, 0.3, 1] 
       } 
     },
   };
 
-  const floatingVariants = {
-    animate: {
-      y: [0, -20, 0],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
+  const features = [
+    { icon: Zap, text: "Setup in 5 minutes" },
+    { icon: CheckCircle, text: "No credit card required" },
+    { icon: Shield, text: "Enterprise security" },
+  ];
 
-  // Stats data
   const stats = [
     { value: "10K+", label: "Active Users" },
-    { value: "99.9%", label: "Uptime SLA" },
+    { value: "99.9%", label: "Uptime" },
     { value: "24/7", label: "Support" },
     { value: "$2B+", label: "Processed" },
   ];
 
-  // Feature badges
-  const features = [
-    { icon: "⚡", text: "Lightning Fast" },
-    { icon: "🔒", text: "Bank-Level Security" },
-    { icon: "🌐", text: "Global Access" },
-    { icon: "📊", text: "Real-Time Analytics" },
-  ];
-
   return (
-    <section className="cta-container">
-      {/* Animated Background */}
+    <section className="cta-section">
       <div className="cta-background">
-        <div className="cta-gradient-orb cta-gradient-orb-1" />
-        <div className="cta-gradient-orb cta-gradient-orb-2" />
-        <div className="cta-gradient-orb cta-gradient-orb-3" />
+        <div className="cta-grid-pattern" />
+        <motion.div 
+          className="cta-gradient-orb cta-orb-1"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="cta-gradient-orb cta-orb-2"
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.15, 0.35, 0.15],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
       </div>
 
-      {/* Grid Pattern */}
-      <div className="cta-grid-pattern" aria-hidden="true" />
+      <div className="cta-content-wrapper">
+        <motion.div
+          className="cta-main-content"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.div variants={itemVariants} className="cta-badge">
+            <span className="cta-badge-icon">✨</span>
+            <span className="cta-badge-text">Limited Time Offer</span>
+          </motion.div>
 
-      {/* Floating Particles */}
-      <div className="cta-particles" aria-hidden="true">
-        {[...Array(20)].map((_, i) => (
+          <motion.h2 variants={itemVariants} className="cta-headline">
+            Ready to Transform Your
+            <span className="cta-gradient-text"> Financial Operations?</span>
+          </motion.h2>
+
+          <motion.p variants={itemVariants} className="cta-subheadline">
+            Join thousands of businesses using Fiscalyn to streamline finances, 
+            ensure compliance, and drive growth. Start your free 14-day trial today.
+          </motion.p>
+
+          <motion.form
+            variants={itemVariants}
+            className="cta-form"
+            onSubmit={handleSubmit}
+          >
+            <div className="cta-input-wrapper">
+              <input
+                type="email"
+                placeholder="Enter your work email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="cta-input"
+                required
+                disabled={isSubmitting}
+              />
+              <motion.button
+                type="submit"
+                className="cta-submit-button"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                disabled={isSubmitting}
+              >
+                <span className="cta-button-text">
+                  {isSubmitting ? "Processing..." : "Start Free Trial"}
+                </span>
+                <ArrowRight size={20} />
+              </motion.button>
+            </div>
+            <p className="cta-form-note">
+              Free 14-day trial • No credit card required • Cancel anytime
+            </p>
+          </motion.form>
+
+          <motion.div variants={itemVariants} className="cta-features">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                className="cta-feature-badge"
+                whileHover={{ scale: 1.05, y: -3 }}
+              >
+                <feature.icon size={18} className="cta-feature-icon" />
+                <span className="cta-feature-text">{feature.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="cta-stats">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="cta-stat-item"
+                whileHover={{ scale: 1.1 }}
+              >
+                <div className="cta-stat-value">{stat.value}</div>
+                <div className="cta-stat-label">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="cta-trust">
+            <div className="cta-trust-item">
+              <div className="cta-trust-icon">🏆</div>
+              <div className="cta-trust-text">SOC 2 Certified</div>
+            </div>
+            <div className="cta-trust-item">
+              <div className="cta-trust-icon">🛡️</div>
+              <div className="cta-trust-text">GDPR Compliant</div>
+            </div>
+            <div className="cta-trust-item">
+              <div className="cta-trust-icon">⭐</div>
+              <div className="cta-trust-text">4.9/5 Rating</div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Floating particles */}
+      <div className="cta-particles">
+        {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
             className="cta-particle"
@@ -97,140 +206,6 @@ const CTASection = () => {
             }}
           />
         ))}
-      </div>
-
-      <div className="cta-content-wrapper">
-        <motion.div
-          className="cta-main-content"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {/* Badge */}
-          <motion.div variants={itemVariants} className="cta-badge">
-            <span className="cta-badge-icon">✨</span>
-            <span className="cta-badge-text">Join thousands of businesses</span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h2 variants={itemVariants} className="cta-headline">
-            Ready to Transform Your
-            <span className="cta-gradient-text"> Financial Operations?</span>
-          </motion.h2>
-
-          {/* Subheadline */}
-          <motion.p variants={itemVariants} className="cta-subheadline">
-            Start your journey today with enterprise-grade infrastructure.
-            No credit card required.
-          </motion.p>
-
-          {/* Email Form */}
-          <motion.form
-            variants={itemVariants}
-            className="cta-form"
-            onSubmit={handleSubmit}
-          >
-            <div className="cta-input-wrapper">
-              <input
-                type="email"
-                placeholder="Enter your work email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="cta-input"
-                required
-              />
-              <motion.button
-                type="submit"
-                className="cta-submit-button"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                onHoverStart={() => setIsHovered(true)}
-                onHoverEnd={() => setIsHovered(false)}
-              >
-                <span className="cta-button-text">Get Started</span>
-                <motion.span
-                  className="cta-button-icon"
-                  animate={{ x: isHovered ? 5 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  →
-                </motion.span>
-              </motion.button>
-            </div>
-            <p className="cta-form-note">
-              Free 14-day trial • No credit card required • Cancel anytime
-            </p>
-          </motion.form>
-
-          {/* Feature Badges */}
-          <motion.div variants={itemVariants} className="cta-features">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="cta-feature-badge"
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <span className="cta-feature-icon">{feature.icon}</span>
-                <span className="cta-feature-text">{feature.text}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div variants={itemVariants} className="cta-stats">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                className="cta-stat-item"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="cta-stat-value">{stat.value}</div>
-                <div className="cta-stat-label">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Trust Indicators */}
-          <motion.div variants={itemVariants} className="cta-trust">
-            <div className="cta-trust-item">
-              <div className="cta-trust-icon">🏆</div>
-              <div className="cta-trust-text">SOC 2 Type II Certified</div>
-            </div>
-            <div className="cta-trust-item">
-              <div className="cta-trust-icon">🛡️</div>
-              <div className="cta-trust-text">GDPR Compliant</div>
-            </div>
-            <div className="cta-trust-item">
-              <div className="cta-trust-icon">⭐</div>
-              <div className="cta-trust-text">4.9/5 Customer Rating</div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Side Decorative Elements */}
-        <motion.div
-          className="cta-decoration cta-decoration-left"
-          variants={floatingVariants}
-          animate="animate"
-        >
-          <div className="cta-decoration-circle cta-decoration-circle-1" />
-          <div className="cta-decoration-circle cta-decoration-circle-2" />
-          <div className="cta-decoration-circle cta-decoration-circle-3" />
-        </motion.div>
-
-        <motion.div
-          className="cta-decoration cta-decoration-right"
-          variants={floatingVariants}
-          animate="animate"
-          transition={{ delay: 0.5 }}
-        >
-          <div className="cta-decoration-square cta-decoration-square-1" />
-          <div className="cta-decoration-square cta-decoration-square-2" />
-          <div className="cta-decoration-square cta-decoration-square-3" />
-        </motion.div>
       </div>
     </section>
   );

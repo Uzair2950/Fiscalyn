@@ -1,144 +1,161 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookA, TrendingUp, DollarSign, ArrowRight } from 'lucide-react';
+import { BookOpen, Shield, TrendingUp, ArrowRight, CheckCircle } from 'lucide-react';
 import '../../css/home/services-overview.css';
 
-const pipelineSteps = [
-  {
-    icon: BookA,
-    title: "1. Seamless Cloud Bookkeeping",
-    subtitle: "Real-Time Clarity",
-    description: "Your records are managed daily on integrated cloud software (Xero, QBO). We process every transaction, giving you an accurate, real-time picture of your finances for smarter decisions.",
-    color: "#635BFF", // Primary Purple
-    gradient: { start: "#7e57ff", end: "#5a33ff" } // Dynamic gradient colors
-  },
-  {
-    icon: TrendingUp,
-    title: "2. Proactive VAT & Compliance",
-    subtitle: "Guaranteed Compliance",
-    description: "We handle all UK regulatory submissions, including MTD for VAT and CIS. We ensure every deadline is met, every document is filed correctly, and you avoid penalties.",
-    color: "#4CAF50", // Success Green
-    gradient: { start: "#81c784", end: "#4CAF50" }
-  },
-  {
-    icon: DollarSign,
-    title: "3. Maximum Tax Efficiency",
-    subtitle: "Tax Minimization",
-    description: "We analyze your year-end data to identify all legal deductions and allowances. Our goal is simple: maximize your take-home profit and secure your future growth.",
-    color: "#FF5F56", // Danger Red
-    gradient: { start: "#e57373", end: "#FF5F56" }
-  },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -100, scale: 0.9 },
-  visible: { 
-    opacity: 1, 
-    x: 0, 
-    scale: 1,
-    transition: { 
-        type: "spring", 
-        stiffness: 80, 
-        damping: 10 
-    } 
-  },
-};
-
 const ServicesOverview = () => {
-  return (
-    <section className="services-pipeline-section">
-      <div className="pipeline-wrapper">
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
-        >
-          Your Three-Step Path to UK Accounting Success
-        </motion.h2>
+  const services = [
+    {
+      icon: BookOpen,
+      number: "01",
+      title: "Cloud Bookkeeping",
+      subtitle: "Real-Time Financial Clarity",
+      description: "Automated bookkeeping with instant insights. Every transaction processed, categorized, and reconciled in real-time for smarter business decisions.",
+      features: ["Daily reconciliation", "Multi-currency support", "Custom reports"],
+      color: "#635bff"
+    },
+    {
+      icon: Shield,
+      number: "02",
+      title: "Compliance & Tax",
+      subtitle: "Zero-Stress Regulation",
+      description: "Stay ahead of regulations with automated compliance. We handle MTD, VAT, CIS, and all UK tax requirements so you never miss a deadline.",
+      features: ["Automated filing", "HMRC integration", "Penalty protection"],
+      color: "#00d4ff"
+    },
+    {
+      icon: TrendingUp,
+      number: "03",
+      title: "Growth Analytics",
+      subtitle: "Data-Driven Decisions",
+      description: "Transform financial data into actionable insights. Advanced analytics, forecasting, and strategic guidance to fuel your business growth.",
+      features: ["Predictive analytics", "Cash flow forecasting", "Performance benchmarks"],
+      color: "#00e676"
+    }
+  ];
 
-        <motion.p 
-          className="pipeline-intro"
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1]
+      } 
+    },
+  };
+
+  return (
+    <section className="services-overview-section">
+      <div className="services-wrapper">
+        <motion.div
+          className="services-header"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
         >
-          We guide UK businesses through the complex compliance journey with an efficient, transparent, and digitally optimized process.
-        </motion.p>
-        
+          <h2>
+            Complete Financial Solutions
+            <span className="services-gradient-text"> Built for Modern Business</span>
+          </h2>
+          <p className="services-intro">
+            From day-to-day operations to strategic planning, Fiscalyn delivers 
+            end-to-end financial services that scale with your success.
+          </p>
+        </motion.div>
+
         <motion.div
-          className="pipeline-timeline"
+          className="services-grid"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Timeline Connector Line (Animated via CSS/Framer) */}
-          <motion.div 
-            className="timeline-line"
-            initial={{ height: 0 }}
-            whileInView={{ height: "100%" }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          />
-
-          {pipelineSteps.map((step, index) => {
-            const Icon = step.icon;
-            const isRightSide = index % 2 !== 0;
-            
-            return (
-              <motion.div
-                key={index}
-                className={`pipeline-item ${isRightSide ? 'right-side' : 'left-side'}`}
-                custom={index}
-                variants={itemVariants}
-                animate={isRightSide ? { opacity: 1, x: 0, scale: 1 } : { opacity: 1, x: 0, scale: 1 }}
-                initial={isRightSide ? { opacity: 0, x: 100, scale: 0.9 } : { opacity: 0, x: -100, scale: 0.9 }}
-              >
-                <div className="pipeline-dot" style={{ backgroundColor: step.color }}>
-                  <Icon size={24} color="#fff" />
-                </div>
-                
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              className="service-card"
+              variants={itemVariants}
+              whileHover={{ y: -8 }}
+            >
+              <div className="service-card-header">
                 <div 
-                    className="pipeline-card"
-                    // --- EPIC ADDITION: Dynamic CSS Variables for Gradients ---
-                    style={{
-                        '--card-gradient-start': step.gradient.start,
-                        '--card-gradient-end': step.gradient.end,
-                    }}
+                  className="service-icon-wrapper"
+                  style={{ background: `${service.color}15` }}
                 >
-                  <span className="step-subtitle" >{step.subtitle}</span> {/* Ensure subtitle is white too */}
-                  <h3 >{step.title}</h3> {/* Ensure title is white */}
-                  <p>{step.description}</p>
+                  <service.icon 
+                    size={28} 
+                    color={service.color}
+                    strokeWidth={2}
+                  />
                 </div>
+                <span 
+                  className="service-number"
+                  style={{ color: service.color }}
+                >
+                  {service.number}
+                </span>
+              </div>
+
+              <div className="service-card-content">
+                <h3 className="service-title">{service.title}</h3>
+                <p className="service-subtitle">{service.subtitle}</p>
+                <p className="service-description">{service.description}</p>
+
+                <ul className="service-features">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx}>
+                      <CheckCircle size={16} color={service.color} />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <motion.div 
+                className="service-card-footer"
+                whileHover={{ x: 5 }}
+              >
+                <span style={{ color: service.color }}>Learn More</span>
+                <ArrowRight size={18} color={service.color} />
               </motion.div>
-            );
-          })}
+            </motion.div>
+          ))}
         </motion.div>
 
-        <motion.a 
-            href="/process" 
-            className="pipeline-cta-link"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5, delay: 1.8 }}
+        <motion.div
+          className="services-cta"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-            Explore Our Full Digital Workflow <ArrowRight size={18} />
-        </motion.a>
-
+          <div className="services-cta-content">
+            <h3>Ready to transform your financial operations?</h3>
+            <p>Join thousands of businesses already using Fiscalyn to streamline their finances.</p>
+          </div>
+          <motion.button 
+            className="services-cta-button"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span>View All Services</span>
+            <ArrowRight size={20} />
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

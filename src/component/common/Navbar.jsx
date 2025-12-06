@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../../css/common/navbar.css";
 
@@ -9,21 +9,18 @@ const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Handle Scroll Effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) setScrolled(true); // Increased scroll threshold
-      else setScrolled(false);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   
-  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location.pathname]);
-
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -31,21 +28,15 @@ const NavBar = () => {
     { name: "Services", path: "/services" },
     { name: "Pricing", path: "/pricing" },
   ];
-  
-  // Separate CTA link
-  const ctaLink = { name: "Contact Us", path: "/contact" };
 
-
-  // Mobile menu animation variants
   const menuVariants = {
     initial: { opacity: 0, height: 0 },
     animate: {
       opacity: 1,
       height: "auto",
       transition: {
-        type: "spring",
-        stiffness: 700,
-        damping: 40,
+        duration: 0.3,
+        ease: [0.16, 1, 0.3, 1],
         when: "beforeChildren",
         staggerChildren: 0.05
       },
@@ -54,57 +45,112 @@ const NavBar = () => {
       opacity: 0,
       height: 0,
       transition: {
-        type: "spring",
-        stiffness: 500,
-        damping: 30,
+        duration: 0.25,
+        ease: [0.16, 1, 0.3, 1],
         when: "afterChildren"
       },
     },
   };
   
   const linkVariants = {
-    initial: { y: -20, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { y: -20, opacity: 0 },
+    initial: { opacity: 0, x: -20 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -20 },
   };
-
 
   return (
     <motion.nav
-      initial={{ y: -50, opacity: 0 }}
+      initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}
     >
       <div className="nav-container">
-        <Link to="/" className="logo">
-          Accounting<span>Empire</span>
+        <Link to="/" className="nav-logo">
+          <motion.div 
+            className="logo-icon"
+            whileHover={{ rotate: 180, scale: 1.1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="4" width="32" height="32" rx="8" fill="url(#logoGradient)" />
+              <path d="M12 16h16M12 20h12M12 24h16" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+              <defs>
+                <linearGradient id="logoGradient" x1="4" y1="4" x2="36" y2="36">
+                  <stop offset="0%" stopColor="#635bff" />
+                  <stop offset="100%" stopColor="#00d4ff" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </motion.div>
+          <span className="logo-text">Fiscalyn</span>
         </Link>
 
-        {/* Desktop Menu */}
         <div className="desktop-nav-content">
           <ul className="nav-links">
             {navLinks.map((link) => (
-              <motion.li key={link.path} whileHover={{ y: -2 }}>
-                <Link to={link.path} className={location.pathname === link.path ? "active" : ""}>
+              <motion.li 
+                key={link.path}
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Link 
+                  to={link.path} 
+                  className={location.pathname === link.path ? "active" : ""}
+                >
                   {link.name}
+                  {location.pathname === link.path && (
+                    <motion.span
+                      className="active-indicator"
+                      layoutId="activeIndicator"
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  )}
                 </Link>
               </motion.li>
             ))}
           </ul>
 
-          <Link to={ctaLink.path} className="cta-button">
-            {ctaLink.name}
-          </Link>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <Link to="/contact" className="nav-cta-button">
+              <span>Get Started</span>
+              <ArrowRight size={18} />
+            </Link>
+          </motion.div>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </div>
+        <motion.button
+          className="mobile-toggle"
+          onClick={() => setIsOpen(!isOpen)}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Toggle menu"
+        >
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <X size={28} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="menu"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Menu size={28} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -114,16 +160,38 @@ const NavBar = () => {
             animate="animate"
             exit="exit"
           >
-            {[...navLinks, ctaLink].map((link) => (
-              <motion.div variants={linkVariants} key={link.path}>
-                <Link
-                  to={link.path}
-                  className={location.pathname === link.path ? "active-mobile" : ""}
+            <div className="mobile-menu-content">
+              {navLinks.map((link) => (
+                <motion.div 
+                  variants={linkVariants} 
+                  key={link.path}
+                  className="mobile-menu-item"
                 >
-                  {link.name}
+                  <Link
+                    to={link.path}
+                    className={location.pathname === link.path ? "active-mobile" : ""}
+                  >
+                    {link.name}
+                    {location.pathname === link.path && (
+                      <motion.div 
+                        className="mobile-active-dot"
+                        layoutId="mobileActiveDot"
+                      />
+                    )}
+                  </Link>
+                </motion.div>
+              ))}
+              
+              <motion.div 
+                variants={linkVariants}
+                className="mobile-cta-wrapper"
+              >
+                <Link to="/contact" className="mobile-cta-button">
+                  <span>Get Started</span>
+                  <ArrowRight size={18} />
                 </Link>
               </motion.div>
-            ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
