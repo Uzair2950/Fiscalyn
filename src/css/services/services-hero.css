@@ -211,6 +211,18 @@
   white-space: nowrap;
 }
 
+.services-hero-primary-btn:focus,
+.services-hero-secondary-btn:focus {
+  outline: none;
+}
+
+.services-hero-primary-btn:focus-visible,
+.services-hero-secondary-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+
 .services-hero-primary-btn {
   background: var(--services-hero-primary);
   color: #fff;

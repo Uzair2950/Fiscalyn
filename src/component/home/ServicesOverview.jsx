@@ -151,6 +151,7 @@ const ServicesOverview = () => {
             className="services-cta-button"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
+             onClick={() => (window.location.href = "/services")}
           >
             <span>View All Services</span>
             <ArrowRight size={20} />

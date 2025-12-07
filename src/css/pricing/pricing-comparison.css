@@ -1,0 +1,388 @@
+/* Pricing Comparison Table - Mobile-First Responsive */
+
+:root {
+  --comparison-primary: #635bff;
+  --comparison-secondary: #0a2540;
+  --comparison-text-light: #525f7f;
+  --comparison-background: #ffffff;
+}
+
+/* Section Container */
+/* .pricing-comparison-section {
+  width: 100%;
+  background: var(--comparison-background);
+  padding: 80px 5vw;
+  position: relative;
+  overflow: hidden;
+} */
+
+
+.pricing-comparison-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.pricing-comparison-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.pricing-comparison-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(99, 91, 255, 0.08);
+  border: 1px solid rgba(99, 91, 255, 0.2);
+  border-radius: 50px;
+  margin-bottom: 16px;
+}
+
+.pricing-comparison-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--comparison-primary);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+.pricing-comparison-badge-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--comparison-primary);
+}
+
+.pricing-comparison-headline {
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--comparison-secondary);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.pricing-comparison-gradient-text {
+  background: linear-gradient(135deg, var(--comparison-primary) 0%, #8b83ff 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+.pricing-comparison-subheadline {
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--comparison-text-light);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Table Wrapper */
+.pricing-comparison-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Table */
+.pricing-comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+  min-width: 800px;
+}
+
+/* Table Header */
+.pricing-comparison-table thead {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.pricing-comparison-table th {
+  padding: 24px 20px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--comparison-secondary);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+  font-size: 1rem;
+}
+
+.pricing-comparison-table th:first-child {
+  border-top-left-radius: 20px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--comparison-text-light);
+}
+
+.pricing-comparison-table th:last-child {
+  border-top-right-radius: 20px;
+}
+
+/* Plan Header Cells */
+.comparison-plan-header {
+  text-align: center;
+  position: relative;
+}
+
+.comparison-plan-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--comparison-secondary);
+  margin-bottom: 4px;
+}
+
+.comparison-plan-price {
+  font-size: 0.9rem;
+  color: var(--comparison-text-light);
+  font-weight: 500;
+}
+
+.comparison-plan-popular {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--comparison-primary), #00d4ff);
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* Table Body */
+.pricing-comparison-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.pricing-comparison-table tbody tr:hover {
+  background: rgba(99, 91, 255, 0.02);
+}
+
+.pricing-comparison-table td {
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.pricing-comparison-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pricing-comparison-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 20px;
+}
+
+.pricing-comparison-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 20px;
+}
+
+/* Feature Name Cell */
+.comparison-feature-name {
+  font-weight: 600;
+  color: var(--comparison-secondary);
+  font-size: 0.95rem;
+}
+
+/* Check/Cross Icons */
+.comparison-check-cell {
+  text-align: center;
+}
+
+.comparison-check-icon {
+  color: #00e676;
+}
+
+.comparison-cross-icon {
+  color: #ff6b6b;
+  opacity: 0.3;
+}
+
+.comparison-text-value {
+  text-align: center;
+  font-weight: 600;
+  color: var(--comparison-secondary);
+  font-size: 0.95rem;
+}
+
+/* Category Row */
+.comparison-category-row {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.comparison-category-row td {
+  font-weight: 700;
+  color: var(--comparison-secondary);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 16px 20px;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .pricing-comparison-section {
+    padding: 100px 5vw;
+  }
+
+  .pricing-comparison-header {
+    margin-bottom: 80px;
+  }
+
+  .pricing-comparison-badge {
+    padding: 8px 16px;
+  }
+
+  .pricing-comparison-badge-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .pricing-comparison-badge-text {
+    font-size: 14px;
+  }
+
+  .pricing-comparison-table th {
+    padding: 28px 24px;
+    font-size: 1.1rem;
+  }
+
+  .comparison-plan-name {
+    font-size: 1.4rem;
+  }
+
+  .comparison-plan-price {
+    font-size: 1rem;
+  }
+
+  .pricing-comparison-table td {
+    padding: 24px;
+  }
+
+  .comparison-feature-name {
+    font-size: 1rem;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .pricing-comparison-section {
+    padding: 120px 5vw;
+  }
+
+  .pricing-comparison-table {
+    min-width: auto;
+  }
+}
+
+/* Small Mobile Optimization */
+@media (max-width: 480px) {
+  .pricing-comparison-section {
+    padding: 60px 4vw;
+  }
+
+  .pricing-comparison-header {
+    margin-bottom: 48px;
+  }
+
+  .pricing-comparison-badge {
+    padding: 5px 12px;
+  }
+
+  .pricing-comparison-badge-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .pricing-comparison-badge-text {
+    font-size: 11px;
+  }
+
+  .pricing-comparison-table th {
+    padding: 20px 16px;
+    font-size: 0.9rem;
+  }
+
+  .comparison-plan-name {
+    font-size: 1.1rem;
+  }
+
+  .comparison-plan-price {
+    font-size: 0.85rem;
+  }
+
+  .pricing-comparison-table td {
+    padding: 16px;
+  }
+
+  .comparison-feature-name {
+    font-size: 0.9rem;
+  }
+
+  .comparison-text-value {
+    font-size: 0.85rem;
+  }
+
+  .comparison-plan-popular {
+    font-size: 0.65rem;
+    padding: 3px 12px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .pricing-comparison-section {
+    padding: 2rem;
+  }
+
+  .pricing-comparison-table-wrapper {
+    box-shadow: none;
+  }
+
+  .pricing-comparison-table {
+    border: 1px solid #ddd;
+  }
+
+  .comparison-plan-popular {
+    display: none;
+  }
+}
+
+/* Section Container - Hidden on mobile/tablet, visible on desktop */
+.pricing-comparison-section {
+  /* Hide by default */
+  display: none;
+}
+
+/* Show only on desktop (1024px+) */
+@media (min-width: 1024px) {
+  .pricing-comparison-section {
+    display: block;
+    width: 100%;
+    background: var(--comparison-background);
+    padding: 120px 5vw;
+    position: relative;
+    overflow: hidden;
+  }
+}

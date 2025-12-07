@@ -103,6 +103,7 @@ const ServicesHero: React.FC = () => {
               className="services-hero-primary-btn"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => (window.location.href = "/contact")}
             >
               <span>Get Started Free</span>
               <ArrowRight size={20} />
@@ -111,6 +112,7 @@ const ServicesHero: React.FC = () => {
               className="services-hero-secondary-btn"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => (window.location.href = "/contact")}
             >
               Schedule Demo
             </motion.button>

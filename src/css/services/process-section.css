@@ -248,6 +248,14 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   font-family: inherit;
 }
+.process-cta-button:focus {
+  outline: none;
+}
+
+.process-cta-button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
 
 .process-cta-button:hover {
   transform: translateY(-2px);

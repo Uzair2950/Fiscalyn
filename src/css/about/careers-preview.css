@@ -186,6 +186,15 @@
   font-family: inherit;
 }
 
+.careers-view-all-btn:focus {
+  outline: none;
+}
+
+.careers-view-all-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 .careers-view-all-btn:hover {
   background: #554fe4;
   box-shadow: 0 8px 30px rgba(99, 91, 255, 0.4);

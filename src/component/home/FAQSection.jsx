@@ -299,6 +299,7 @@ const FAQSection = () => {
               className="faq-primary-button"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              onClick={()=>(window.location.href='/contact')}
             >
               Contact Support
             </motion.button>
@@ -306,6 +307,7 @@ const FAQSection = () => {
               className="faq-secondary-button"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              onClick={()=>(window.location.href='/contact')}
             >
               Schedule a Demo
             </motion.button>

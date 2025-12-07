@@ -88,6 +88,7 @@ const HeroSection = () => {
               className="hero-primary-btn"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
+               onClick={() => (window.location.href = "/contact")}
             >
               <span>Start Building Free</span>
               <ArrowRight size={20} />
@@ -96,6 +97,7 @@ const HeroSection = () => {
               className="hero-secondary-btn"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+               onClick={() => (window.location.href = "/contact")}
             >
               Schedule Demo
             </motion.button>

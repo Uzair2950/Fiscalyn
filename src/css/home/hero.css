@@ -178,6 +178,16 @@
   gap: 8px;
   font-family: inherit;
 }
+.hero-primary-btn:focus ,
+.hero-secondary-btn:focus {
+  outline: none;
+}
+
+.hero-primary-btn:focus-visible,
+.hero-secondary-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
 
 .hero-primary-btn {
   background: var(--hero-primary);

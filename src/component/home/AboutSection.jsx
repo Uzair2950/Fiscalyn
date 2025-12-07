@@ -121,17 +121,17 @@ const AboutSection = () => {
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                className="value-card"
+                className="home-value-card"
                 variants={itemVariants}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div 
-                  className="value-icon"
+                  className="home-value-icon"
                   style={{ background: `${value.color}15` }}
                 >
                   <value.icon size={24} color={value.color} strokeWidth={2} />
                 </div>
-                <div className="value-content">
+                <div className="home-value-content">
                   <h3 style={{ color: value.color }}>{value.title}</h3>
                   <p>{value.description}</p>
                 </div>

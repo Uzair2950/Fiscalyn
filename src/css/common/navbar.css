@@ -145,6 +145,7 @@
   background: #554fe4;
   box-shadow: 0 6px 25px rgba(99, 91, 255, 0.4);
   transform: translateY(-2px);
+    color: #fff;
 }
 
 .nav-cta-button svg {

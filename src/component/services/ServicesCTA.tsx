@@ -101,6 +101,7 @@ const ServicesCTA: React.FC = () => {
               className="services-cta-primary-btn"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => (window.location.href = "/contact")}
             >
               <span>Start Free Trial</span>
               <ArrowRight size={20} />
@@ -109,6 +110,7 @@ const ServicesCTA: React.FC = () => {
               className="services-cta-secondary-btn"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => (window.location.href = "/contact")}
             >
               Schedule a Demo
             </motion.button>

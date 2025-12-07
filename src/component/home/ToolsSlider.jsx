@@ -80,7 +80,7 @@ const ToolsSlider = () => {
         >
           <p className="tools-cta-text">
             <strong>100+ integrations</strong> and counting. Can't find your tool?{' '}
-            <span className="tools-cta-link">Request an integration →</span>
+            <span className="tools-cta-link" onClick={()=>window.location.href='/contact'}>Request an integration →</span>
           </p>
         </motion.div>
       </div>

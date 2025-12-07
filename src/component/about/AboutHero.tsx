@@ -83,6 +83,12 @@ const AboutHero: React.FC = () => {
               className="about-hero-primary-btn"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const el = document.getElementsByClassName(
+                  "careers-preview-section"
+                )[0];
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               <span>Join Our Team</span>
               <ArrowRight size={20} />
@@ -91,6 +97,11 @@ const AboutHero: React.FC = () => {
               className="about-hero-secondary-btn"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const el =
+                  document.getElementsByClassName("our-story-section")[0];
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Our Story
             </motion.button>
