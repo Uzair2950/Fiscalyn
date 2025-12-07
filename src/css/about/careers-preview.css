@@ -1,0 +1,471 @@
+/* Careers Preview Section - Mobile-First Design */
+
+:root {
+  --careers-primary: #635bff;
+  --careers-secondary: #0a2540;
+  --careers-text-light: #525f7f;
+  --careers-background: #ffffff;
+}
+
+/* Section Container */
+.careers-preview-section {
+  width: 100%;
+  background: var(--careers-background);
+  padding: 80px 5vw;
+  position: relative;
+}
+
+.careers-preview-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.careers-preview-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.careers-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(99, 91, 255, 0.08);
+  border: 1px solid rgba(99, 91, 255, 0.2);
+  border-radius: 50px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.careers-preview-badge:hover {
+  background: rgba(99, 91, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.careers-preview-badge-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--careers-primary);
+  letter-spacing: 0.01em;
+}
+
+.careers-preview-headline {
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--careers-secondary);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.careers-preview-gradient-text {
+  background: linear-gradient(135deg, var(--careers-primary) 0%, #8b83ff 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+.careers-preview-subheadline {
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--careers-text-light);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Content */
+.careers-preview-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+/* Openings Section */
+.careers-preview-openings {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 32px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.openings-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--careers-secondary);
+  margin: 0 0 24px 0;
+  letter-spacing: -0.01em;
+}
+
+.openings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Opening Card */
+.opening-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.opening-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-color: rgba(99, 91, 255, 0.2);
+}
+
+.opening-info {
+  flex: 1;
+}
+
+.opening-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--careers-secondary);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+}
+
+.opening-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.opening-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--careers-text-light);
+  font-weight: 500;
+}
+
+.opening-meta-item svg {
+  flex-shrink: 0;
+}
+
+.opening-arrow {
+  color: var(--careers-primary);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.opening-card:hover .opening-arrow {
+  transform: translateX(5px);
+}
+
+/* View All Button */
+.careers-view-all-btn {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--careers-primary);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(99, 91, 255, 0.3);
+  font-family: inherit;
+}
+
+.careers-view-all-btn:hover {
+  background: #554fe4;
+  box-shadow: 0 8px 30px rgba(99, 91, 255, 0.4);
+}
+
+/* Perks Section */
+.careers-preview-perks {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 32px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.perks-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--careers-secondary);
+  margin: 0 0 24px 0;
+  letter-spacing: -0.01em;
+}
+
+.perks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* Perk Item */
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.perk-item:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transform: translateX(5px);
+}
+
+.perk-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--careers-primary), #8b83ff);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.perk-text {
+  font-size: 0.95rem;
+  color: var(--careers-secondary);
+  font-weight: 500;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .careers-preview-section {
+    padding: 100px 5vw;
+  }
+
+  .careers-preview-header {
+    margin-bottom: 80px;
+  }
+
+  .careers-preview-badge {
+    padding: 8px 16px;
+  }
+
+  .careers-preview-badge-text {
+    font-size: 14px;
+  }
+
+  .careers-preview-content {
+    gap: 48px;
+  }
+
+  .careers-preview-openings,
+  .careers-preview-perks {
+    padding: 36px 32px;
+    border-radius: 18px;
+  }
+
+  .openings-title,
+  .perks-title {
+    font-size: 1.65rem;
+  }
+
+  .opening-card {
+    padding: 24px;
+    border-radius: 14px;
+  }
+
+  .opening-title {
+    font-size: 1.2rem;
+  }
+
+  .opening-meta-item {
+    font-size: 0.9rem;
+  }
+
+  .perks-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .perk-item {
+    padding: 16px 18px;
+  }
+
+  .perk-text {
+    font-size: 1rem;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .careers-preview-section {
+    padding: 120px 5vw;
+  }
+
+  .careers-preview-content {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+  }
+
+  .careers-preview-openings,
+  .careers-preview-perks {
+    padding: 40px 36px;
+    border-radius: 20px;
+  }
+
+  .openings-title,
+  .perks-title {
+    font-size: 1.75rem;
+  }
+
+  .opening-card {
+    padding: 28px;
+  }
+
+  .opening-title {
+    font-size: 1.25rem;
+  }
+
+  .perks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small Mobile Optimization */
+@media (max-width: 480px) {
+  .careers-preview-section {
+    padding: 60px 4vw;
+  }
+
+  .careers-preview-header {
+    margin-bottom: 48px;
+  }
+
+  .careers-preview-badge {
+    padding: 5px 12px;
+  }
+
+  .careers-preview-badge-text {
+    font-size: 11px;
+  }
+
+  .careers-preview-content {
+    gap: 32px;
+  }
+
+  .careers-preview-openings,
+  .careers-preview-perks {
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .openings-title,
+  .perks-title {
+    font-size: 1.35rem;
+    margin-bottom: 20px;
+  }
+
+  .openings-list {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .opening-card {
+    padding: 16px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .opening-title {
+    font-size: 1rem;
+  }
+
+  .opening-meta {
+    gap: 10px;
+  }
+
+  .opening-meta-item {
+    font-size: 0.8rem;
+  }
+
+  .opening-arrow {
+    align-self: flex-end;
+  }
+
+  .careers-view-all-btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+
+  .perks-grid {
+    gap: 10px;
+  }
+
+  .perk-item {
+    padding: 12px 14px;
+  }
+
+  .perk-check {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+  }
+
+  .perk-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .careers-preview-section {
+    padding: 2rem;
+  }
+
+  .careers-preview-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .careers-preview-openings,
+  .careers-preview-perks {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .careers-view-all-btn {
+    display: none;
+  }
+
+  .opening-arrow {
+    display: none;
+  }
+}
