@@ -7,7 +7,7 @@ const TeamSection: React.FC = () => {
   const team = [
     {
       name: "Alexandra Chen",
-      role: "CEO & Co-Founder",
+      role: "Managing Director & Senior Accountant",
       image:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
       linkedin: "#",
@@ -15,7 +15,7 @@ const TeamSection: React.FC = () => {
     },
     {
       name: "Marcus Johnson",
-      role: "CTO & Co-Founder",
+      role: "Head of Tax & Compliance",
       image:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
       linkedin: "#",
@@ -23,7 +23,7 @@ const TeamSection: React.FC = () => {
     },
     {
       name: "Sarah Williams",
-      role: "Head of Product",
+      role: "Payroll & Bookkeeping Manager",
       image:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
       linkedin: "#",
@@ -31,7 +31,7 @@ const TeamSection: React.FC = () => {
     },
     {
       name: "David Park",
-      role: "Head of Engineering",
+      role: "Business Advisory Manager",
       image:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
       linkedin: "#",
@@ -39,7 +39,7 @@ const TeamSection: React.FC = () => {
     },
     {
       name: "Emma Thompson",
-      role: "Head of Design",
+      role: "VAT & Corporate Tax Specialist",
       image:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
       linkedin: "#",
@@ -47,7 +47,7 @@ const TeamSection: React.FC = () => {
     },
     {
       name: "James Lee",
-      role: "Head of Customer Success",
+      role: "Client Relations Manager",
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
       linkedin: "#",

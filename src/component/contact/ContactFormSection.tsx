@@ -18,7 +18,7 @@ const ContactFormSection: React.FC = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     setFormData({
       ...formData,
@@ -46,26 +46,26 @@ const ContactFormSection: React.FC = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email Support",
+      title: "Email Us",
       description:
-        "Send us an email anytime and we'll respond within 24 hours.",
-      detail: "hello@fiscalyn.com",
+        "Send us your enquiry anytime and a qualified accountant will respond within 1 business day.",
+      detail: "hello@47accountants.com",
       color: "#635bff",
     },
     {
       icon: Phone,
-      title: "Phone Support",
+      title: "Call Us",
       description:
-        "Speak directly with our support team Monday to Friday, 9am-6pm GMT.",
+        "Speak directly with your accountant Monday to Friday, 9am–6pm GMT. No call centres.",
       detail: "+44 20 1234 5678",
       color: "#00d4ff",
     },
     {
       icon: MessageCircle,
-      title: "Live Chat",
+      title: "Book a Meeting",
       description:
-        "Get instant answers to your questions via our live chat support.",
-      detail: "Available 24/7",
+        "Schedule a free 30-minute consultation with one of our ACCA-qualified accountants at your convenience.",
+      detail: "Free & No Obligation",
       color: "#00e676",
     },
   ];
@@ -180,11 +180,12 @@ const ContactFormSection: React.FC = () => {
                   onChange={handleChange}
                 >
                   <option value="">Select a subject</option>
-                  <option value="sales">Sales Inquiry</option>
-                  <option value="support">Technical Support</option>
-                  <option value="billing">Billing Question</option>
-                  <option value="partnership">Partnership Opportunity</option>
-                  <option value="feedback">Feedback</option>
+                  <option value="bookkeeping">Bookkeeping Enquiry</option>
+                  <option value="tax">Tax &amp; Self-Assessment</option>
+                  <option value="vat">VAT &amp; MTD</option>
+                  <option value="payroll">Payroll Services</option>
+                  <option value="advisory">Business Advisory</option>
+                  <option value="switching">Switching Accountant</option>
                   <option value="other">Other</option>
                 </select>
               </div>

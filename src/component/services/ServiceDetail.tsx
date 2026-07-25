@@ -1,23 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Shield, TrendingUp, CheckCircle } from "lucide-react";
+import {
+  BookOpen,
+  Shield,
+  TrendingUp,
+  CheckCircle,
+  Users,
+  Receipt,
+  Briefcase,
+} from "lucide-react";
 import "../../css/services/service-detail.css";
 
 const ServiceDetail: React.FC = () => {
   const services = [
     {
       icon: BookOpen,
-      title: "Cloud Bookkeeping",
-      subtitle: "Real-Time Financial Clarity",
+      title: "Managed Bookkeeping",
+      subtitle: "Accurate Records, Always",
       description:
-        "Experience automated bookkeeping that works around the clock. Our intelligent system processes every transaction, categorizes expenses, and reconciles accounts in real-time, giving you instant visibility into your financial health. No more manual data entry or end-of-month surprises.",
+        "Our dedicated bookkeepers maintain your ledgers meticulously throughout the year. Every transaction is recorded, categorised, and reconciled on time—giving you a real-time view of your business finances without lifting a finger. No more last-minute scrambles at year end.",
       features: [
-        "Automatic bank feed synchronization",
-        "AI-powered transaction categorization",
-        "Real-time financial reporting",
-        "Multi-currency support (47+ currencies)",
-        "Smart duplicate detection",
-        "Mobile receipt capture",
+        "Monthly bank reconciliations",
+        "Expense categorisation & coding",
+        "Cloud accounting software setup",
+        "Supplier & customer ledger management",
+        "Receipt capture & management",
+        "Monthly management reports",
       ],
       color: "#635bff",
       image:
@@ -26,17 +34,17 @@ const ServiceDetail: React.FC = () => {
     },
     {
       icon: Shield,
-      title: "Compliance & Tax",
-      subtitle: "Zero-Stress Regulation",
+      title: "Tax & Compliance",
+      subtitle: "Zero Stress, Full Compliance",
       description:
-        "Stay compliant effortlessly with automated tax management. Our platform handles Making Tax Digital (MTD), VAT returns, CIS reporting, and all UK regulatory requirements automatically. Never miss a deadline or face penalties again.",
+        "We handle all your statutory obligations with HMRC and Companies House—on time, every time. Our tax specialists prepare your Corporation Tax return, Self-Assessment, and year-end accounts while actively identifying legal opportunities to reduce your tax liability.",
       features: [
-        "Automated HMRC submissions",
-        "Real-time VAT calculations",
-        "CIS compliance tracking",
-        "Digital tax receipts",
-        "Penalty protection alerts",
-        "Annual accounts preparation",
+        "Corporation Tax returns",
+        "Self-Assessment for directors",
+        "Year-end statutory accounts",
+        "HMRC correspondence handling",
+        "Penalty protection & alerts",
+        "Tax planning & optimisation",
       ],
       color: "#00d4ff",
       image:
@@ -45,22 +53,79 @@ const ServiceDetail: React.FC = () => {
     },
     {
       icon: TrendingUp,
-      title: "Growth Analytics",
-      subtitle: "Data-Driven Decisions",
+      title: "Business Advisory",
+      subtitle: "Strategy Beyond the Numbers",
       description:
-        "Transform raw financial data into actionable business intelligence. Our advanced analytics engine provides predictive insights, cash flow forecasting, and performance benchmarks to fuel strategic growth decisions.",
+        "We go beyond compliance to act as your trusted financial adviser. Through regular review meetings, we analyse your financial performance, discuss growth strategies, and provide the clarity you need to make confident business decisions.",
       features: [
-        "Predictive cash flow modeling",
-        "Custom KPI dashboards",
-        "Industry benchmarking",
-        "Profit & loss forecasting",
-        "Budget variance analysis",
-        "Executive reporting suite",
+        "Quarterly management accounts",
+        "Cash flow planning & forecasting",
+        "Budgeting & variance analysis",
+        "Profit improvement strategies",
+        "Director's salary & dividend planning",
+        "Investment & expansion advice",
       ],
       color: "#00e676",
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       position: "left",
+    },
+    {
+      icon: Users,
+      title: "Payroll & Pensions",
+      subtitle: "Reliable Team Payments",
+      description:
+        "End-to-end payroll management for your entire team. We handle PAYE calculations, RTI submissions, payslips, and auto-enrolment pension obligations so your employees are paid accurately and on time—every time. Stay compliant without the admin burden.",
+      features: [
+        "Monthly PAYE & RTI submissions",
+        "Payslip generation & distribution",
+        "P60 & P45 processing",
+        "Pension auto-enrolment management",
+        "CIS deduction tracking",
+        "Holiday & statutory pay calculations",
+      ],
+      color: "#ffb300",
+      image:
+        "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop",
+      position: "right",
+    },
+    {
+      icon: Receipt,
+      title: "VAT Services",
+      subtitle: "HMRC Reporting & Returns",
+      description:
+        "Navigating VAT complexity with confidence. From initial registration to quarterly Making Tax Digital (MTD) compliant filings, we ensure you're always on the right side of HMRC. We also advise on the most tax-efficient VAT scheme for your business.",
+      features: [
+        "VAT registration & deregistration",
+        "Quarterly MTD-compliant returns",
+        "VAT scheme selection & advice",
+        "EC sales & acquisitions",
+        "HMRC VAT inspection support",
+        "Input tax recovery maximisation",
+      ],
+      color: "#f44336",
+      image:
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop",
+      position: "left",
+    },
+    {
+      icon: Briefcase,
+      title: "Company Secretarial",
+      subtitle: "Corporate Governance",
+      description:
+        "Maintaining impeccable statutory records and meeting all Companies House obligations. We manage your confirmation statements, handle director and shareholder changes, and ensure your corporate records are always accurate, up to date, and fully compliant.",
+      features: [
+        "Annual confirmation statements",
+        "Director & shareholder changes",
+        "Company formation & incorporation",
+        "Registered office service",
+        "Share allotments & transfers",
+        "Minute & resolution drafting",
+      ],
+      color: "#9c27b0",
+      image:
+        "https://images.unsplash.com/photo-1507209696998-3c532be9b2b5?w=800&h=600&fit=crop",
+      position: "right",
     },
   ];
 
@@ -80,16 +145,17 @@ const ServiceDetail: React.FC = () => {
           </motion.div>
 
           <h2 className="service-detail-headline">
-            Everything You Need to
+            Six Core Services.
             <span className="service-detail-gradient-text">
               {" "}
-              Succeed Financially
+              One Trusted Partner.
             </span>
           </h2>
 
           <p className="service-detail-subheadline">
-            Comprehensive financial solutions designed to automate operations,
-            ensure compliance, and drive growth—all from one powerful platform.
+            From bookkeeping and tax compliance to payroll, VAT, and business
+            advisory— 47accountants provides every accounting service your UK
+            business needs, all under one roof.
           </p>
         </motion.div>
 

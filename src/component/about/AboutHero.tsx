@@ -5,9 +5,9 @@ import "../../css/about/about-hero.css";
 
 const AboutHero: React.FC = () => {
   const stats = [
-    { icon: Users, value: "10K+", label: "Active Users" },
-    { icon: Target, value: "99.9%", label: "Uptime SLA" },
-    { icon: Sparkles, value: "12+", label: "Years Experience" },
+    { icon: Users, value: "1,200+", label: "Clients Served" },
+    { icon: Target, value: "100%", label: "On-Time Filing" },
+    { icon: Sparkles, value: "12+", label: "Years in Practice" },
   ];
 
   return (
@@ -55,22 +55,21 @@ const AboutHero: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <span className="about-hero-badge-dot" />
-            <span className="about-hero-badge-text">About Fiscalyn</span>
+            <span className="about-hero-badge-text">About 47accountants</span>
           </motion.div>
 
           <h1 className="about-hero-headline">
-            Building the Future of
+            Your Trusted UK
             <span className="about-hero-gradient-text">
               {" "}
-              Financial Intelligence
+              Accounting Partner
             </span>
           </h1>
 
           <p className="about-hero-description">
-            We're on a mission to transform how businesses manage their
-            finances. Through cutting-edge technology and obsessive attention to
-            detail, we're making world-class financial management accessible to
-            everyone.
+            We're on a mission to make expert accountancy accessible and
+            stress-free for every UK business. Qualified accountants,
+            transparent fees, and proactive financial advice—all in one place.
           </p>
 
           <motion.div
@@ -85,7 +84,7 @@ const AboutHero: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 const el = document.getElementsByClassName(
-                  "careers-preview-section"
+                  "careers-preview-section",
                 )[0];
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
@@ -143,7 +142,7 @@ const AboutHero: React.FC = () => {
           <div className="about-hero-image-wrapper">
             <img
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop"
-              alt="Fiscalyn Team"
+              alt="47accountants Team"
               className="about-hero-image"
             />
             <div className="about-hero-image-overlay" />

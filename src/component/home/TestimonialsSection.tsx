@@ -23,18 +23,17 @@ interface Company {
 const TestimonialsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
-
   const testimonials: Testimonial[] = [
     {
       id: 1,
       name: "Sarah Mitchell",
-      role: "CEO",
-      company: "TechFlow Solutions",
+      role: "Director",
+      company: "TechFlow Solutions Ltd",
       image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
       rating: 5,
-      text: "Fiscalyn transformed our financial operations completely. The real-time insights and automated compliance saved us countless hours.",
-      metric: "40% time saved",
+      text: "Switching to 47accountants was the best business decision I made. Our accounts are always done on time, and they’ve already saved us over £18,000 in tax through smart planning. Couldn’t be happier.",
+      metric: "£18K tax saved",
       color: "#635bff",
     },
     {
@@ -43,10 +42,10 @@ const TestimonialsSection: React.FC = () => {
       role: "Finance Director",
       company: "GrowthMetrics Ltd",
       image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
       rating: 5,
-      text: "The analytics dashboard is incredible. We can now forecast cash flow with unprecedented accuracy and make data-driven decisions in real-time.",
-      metric: "99.8% accuracy",
+      text: "Our monthly management accounts are crystal clear. The 47accountants team takes the time to explain exactly where our money is going and what we can do to improve margins. Genuinely proactive advice.",
+      metric: "23% margin improvement",
       color: "#00d4ff",
     },
     {
@@ -55,10 +54,10 @@ const TestimonialsSection: React.FC = () => {
       role: "Founder",
       company: "Nova Ventures",
       image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
       rating: 5,
-      text: "As a startup founder, I needed something that just works. Fiscalyn's integration with our existing tools was seamless.",
-      metric: "Setup in 5 min",
+      text: "As a startup founder, I used to dread tax season. Now I don’t even think about it. 47accountants handles everything seamlessly—and they helped us structure our director salaries to save nearly £12,000 a year.",
+      metric: "£12K saved per year",
       color: "#00e676",
     },
     {
@@ -67,10 +66,10 @@ const TestimonialsSection: React.FC = () => {
       role: "Operations Manager",
       company: "Summit Consulting",
       image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
       rating: 5,
-      text: "The compliance automation alone is worth every penny. No more worrying about HMRC deadlines or MTD submissions.",
-      metric: "100% compliance",
+      text: "We never have to worry about HMRC deadlines or MTD submissions anymore. Every VAT return, payroll run, and tax filing is done accurately and on time. The compliance burden has completely lifted from our shoulders.",
+      metric: "100% on-time filing",
       color: "#ff6b6b",
     },
     {
@@ -79,34 +78,34 @@ const TestimonialsSection: React.FC = () => {
       role: "CFO",
       company: "Digital Dynamics",
       image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1508214751196-bfd1411309df?w=400&h=400&fit=crop",
       rating: 5,
-      text: "Fiscalyn's multi-currency support and real-time reconciliation have been crucial for our international operations.",
-      metric: "47 countries",
+      text: "We’ve worked with three different accountants over the years. 47accountants is by far the most responsive and knowledgeable. They feel like a genuine partner in our growth, not just someone who files our returns.",
+      metric: "97% retention rate",
       color: "#ffd93d",
     },
   ];
 
   const companies: Company[] = [
     {
+      name: "Xero",
+      logo: "https://cdn.worldvectorlogo.com/logos/xero-1.svg",
+    },
+    {
+      name: "QuickBooks",
+      logo: "https://cdn.worldvectorlogo.com/logos/quickbooks.svg",
+    },
+    {
+      name: "Sage",
+      logo: "https://cdn.worldvectorlogo.com/logos/sage-logo.svg",
+    },
+    {
       name: "Stripe",
       logo: "https://cdn.worldvectorlogo.com/logos/stripe-4.svg",
     },
     {
-      name: "Shopify",
-      logo: "https://cdn.worldvectorlogo.com/logos/shopify.svg",
-    },
-    {
-      name: "Salesforce",
-      logo: "https://cdn.worldvectorlogo.com/logos/salesforce-2.svg",
-    },
-    {
-      name: "HubSpot",
-      logo: "https://cdn.worldvectorlogo.com/logos/hubspot-2.svg",
-    },
-    {
-      name: "Slack",
-      logo: "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg",
+      name: "HMRC",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/2/23/HM_Revenue_and_Customs_logo.svg",
     },
   ];
 
@@ -125,7 +124,7 @@ const TestimonialsSection: React.FC = () => {
 
   const prevTestimonial = () => {
     setActiveIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
     );
   };
 
@@ -187,7 +186,7 @@ const TestimonialsSection: React.FC = () => {
 
           <p className="testimonials-subheadline">
             Join thousands of satisfied businesses who've transformed their
-            financial operations with Fiscalyn.
+            financial operations with 47accountants.
           </p>
         </motion.div>
 
@@ -308,7 +307,9 @@ const TestimonialsSection: React.FC = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p className="testimonials-companies-text">Trusted by teams at</p>
+          <p className="testimonials-companies-text">
+            Trusted Integrations & Partners
+          </p>
           <div className="testimonials-companies-grid">
             {companies.map((company, index) => (
               <motion.div

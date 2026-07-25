@@ -7,33 +7,33 @@ const OurStory: React.FC = () => {
   const milestones = [
     {
       year: "2013",
-      title: "The Beginning",
+      title: "Founded in London",
       description:
-        "Founded with a vision to democratize financial management for businesses of all sizes.",
+        "47accountants was founded by a team of ACCA-qualified accountants with a vision to provide expert, jargon-free accounting services to UK businesses.",
       icon: Rocket,
       color: "#635bff",
     },
     {
       year: "2016",
-      title: "Global Expansion",
+      title: "Expanding Our Services",
       description:
-        "Expanded operations to 15 countries, serving thousands of businesses worldwide.",
+        "Grew our team and expanded into payroll, VAT, and business advisory services—becoming a full-service accountancy firm trusted by 400+ clients.",
       icon: Globe,
       color: "#00d4ff",
     },
     {
       year: "2019",
-      title: "Industry Recognition",
+      title: "MTD Pioneer",
       description:
-        "Won 'Best Financial Platform' award and achieved SOC 2 Type II certification.",
+        "Became an early adopter of HMRC's Making Tax Digital initiative and helped over 800 clients transition seamlessly to digital VAT filing.",
       icon: Award,
       color: "#00e676",
     },
     {
       year: "2025",
-      title: "Continuous Growth",
+      title: "Growing with Our Clients",
       description:
-        "Serving 10,000+ businesses with 99.9% uptime and expanding our AI capabilities.",
+        "Now serving 1,200+ UK businesses with a 97% client retention rate, combining expert accountants with smart cloud accounting technology.",
       icon: TrendingUp,
       color: "#ff6b6b",
     },
@@ -55,13 +55,14 @@ const OurStory: React.FC = () => {
           </motion.div>
 
           <h2 className="our-story-headline">
-            From Startup to
-            <span className="our-story-gradient-text"> Industry Leader</span>
+            From a Small Practice to
+            <span className="our-story-gradient-text"> A Trusted Name</span>
           </h2>
 
           <p className="our-story-subheadline">
-            What started as a simple idea in a small office has grown into a
-            platform trusted by thousands of businesses worldwide.
+            What started as a small accountancy firm in London has grown into a
+            practice trusted by over 1,200 UK businesses—built on expertise,
+            integrity, and results.
           </p>
         </motion.div>
 

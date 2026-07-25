@@ -6,7 +6,7 @@ import ProcessSection from "../component/services/ProcessSection";
 import ServicesCTA from "../component/services/ServicesCTA";
 import Footer from "../component/common/Footer";
 
-const Services = () => {
+const Services: React.FC = () => {
   return (
     <>
       <NavBar />

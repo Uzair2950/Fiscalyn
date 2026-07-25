@@ -7,44 +7,44 @@ const ValuesSection: React.FC = () => {
   const values = [
     {
       icon: Heart,
-      title: "Customer Obsession",
+      title: "Client First",
       description:
-        "Every decision we make starts with our customers. Their success is our success.",
+        "Every decision we make starts with our clients. Your financial wellbeing and business success is our purpose.",
       color: "#ff6b6b",
     },
     {
       icon: Lightbulb,
-      title: "Innovation First",
+      title: "Proactive Expertise",
       description:
-        "We constantly push boundaries and challenge the status quo to deliver cutting-edge solutions.",
+        "We don't just react—we anticipate, plan ahead, and bring ideas that make a genuine difference to your finances.",
       color: "#ffd93d",
     },
     {
       icon: Users,
-      title: "Team Collaboration",
+      title: "Long-Term Partnership",
       description:
-        "We believe in the power of diverse perspectives and inclusive teamwork.",
+        "We build lasting relationships, becoming a trusted extension of your team—not just your year-end accountant.",
       color: "#00e676",
     },
     {
       icon: Zap,
-      title: "Speed & Agility",
+      title: "Clarity & Simplicity",
       description:
-        "We move fast, learn faster, and adapt to changes with remarkable agility.",
+        "We cut through complexity and communicate in plain English, so you always know exactly where your business stands.",
       color: "#00d4ff",
     },
     {
       icon: Shield,
-      title: "Trust & Integrity",
+      title: "Integrity & Compliance",
       description:
-        "We maintain the highest standards of security, privacy, and ethical conduct.",
+        "We uphold the highest standards of professional conduct—fully regulated, ACCA accredited, and always compliant.",
       color: "#635bff",
     },
     {
       icon: Target,
-      title: "Results Driven",
+      title: "Results Focused",
       description:
-        "We set ambitious goals and hold ourselves accountable for delivering measurable impact.",
+        "We measure our success by yours—from tax savings and on-time filings to profitable business growth.",
       color: "#8b83ff",
     },
   ];

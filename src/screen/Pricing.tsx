@@ -7,8 +7,8 @@ import PricingFAQ from "../component/pricing/PricingFAQ";
 import CTASection from "../component/home/CTASection";
 import Footer from "../component/common/Footer";
 
-const Pricing = () => {
-  const [isAnnual, setIsAnnual] = useState(false);
+const Pricing: React.FC = () => {
+  const [isAnnual, setIsAnnual] = useState<boolean>(false);
 
   return (
     <>

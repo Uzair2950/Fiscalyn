@@ -1,16 +1,25 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Zap, Shield } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { ArrowRight, CheckCircle, Zap, Shield, LucideIcon } from "lucide-react";
 import "../../css/home/cta.css";
 
-const CTASection = () => {
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+interface CTAFeature {
+  icon: LucideIcon;
+  text: string;
+}
 
-  const handleSubmit = (e) => {
+interface CTAStat {
+  value: string;
+  label: string;
+}
+
+const CTASection: React.FC = () => {
+  const [email, setEmail] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission
     setTimeout(() => {
       console.log("Email submitted:", email);
       setEmail("");
@@ -18,69 +27,53 @@ const CTASection = () => {
     }, 1500);
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.6, 
-        ease: [0.16, 1, 0.3, 1] 
-      } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
-  const features = [
-    { icon: Zap, text: "Setup in 5 minutes" },
-    { icon: CheckCircle, text: "No credit card required" },
-    { icon: Shield, text: "Enterprise security" },
+  const features: CTAFeature[] = [
+    { icon: Zap, text: "Free consultation" },
+    { icon: CheckCircle, text: "ACCA qualified" },
+    { icon: Shield, text: "Fixed monthly fees" },
   ];
 
-  const stats = [
-    { value: "10K+", label: "Active Users" },
-    { value: "99.9%", label: "Uptime" },
+  const stats: CTAStat[] = [
+    { value: "1,200+", label: "Clients" },
+    { value: "100%", label: "On-Time Filing" },
     { value: "24/7", label: "Support" },
-    { value: "$2B+", label: "Processed" },
+    { value: "97%", label: "Retention" },
   ];
 
   return (
     <section className="cta-section">
       <div className="cta-background">
         <div className="cta-grid-pattern" />
-        <motion.div 
+        <motion.div
           className="cta-gradient-orb cta-orb-1"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div 
+        <motion.div
           className="cta-gradient-orb cta-orb-2"
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.15, 0.35, 0.15],
-          }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.35, 0.15] }}
           transition={{
             duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2
+            delay: 2,
           }}
         />
       </div>
@@ -95,17 +88,18 @@ const CTASection = () => {
         >
           <motion.div variants={itemVariants} className="cta-badge">
             <span className="cta-badge-icon">✨</span>
-            <span className="cta-badge-text">Limited Time Offer</span>
+            <span className="cta-badge-text">Expert UK Accountants</span>
           </motion.div>
 
           <motion.h2 variants={itemVariants} className="cta-headline">
-            Ready to Transform Your
-            <span className="cta-gradient-text"> Financial Operations?</span>
+            Ready to Get Your Finances
+            <span className="cta-gradient-text"> Properly Sorted?</span>
           </motion.h2>
 
           <motion.p variants={itemVariants} className="cta-subheadline">
-            Join thousands of businesses using Fiscalyn to streamline finances, 
-            ensure compliance, and drive growth. Start your free 14-day trial today.
+            Join over 1,200 UK businesses who trust 47accountants with their
+            accounting, tax compliance, and financial planning. Book your free
+            consultation today.
           </motion.p>
 
           <motion.form
@@ -118,7 +112,9 @@ const CTASection = () => {
                 type="email"
                 placeholder="Enter your work email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEmail(e.target.value)
+                }
                 className="cta-input"
                 required
                 disabled={isSubmitting}
@@ -131,13 +127,13 @@ const CTASection = () => {
                 disabled={isSubmitting}
               >
                 <span className="cta-button-text">
-                  {isSubmitting ? "Processing..." : "Start Free Trial"}
+                  {isSubmitting ? "Processing..." : "Book Free Consultation"}
                 </span>
                 <ArrowRight size={20} />
               </motion.button>
             </div>
             <p className="cta-form-note">
-              Free 14-day trial • No credit card required • Cancel anytime
+              Free consultation • No obligation • ACCA qualified accountants
             </p>
           </motion.form>
 

@@ -5,9 +5,9 @@ import "../../css/services/services-hero.css";
 
 const ServicesHero: React.FC = () => {
   const features = [
-    { icon: Zap, text: "Real-time Processing" },
-    { icon: Shield, text: "Bank-grade Security" },
-    { icon: CheckCircle, text: "99.9% Uptime" },
+    { icon: Zap, text: "HMRC Compliant" },
+    { icon: Shield, text: "ACCA Qualified" },
+    { icon: CheckCircle, text: "Fixed Monthly Fees" },
   ];
 
   return (
@@ -59,17 +59,17 @@ const ServicesHero: React.FC = () => {
           </motion.div>
 
           <h1 className="services-hero-headline">
-            Comprehensive Financial Solutions
+            Expert Accounting Services
             <span className="services-hero-gradient-text">
               {" "}
-              for Modern Business
+              for UK Businesses
             </span>
           </h1>
 
           <p className="services-hero-description">
-            From automated bookkeeping to strategic financial planning, we
-            provide end-to-end solutions that help your business thrive. Our
-            platform handles the complexity so you can focus on growth.
+            From managed bookkeeping and tax compliance to business advisory and
+            payroll—47accountants delivers all the accounting services your
+            business needs, handled by qualified professionals.
           </p>
 
           <motion.div

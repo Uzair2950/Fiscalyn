@@ -5,18 +5,18 @@ import "../../css/services/services-cta.css";
 
 const ServicesCTA: React.FC = () => {
   const benefits = [
-    "14-day free trial, no credit card required",
-    "Cancel anytime with no penalties",
-    "24/7 customer support & onboarding",
-    "Access to all premium features",
-    "Migration assistance included",
+    "Free initial consultation, no obligation",
+    "Fixed monthly fees with no hidden costs",
+    "Dedicated qualified accountant",
+    "HMRC & Companies House compliance handled",
+    "Seamless switching from your current accountant",
     "Money-back guarantee",
   ];
 
   const stats = [
-    { value: "10K+", label: "Active Users" },
-    { value: "99.9%", label: "Uptime SLA" },
-    { value: "4.9/5", label: "Customer Rating" },
+    { value: "1,200+", label: "Clients Served" },
+    { value: "100%", label: "On-Time Filing" },
+    { value: "4.9/5", label: "Client Rating" },
   ];
 
   return (
@@ -64,14 +64,14 @@ const ServicesCTA: React.FC = () => {
           </motion.div>
 
           <h2 className="services-cta-headline">
-            Transform Your Financial Operations
+            Get Your Finances Sorted
             <span className="services-cta-gradient-text"> Starting Today</span>
           </h2>
 
           <p className="services-cta-description">
-            Join thousands of businesses using Fiscalyn to automate finances,
-            ensure compliance, and drive growth. Start your free trial now—no
-            commitment required.
+            Join over 1,200 UK businesses who trust 47accountants with their
+            accounting, tax, and financial planning. Book your free
+            consultation—no commitment required.
           </p>
 
           <div className="services-cta-benefits">
@@ -103,7 +103,7 @@ const ServicesCTA: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               onClick={() => (window.location.href = "/contact")}
             >
-              <span>Start Free Trial</span>
+              <span>Book Free Consultation</span>
               <ArrowRight size={20} />
             </motion.button>
             <motion.button
@@ -142,15 +142,17 @@ const ServicesCTA: React.FC = () => {
           >
             <div className="services-cta-trust-item">
               <div className="services-cta-trust-icon">🏆</div>
-              <div className="services-cta-trust-text">SOC 2 Certified</div>
+              <div className="services-cta-trust-text">ACCA Accredited</div>
             </div>
             <div className="services-cta-trust-item">
               <div className="services-cta-trust-icon">🛡️</div>
-              <div className="services-cta-trust-text">GDPR Compliant</div>
+              <div className="services-cta-trust-text">HMRC Registered</div>
             </div>
             <div className="services-cta-trust-item">
               <div className="services-cta-trust-icon">⚡</div>
-              <div className="services-cta-trust-text">99.9% Uptime</div>
+              <div className="services-cta-trust-text">
+                ICO & GDPR Compliant
+              </div>
             </div>
           </motion.div>
         </motion.div>

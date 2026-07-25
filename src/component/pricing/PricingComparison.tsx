@@ -6,83 +6,77 @@ import "../../css/pricing/pricing-comparison.css";
 const PricingComparison: React.FC = () => {
   const features = [
     {
-      category: "Core Features",
+      category: "Core Services",
       items: [
         {
-          name: "Monthly transactions",
-          starter: "500",
-          professional: "2,500",
-          enterprise: "Unlimited",
-        },
-        {
-          name: "User accounts",
-          starter: "1",
-          professional: "5",
-          enterprise: "Unlimited",
-        },
-        {
-          name: "Bank account sync",
-          starter: "2 accounts",
-          professional: "Unlimited",
-          enterprise: "Unlimited",
-        },
-        {
-          name: "Expense tracking",
+          name: "Dedicated qualified accountant",
           starter: true,
           professional: true,
           enterprise: true,
         },
         {
-          name: "Invoice generation",
+          name: "Annual accounts preparation",
           starter: true,
           professional: true,
           enterprise: true,
         },
         {
-          name: "Receipt capture",
+          name: "Corporation Tax return",
           starter: true,
           professional: true,
           enterprise: true,
+        },
+        {
+          name: "Self-Assessment returns",
+          starter: "1 director",
+          professional: "Up to 2",
+          enterprise: "Unlimited",
+        },
+        {
+          name: "Confirmation statement",
+          starter: true,
+          professional: true,
+          enterprise: true,
+        },
+        {
+          name: "Bookkeeping",
+          starter: "Basic",
+          professional: "Monthly",
+          enterprise: "Full",
         },
       ],
     },
     {
-      category: "Advanced Features",
+      category: "VAT & Payroll",
       items: [
         {
-          name: "Multi-currency support",
+          name: "VAT return filing",
           starter: false,
           professional: true,
           enterprise: true,
         },
         {
-          name: "Automated invoicing",
+          name: "Payroll management",
+          starter: false,
+          professional: "Up to 5 employees",
+          enterprise: "Unlimited",
+        },
+        {
+          name: "CIS returns",
           starter: false,
           professional: true,
           enterprise: true,
         },
         {
-          name: "Cash flow forecasting",
-          starter: false,
-          professional: true,
-          enterprise: true,
-        },
-        {
-          name: "Custom reports",
-          starter: false,
-          professional: true,
-          enterprise: true,
-        },
-        {
-          name: "Predictive analytics",
+          name: "P11D & benefits",
           starter: false,
           professional: false,
           enterprise: true,
         },
         {
-          name: "White-label branding",
+          name: "Pension auto-enrolment",
           starter: false,
-          professional: false,
+          professional: true,
           enterprise: true,
         },
       ],
@@ -91,74 +85,74 @@ const PricingComparison: React.FC = () => {
       category: "Compliance & Tax",
       items: [
         {
-          name: "Basic tax calculations",
+          name: "HMRC correspondence",
           starter: true,
           professional: true,
           enterprise: true,
         },
         {
-          name: "MTD compliance",
+          name: "Tax planning & advice",
           starter: false,
           professional: true,
           enterprise: true,
         },
         {
-          name: "VAT returns",
-          starter: false,
-          professional: true,
-          enterprise: true,
-        },
-        {
-          name: "CIS reporting",
-          starter: false,
-          professional: true,
-          enterprise: true,
-        },
-        {
-          name: "Advanced compliance suite",
+          name: "R&D tax credit claims",
           starter: false,
           professional: false,
           enterprise: true,
         },
         {
-          name: "Audit trail",
+          name: "Capital gains planning",
           starter: false,
+          professional: false,
+          enterprise: true,
+        },
+        {
+          name: "MTD compliance",
+          starter: true,
+          professional: true,
+          enterprise: true,
+        },
+        {
+          name: "Companies House filings",
+          starter: true,
           professional: true,
           enterprise: true,
         },
       ],
     },
     {
-      category: "Integrations",
+      category: "Advisory & Reporting",
       items: [
         {
-          name: "Basic integrations",
-          starter: true,
-          professional: true,
-          enterprise: true,
+          name: "Management accounts",
+          starter: false,
+          professional: "Monthly",
+          enterprise: "Monthly",
         },
         {
-          name: "Premium integrations",
+          name: "Cash flow forecasting",
           starter: false,
           professional: true,
           enterprise: true,
         },
         {
-          name: "API access",
+          name: "Advisory meetings",
+          starter: false,
+          professional: "Quarterly",
+          enterprise: "Monthly",
+        },
+        {
+          name: "Custom financial reports",
           starter: false,
           professional: false,
           enterprise: true,
         },
         {
-          name: "Custom integrations",
+          name: "Director salary & dividend planning",
           starter: false,
-          professional: false,
-          enterprise: true,
-        },
-        {
-          name: "Webhook support",
-          starter: false,
-          professional: false,
+          professional: true,
           enterprise: true,
         },
       ],
@@ -173,8 +167,8 @@ const PricingComparison: React.FC = () => {
           enterprise: true,
         },
         {
-          name: "Chat support",
-          starter: false,
+          name: "Phone support",
+          starter: true,
           professional: true,
           enterprise: true,
         },
@@ -191,15 +185,15 @@ const PricingComparison: React.FC = () => {
           enterprise: true,
         },
         {
-          name: "24/7 phone support",
+          name: "Same-day response",
           starter: false,
           professional: false,
           enterprise: true,
         },
         {
-          name: "Custom onboarding",
-          starter: false,
-          professional: false,
+          name: "Client portal access",
+          starter: true,
+          professional: true,
           enterprise: true,
         },
       ],
@@ -268,17 +262,17 @@ const PricingComparison: React.FC = () => {
               <tr>
                 <th>Features</th>
                 <th className="comparison-plan-header">
-                  <div className="comparison-plan-name">Starter</div>
-                  <div className="comparison-plan-price">£29/month</div>
+                  <div className="comparison-plan-name">Essentials</div>
+                  <div className="comparison-plan-price">£89/month</div>
                 </th>
                 <th className="comparison-plan-header">
                   <div className="comparison-plan-popular">Most Popular</div>
-                  <div className="comparison-plan-name">Professional</div>
-                  <div className="comparison-plan-price">£79/month</div>
+                  <div className="comparison-plan-name">Growth</div>
+                  <div className="comparison-plan-price">£199/month</div>
                 </th>
                 <th className="comparison-plan-header">
                   <div className="comparison-plan-name">Enterprise</div>
-                  <div className="comparison-plan-price">£199/month</div>
+                  <div className="comparison-plan-price">£399/month</div>
                 </th>
               </tr>
             </thead>

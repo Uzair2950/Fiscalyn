@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./screen/Home";
@@ -6,7 +7,7 @@ import Services from "./screen/Services";
 import Pricing from "./screen/Pricing";
 import Contact from "./screen/Contact";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <Routes>
@@ -18,6 +19,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;

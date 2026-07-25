@@ -6,32 +6,32 @@ import "../../css/about/careers-preview.css";
 const CareersPreview: React.FC = () => {
   const openings = [
     {
-      title: "Senior Frontend Engineer",
-      department: "Engineering",
+      title: "Qualified Accountant (ACCA/ACA)",
+      department: "Accounting",
+      location: "London / Hybrid",
+      type: "Full-time",
+    },
+    {
+      title: "Payroll Administrator",
+      department: "Payroll",
       location: "Remote / London",
       type: "Full-time",
     },
     {
-      title: "Product Designer",
-      department: "Design",
-      location: "Remote / New York",
-      type: "Full-time",
-    },
-    {
-      title: "Customer Success Manager",
-      department: "Customer Success",
+      title: "Client Relationship Manager",
+      department: "Client Services",
       location: "Remote",
       type: "Full-time",
     },
   ];
 
   const perks = [
-    "Competitive salary & equity",
-    "Flexible remote work",
-    "Health & wellness benefits",
-    "Learning & development budget",
-    "Unlimited PTO",
-    "Team retreats & events",
+    "Competitive salary & annual bonus",
+    "Flexible hybrid working",
+    "CPD & professional development support",
+    "Study support (ACCA/ACA)",
+    "25 days holiday + bank holidays",
+    "Company pension & health plan",
   ];
 
   return (
@@ -51,12 +51,16 @@ const CareersPreview: React.FC = () => {
 
           <h2 className="careers-preview-headline">
             Build the Future with
-            <span className="careers-preview-gradient-text"> Fiscalyn</span>
+            <span className="careers-preview-gradient-text">
+              {" "}
+              47accountants
+            </span>
           </h2>
 
           <p className="careers-preview-subheadline">
-            We're always looking for talented individuals who are passionate
-            about transforming financial technology.
+            We're always looking for dedicated professionals who are passionate
+            about accounting, client service, and making a real difference to
+            businesses.
           </p>
         </motion.div>
 
@@ -110,7 +114,7 @@ const CareersPreview: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="perks-title">Why Join Fiscalyn?</h3>
+            <h3 className="perks-title">Why Join 47accountants?</h3>
             <div className="perks-grid">
               {perks.map((perk, index) => (
                 <motion.div

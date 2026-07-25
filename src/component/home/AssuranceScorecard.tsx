@@ -1,24 +1,32 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Award, Users, TrendingUp, Shield } from 'lucide-react';
-import '../../css/home/assurance-scorecard.css';
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useInView, Variants } from "framer-motion";
+import { Award, Users, TrendingUp, Shield, LucideIcon } from "lucide-react";
+import "../../css/home/assurance-scorecard.css";
 
-const useCountUp = (end, duration = 2000) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
+interface CountUpResult {
+  count: number | string;
+  ref: React.RefObject<HTMLDivElement>;
+}
+
+const useCountUp = (
+  end: number | string,
+  duration: number = 2000,
+): CountUpResult => {
+  const [count, setCount] = useState<number | string>(0);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   useEffect(() => {
     if (isInView) {
-      let start = 0;
-      const endValue = typeof end === 'number' ? end : parseFloat(end);
+      const endValue =
+        typeof end === "number" ? end : parseFloat(end as string);
       const startTime = performance.now();
 
-      const animate = (currentTime) => {
+      const animate = (currentTime: number): void => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(1, elapsed / duration);
-        
-        if (typeof end === 'string' && end.includes('.')) {
+
+        if (typeof end === "string" && (end as string).includes(".")) {
           const value = progress * endValue;
           setCount(value.toFixed(1));
         } else {
@@ -29,7 +37,11 @@ const useCountUp = (end, duration = 2000) => {
         if (progress < 1) {
           requestAnimationFrame(animate);
         } else {
-          setCount(typeof end === 'string' && end.includes('.') ? endValue.toFixed(1) : endValue);
+          setCount(
+            typeof end === "string" && (end as string).includes(".")
+              ? endValue.toFixed(1)
+              : endValue,
+          );
         }
       };
       requestAnimationFrame(animate);
@@ -39,43 +51,56 @@ const useCountUp = (end, duration = 2000) => {
   return { count, ref };
 };
 
-const AssuranceScorecard = () => {
-  const stats = [
+interface Stat {
+  icon: LucideIcon;
+  title: string;
+  value: CountUpResult;
+  suffix: string;
+  description: string;
+  color: string;
+}
+
+const AssuranceScorecard: React.FC = () => {
+  const stats: Stat[] = [
     {
       icon: Award,
-      title: "Years of Excellence",
+      title: "Years in Practice",
       value: useCountUp(12),
       suffix: "+",
-      description: "Over a decade of specialized expertise in UK financial services and business compliance.",
-      color: "#635bff"
+      description:
+        "Over a decade of specialist expertise in UK accountancy, tax compliance, and business advisory.",
+      color: "#635bff",
     },
     {
       icon: Users,
-      title: "Businesses Served",
-      value: useCountUp(10000),
+      title: "Clients Served",
+      value: useCountUp(1200),
       suffix: "+",
-      description: "Trusted by thousands of UK businesses from startups to established enterprises.",
-      color: "#00d4ff"
+      description:
+        "Trusted by over 1,200 UK businesses—from sole traders and startups to growing SMEs.",
+      color: "#00d4ff",
     },
     {
       icon: TrendingUp,
-      title: "Success Rate",
-      value: useCountUp('99.8'),
+      title: "On-Time Filing Rate",
+      value: useCountUp("99.8"),
       suffix: "%",
-      description: "Near-perfect track record for timely submissions and client satisfaction.",
-      color: "#00e676"
+      description:
+        "Near-perfect record for timely HMRC submissions, VAT returns, and year-end accounts.",
+      color: "#00e676",
     },
     {
       icon: Shield,
       title: "Client Retention",
       value: useCountUp(97),
       suffix: "%",
-      description: "Industry-leading retention rate proving our commitment to long-term partnerships.",
-      color: "#ff6b6b"
-    }
+      description:
+        "Industry-leading retention rate—our clients stay because we deliver real, measurable value.",
+      color: "#ff6b6b",
+    },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -86,16 +111,16 @@ const AssuranceScorecard = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 40, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
+      transition: {
         duration: 0.6,
-        ease: [0.16, 1, 0.3, 1]
-      } 
+        ease: [0.16, 1, 0.3, 1],
+      },
     },
   };
 
@@ -110,12 +135,16 @@ const AssuranceScorecard = () => {
           transition={{ duration: 0.6 }}
         >
           <h2>
-            Why Leading Businesses
-            <span className="scorecard-gradient-text"> Choose Fiscalyn</span>
+            Why UK Businesses
+            <span className="scorecard-gradient-text">
+              {" "}
+              Trust 47accountants
+            </span>
           </h2>
           <p className="scorecard-intro">
-            Our track record speaks for itself. These aren't just numbers—they're 
-            a testament to our unwavering commitment to client success.
+            Our track record speaks for itself. These aren't just
+            numbers—they're a testament to our unwavering commitment to getting
+            your finances right.
           </p>
         </motion.div>
 
@@ -133,31 +162,21 @@ const AssuranceScorecard = () => {
               variants={itemVariants}
               whileHover={{ y: -8, scale: 1.02 }}
             >
-              <div 
+              <div
                 className="stat-icon-wrapper"
                 style={{ background: `${stat.color}15` }}
               >
-                <stat.icon 
-                  size={32} 
-                  color={stat.color}
-                  strokeWidth={2}
-                />
+                <stat.icon size={32} color={stat.color} strokeWidth={2} />
               </div>
 
               <div className="stat-content">
                 <div className="stat-value-wrapper" ref={stat.value.ref}>
-                  <span 
-                    className="stat-value"
-                    style={{ color: stat.color }}
-                  >
-                    {typeof stat.value.count === 'number' 
+                  <span className="stat-value" style={{ color: stat.color }}>
+                    {typeof stat.value.count === "number"
                       ? stat.value.count.toLocaleString()
                       : stat.value.count}
                   </span>
-                  <span 
-                    className="stat-suffix"
-                    style={{ color: stat.color }}
-                  >
+                  <span className="stat-suffix" style={{ color: stat.color }}>
                     {stat.suffix}
                   </span>
                 </div>
@@ -166,9 +185,11 @@ const AssuranceScorecard = () => {
                 <p className="stat-description">{stat.description}</p>
               </div>
 
-              <div 
+              <div
                 className="stat-card-glow"
-                style={{ background: `radial-gradient(circle at center, ${stat.color}20, transparent 70%)` }}
+                style={{
+                  background: `radial-gradient(circle at center, ${stat.color}20, transparent 70%)`,
+                }}
               />
             </motion.div>
           ))}
@@ -185,24 +206,30 @@ const AssuranceScorecard = () => {
             <div className="trust-badge">
               <div className="trust-badge-icon">🏆</div>
               <div className="trust-badge-content">
-                <span className="trust-badge-title">Award Winning</span>
-                <span className="trust-badge-subtitle">Best Financial Platform 2024</span>
+                <span className="trust-badge-title">ACCA Accredited</span>
+                <span className="trust-badge-subtitle">
+                  Fully Qualified Accountants
+                </span>
               </div>
             </div>
 
             <div className="trust-badge">
               <div className="trust-badge-icon">🔒</div>
               <div className="trust-badge-content">
-                <span className="trust-badge-title">Bank-Grade Security</span>
-                <span className="trust-badge-subtitle">SOC 2 Type II Certified</span>
+                <span className="trust-badge-title">HMRC Registered</span>
+                <span className="trust-badge-subtitle">
+                  MTD & VAT Compliant
+                </span>
               </div>
             </div>
 
             <div className="trust-badge">
               <div className="trust-badge-icon">⚡</div>
               <div className="trust-badge-content">
-                <span className="trust-badge-title">99.9% Uptime</span>
-                <span className="trust-badge-subtitle">Enterprise-Level Reliability</span>
+                <span className="trust-badge-title">ICO Registered</span>
+                <span className="trust-badge-subtitle">
+                  GDPR & Data Compliant
+                </span>
               </div>
             </div>
 
@@ -210,7 +237,9 @@ const AssuranceScorecard = () => {
               <div className="trust-badge-icon">🌟</div>
               <div className="trust-badge-content">
                 <span className="trust-badge-title">4.9/5 Rating</span>
-                <span className="trust-badge-subtitle">From 5,000+ Reviews</span>
+                <span className="trust-badge-subtitle">
+                  From 500+ Client Reviews
+                </span>
               </div>
             </div>
           </div>

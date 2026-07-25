@@ -1,31 +1,51 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, HelpCircle, Sparkles, Shield, Zap } from "lucide-react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import {
+  Plus,
+  Minus,
+  HelpCircle,
+  Sparkles,
+  Shield,
+  Zap,
+  LucideIcon,
+} from "lucide-react";
 import "../../css/home/faq.css";
 
-const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState(0);
+interface FAQQuestion {
+  question: string;
+  answer: string;
+}
 
-  const faqs = [
+interface FAQCategory {
+  category: string;
+  icon: LucideIcon;
+  color: string;
+  questions: FAQQuestion[];
+}
+
+const FAQSection: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const faqs: FAQCategory[] = [
     {
       category: "Getting Started",
       icon: Sparkles,
       color: "#635bff",
       questions: [
         {
-          question: "How quickly can I get started with Fiscalyn?",
+          question: "How quickly can I get started with 47accountants?",
           answer:
             "You can be up and running in under 5 minutes! Simply sign up for a free trial, connect your bank accounts and accounting software through our one-click integrations, and you're ready to go. Our onboarding wizard guides you through each step, and our support team is available 24/7 if you need assistance.",
         },
         {
           question: "Do I need to install any software?",
           answer:
-            "No installation required! Fiscalyn is a cloud-based platform accessible from any device with an internet connection. Simply log in through your web browser or use our mobile apps for iOS and Android. All your data syncs automatically across all devices in real-time.",
+            "No installation required! 47accountants is a cloud-based platform accessible from any device with an internet connection. Simply log in through your web browser or use our mobile apps for iOS and Android. All your data syncs automatically across all devices in real-time.",
         },
         {
           question: "Can I import my existing financial data?",
           answer:
-            "Absolutely! Fiscalyn supports bulk imports from Excel, CSV, and all major accounting software including Xero, QuickBooks, Sage, and more. Our smart import tool automatically maps your data fields and validates everything before importing. Historical data from the past 7 years can be migrated seamlessly.",
+            "Absolutely! 47accountants supports bulk imports from Excel, CSV, and all major accounting software including Xero, QuickBooks, Sage, and more. Our smart import tool automatically maps your data fields and validates everything before importing. Historical data from the past 7 years can be migrated seamlessly.",
         },
       ],
     },
@@ -62,9 +82,9 @@ const FAQSection = () => {
             "Your data security is our top priority. We use bank-grade 256-bit SSL encryption for all data transmission and AES-256 encryption for data at rest. Our infrastructure is SOC 2 Type II certified, ISO 27001 compliant, and hosted on enterprise-grade servers with 99.9% uptime SLA. We perform regular third-party security audits and penetration testing.",
         },
         {
-          question: "Is Fiscalyn compliant with UK regulations?",
+          question: "Is 47accountants compliant with UK regulations?",
           answer:
-            "Yes, we're fully compliant with all UK financial regulations including Making Tax Digital (MTD), GDPR, FCA guidelines, and Companies House requirements. We automatically handle HMRC submissions, VAT returns, CIS reporting, and all statutory filings. Our compliance engine is updated inreal-time whenever regulations change.",
+            "Yes, we're fully compliant with all UK financial regulations including Making Tax Digital (MTD), GDPR, FCA guidelines, and Companies House requirements. We automatically handle HMRC submissions, VAT returns, CIS reporting, and all statutory filings. Our compliance engine is updated in real-time whenever regulations change.",
         },
         {
           question: "Who has access to my data?",
@@ -79,7 +99,8 @@ const FAQSection = () => {
       color: "#ff6b6b",
       questions: [
         {
-          question: "What accounting software does Fiscalyn integrate with?",
+          question:
+            "What accounting software does 47accountants integrate with?",
           answer:
             "We integrate with 100+ platforms including Xero, QuickBooks, Sage, FreeAgent, KashFlow, and all major UK accounting software. We also connect with payment processors (Stripe, PayPal, Square), banks (Open Banking API), e-commerce platforms (Shopify, WooCommerce), and CRM systems (Salesforce, HubSpot). New integrations are added monthly based on customer requests.",
         },
@@ -96,32 +117,47 @@ const FAQSection = () => {
       ],
     },
   ];
-  const toggleQuestion = (categoryIndex, questionIndex) => {
+
+  const toggleQuestion = (
+    categoryIndex: number,
+    questionIndex: number,
+  ): void => {
     const globalIndex = categoryIndex * 100 + questionIndex;
     setOpenIndex(openIndex === globalIndex ? null : globalIndex);
   };
+
+  const answerVariants: Variants = {
+    initial: { height: 0, opacity: 0 },
+    animate: {
+      height: "auto",
+      opacity: 1,
+      transition: {
+        height: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+        opacity: { duration: 0.3, delay: 0.1 },
+      },
+    },
+    exit: {
+      height: 0,
+      opacity: 0,
+      transition: {
+        height: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
+        opacity: { duration: 0.2 },
+      },
+    },
+  };
+
   return (
     <section className="faq-section">
       <div className="faq-background">
         <div className="faq-grid-pattern" />
         <motion.div
           className="faq-gradient-orb faq-orb-1"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.3, 0.15],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="faq-gradient-orb faq-orb-2"
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.1, 0.25, 0.1],
-          }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.25, 0.1] }}
           transition={{
             duration: 10,
             repeat: Infinity,
@@ -142,12 +178,10 @@ const FAQSection = () => {
             <HelpCircle size={16} color="#635bff" />
             <span className="faq-badge-text">Frequently Asked Questions</span>
           </motion.div>
-
           <h2 className="faq-headline">
             Everything You Need to Know
-            <span className="faq-gradient-text"> About Fiscalyn</span>
+            <span className="faq-gradient-text"> About 47accountants</span>
           </h2>
-
           <p className="faq-subheadline">
             Got questions? We've got answers. Can't find what you're looking
             for?
@@ -190,7 +224,6 @@ const FAQSection = () => {
                 {category.questions.map((faq, questionIndex) => {
                   const globalIndex = categoryIndex * 100 + questionIndex;
                   const isOpen = openIndex === globalIndex;
-
                   return (
                     <motion.div
                       key={questionIndex}
@@ -228,33 +261,13 @@ const FAQSection = () => {
                           )}
                         </motion.div>
                       </button>
-
                       <AnimatePresence>
                         {isOpen && (
                           <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{
-                              height: "auto",
-                              opacity: 1,
-                              transition: {
-                                height: {
-                                  duration: 0.4,
-                                  ease: [0.16, 1, 0.3, 1],
-                                },
-                                opacity: { duration: 0.3, delay: 0.1 },
-                              },
-                            }}
-                            exit={{
-                              height: 0,
-                              opacity: 0,
-                              transition: {
-                                height: {
-                                  duration: 0.3,
-                                  ease: [0.16, 1, 0.3, 1],
-                                },
-                                opacity: { duration: 0.2 },
-                              },
-                            }}
+                            variants={answerVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
                             className="faq-answer-wrapper"
                           >
                             <motion.div
@@ -299,7 +312,7 @@ const FAQSection = () => {
               className="faq-primary-button"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              onClick={()=>(window.location.href='/contact')}
+              onClick={() => (window.location.href = "/contact")}
             >
               Contact Support
             </motion.button>
@@ -307,7 +320,7 @@ const FAQSection = () => {
               className="faq-secondary-button"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              onClick={()=>(window.location.href='/contact')}
+              onClick={() => (window.location.href = "/contact")}
             >
               Schedule a Demo
             </motion.button>
@@ -318,4 +331,4 @@ const FAQSection = () => {
   );
 };
 
-export default FAQSection
+export default FAQSection;

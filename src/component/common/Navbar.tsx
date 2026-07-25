@@ -1,35 +1,40 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import "../../css/common/navbar.css";
 
-const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+interface NavLink {
+  name: string;
+  path: string;
+}
+
+const NavBar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
   useEffect(() => {
     setIsOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location.pathname]);
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
     { name: "Pricing", path: "/pricing" },
   ];
 
-  const menuVariants = {
+  const menuVariants: Variants = {
     initial: { opacity: 0, height: 0 },
     animate: {
       opacity: 1,
@@ -38,7 +43,7 @@ const NavBar = () => {
         duration: 0.3,
         ease: [0.16, 1, 0.3, 1],
         when: "beforeChildren",
-        staggerChildren: 0.05
+        staggerChildren: 0.05,
       },
     },
     exit: {
@@ -47,12 +52,12 @@ const NavBar = () => {
       transition: {
         duration: 0.25,
         ease: [0.16, 1, 0.3, 1],
-        when: "afterChildren"
+        when: "afterChildren",
       },
     },
   };
-  
-  const linkVariants = {
+
+  const linkVariants: Variants = {
     initial: { opacity: 0, x: -20 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -20 },
@@ -67,14 +72,30 @@ const NavBar = () => {
     >
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-          <motion.div 
+          <motion.div
             className="logo-icon"
             whileHover={{ rotate: 180, scale: 1.1 }}
             transition={{ duration: 0.3 }}
           >
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="4" y="4" width="32" height="32" rx="8" fill="url(#logoGradient)" />
-              <path d="M12 16h16M12 20h12M12 24h16" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+            <svg
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="4"
+                y="4"
+                width="32"
+                height="32"
+                rx="8"
+                fill="url(#logoGradient)"
+              />
+              <path
+                d="M12 16h16M12 20h12M12 24h16"
+                stroke="white"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
               <defs>
                 <linearGradient id="logoGradient" x1="4" y1="4" x2="36" y2="36">
                   <stop offset="0%" stopColor="#635bff" />
@@ -83,19 +104,19 @@ const NavBar = () => {
               </defs>
             </svg>
           </motion.div>
-          <span className="logo-text">Fiscalyn</span>
+          <span className="logo-text">47accountants</span>
         </Link>
 
         <div className="desktop-nav-content">
           <ul className="nav-links">
             {navLinks.map((link) => (
-              <motion.li 
+              <motion.li
                 key={link.path}
                 whileHover={{ y: -2 }}
                 transition={{ duration: 0.2 }}
               >
-                <Link 
-                  to={link.path} 
+                <Link
+                  to={link.path}
                   className={location.pathname === link.path ? "active" : ""}
                 >
                   {link.name}
@@ -162,18 +183,20 @@ const NavBar = () => {
           >
             <div className="mobile-menu-content">
               {navLinks.map((link) => (
-                <motion.div 
-                  variants={linkVariants} 
+                <motion.div
+                  variants={linkVariants}
                   key={link.path}
                   className="mobile-menu-item"
                 >
                   <Link
                     to={link.path}
-                    className={location.pathname === link.path ? "active-mobile" : ""}
+                    className={
+                      location.pathname === link.path ? "active-mobile" : ""
+                    }
                   >
                     {link.name}
                     {location.pathname === link.path && (
-                      <motion.div 
+                      <motion.div
                         className="mobile-active-dot"
                         layoutId="mobileActiveDot"
                       />
@@ -181,8 +204,8 @@ const NavBar = () => {
                   </Link>
                 </motion.div>
               ))}
-              
-              <motion.div 
+
+              <motion.div
                 variants={linkVariants}
                 className="mobile-cta-wrapper"
               >

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { UserPlus, Settings, Rocket, BarChart, ArrowRight } from "lucide-react";
+import { UserPlus, Settings, Rocket, BarChart } from "lucide-react";
 import "../../css/services/process-section.css";
 
 const ProcessSection: React.FC = () => {
@@ -8,37 +8,37 @@ const ProcessSection: React.FC = () => {
     {
       number: "01",
       icon: UserPlus,
-      title: "Sign Up & Connect",
-      duration: "5 minutes",
+      title: "Free Consultation",
+      duration: "30 minutes",
       description:
-        "Create your account and securely connect your bank accounts, accounting software, and payment processors through our one-click integrations. Our setup wizard guides you through every step.",
+        "Book a free, no-obligation call with one of our qualified accountants. We'll discuss your business, understand your current situation, and recommend the most suitable service package for your needs.",
       color: "#635bff",
     },
     {
       number: "02",
       icon: Settings,
-      title: "Configure & Customize",
-      duration: "10 minutes",
+      title: "Onboarding & Setup",
+      duration: "1–2 days",
       description:
-        "Tailor Fiscalyn to your business needs. Set up custom categories, tax rules, approval workflows, and automated alerts. Our AI learns your preferences as you go.",
+        "We take over your accounts, transfer your records, and set up secure access to your cloud accounting software. Our team handles all the admin so the transition is completely hassle-free for you.",
       color: "#00d4ff",
     },
     {
       number: "03",
       icon: Rocket,
-      title: "Launch & Automate",
-      duration: "Instant",
+      title: "We Get to Work",
+      duration: "Ongoing",
       description:
-        "Go live immediately! Watch as Fiscalyn automatically processes transactions, reconciles accounts, and generates reports in real-time. Your financial operations are now on autopilot.",
+        "Your dedicated accountant takes care of bookkeeping, VAT returns, payroll, and compliance—all on time, every time. You receive regular updates and have direct access to your accountant whenever you need them.",
       color: "#00e676",
     },
     {
       number: "04",
       icon: BarChart,
-      title: "Analyze & Grow",
-      duration: "Ongoing",
+      title: "Review & Grow",
+      duration: "Quarterly",
       description:
-        "Leverage powerful analytics to make informed decisions. Track KPIs, forecast cash flow, identify trends, and receive proactive insights to optimize your financial strategy.",
+        "We hold regular review meetings to go through your financial reports, identify tax-saving opportunities, and provide strategic advice to help you make informed decisions and grow profitably.",
       color: "#ff6b6b",
     },
   ];
@@ -63,13 +63,13 @@ const ProcessSection: React.FC = () => {
           </motion.div>
 
           <h2 className="process-headline">
-            Get Started in
-            <span className="process-gradient-text"> Four Simple Steps</span>
+            Working with 47accountants is
+            <span className="process-gradient-text"> Simple & Stress-Free</span>
           </h2>
 
           <p className="process-subheadline">
-            From signup to full automation in under 20 minutes. Our streamlined
-            onboarding gets you up and running fast, so you can focus on growing
+            From your first call to ongoing accounting support, our streamlined
+            process ensures a seamless experience so you can focus on running
             your business.
           </p>
         </motion.div>
@@ -143,11 +143,11 @@ const ProcessSection: React.FC = () => {
         >
           <div className="process-cta-content">
             <h3 className="process-cta-title">
-              Ready to Transform Your Finances?
+              Ready to Get Your Finances Sorted?
             </h3>
             <p className="process-cta-text">
-              Start your free 14-day trial today. No credit card required,
-              cancel anytime.
+              Book your free consultation today. No obligation, no jargon—just
+              expert advice.
             </p>
           </div>
           <motion.button
@@ -156,7 +156,7 @@ const ProcessSection: React.FC = () => {
             whileTap={{ scale: 0.98 }}
             onClick={() => (window.location.href = "/contact")}
           >
-            <span>Get Started Now</span>
+            <span>Book Free Consultation</span>
           </motion.button>
         </motion.div>
       </div>

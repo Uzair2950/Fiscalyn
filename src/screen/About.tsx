@@ -7,7 +7,7 @@ import TeamSection from "../component/about/TeamSection";
 import CareersPreview from "../component/about/CareersPreview";
 import Footer from "../component/common/Footer";
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <>
       <NavBar />

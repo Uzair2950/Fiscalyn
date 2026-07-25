@@ -61,9 +61,9 @@ const ContactHero: React.FC = () => {
           </h1>
 
           <p className="contact-hero-description">
-            Have questions about Fiscalyn? Our team is ready to help. Reach out
-            via email, phone, or fill out the form below and we'll get back to
-            you within 24 hours.
+            Have questions about 47accountants? Our team is ready to help. Reach
+            out via email, phone, or fill out the form below and we'll get back
+            to you within 24 hours.
           </p>
         </motion.div>
 
@@ -79,7 +79,9 @@ const ContactHero: React.FC = () => {
             whileTap={{ scale: 0.98 }}
           >
             <Mail size={20} className="contact-hero-info-icon" />
-            <span className="contact-hero-info-text">hello@fiscalyn.com</span>
+            <span className="contact-hero-info-text">
+              hello@47accountants.com
+            </span>
           </motion.div>
 
           <motion.div

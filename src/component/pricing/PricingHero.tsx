@@ -59,13 +59,14 @@ const PricingHero: React.FC<PricingHeroProps> = ({ isAnnual, setIsAnnual }) => {
           </motion.div>
 
           <h1 className="pricing-hero-headline">
-            Plans That Scale with
-            <span className="pricing-hero-gradient-text"> Your Business</span>
+            Simple, Transparent Fees.
+            <span className="pricing-hero-gradient-text"> No Surprises.</span>
           </h1>
 
           <p className="pricing-hero-description">
-            Choose the perfect plan for your business size and needs. All plans
-            include a 14-day free trial with full access to premium features.
+            Choose the right accounting package for your business. All plans include
+            a dedicated qualified accountant, fixed monthly pricing, and a free
+            initial consultation with no obligation.
           </p>
 
           <motion.div

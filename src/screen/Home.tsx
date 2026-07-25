@@ -10,11 +10,9 @@ import FAQSection from "../component/home/FAQSection";
 import CTASection from "../component/home/CTASection";
 import Footer from "../component/common/Footer";
 
-
-
-const Home = () => {
+const Home: React.FC = () => {
   return (
-      <>
+    <>
       <NavBar />
       <HeroSection />
       <ServicesOverview />
@@ -26,7 +24,6 @@ const Home = () => {
       <CTASection />
       <Footer />
     </>
-
   );
 };
 

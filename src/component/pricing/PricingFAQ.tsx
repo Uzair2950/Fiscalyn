@@ -8,44 +8,44 @@ const PricingFAQ: React.FC = () => {
 
   const faqs = [
     {
-      question: "Can I change my plan at any time?",
+      question: "Can I switch from my current accountant easily?",
       answer:
-        "Yes, you can upgrade or downgrade your plan at any time from your account settings. Changes take effect immediately, and we'll prorate any charges or credits automatically. If you downgrade, you'll retain access to premium features until the end of your current billing cycle.",
+        "Yes, switching to 47accountants is completely hassle-free. We handle the entire transfer process on your behalf—contacting your previous accountant, collecting your records, and setting up your new account. Most clients are fully onboarded within 2–3 working days. There's no disruption to your business.",
     },
     {
-      question: "What happens after my free trial ends?",
+      question: "What's included in the free consultation?",
       answer:
-        "After your 14-day free trial, you'll be automatically enrolled in your chosen plan. You can cancel anytime before the trial ends without being charged. We'll send you reminder emails 3 days before your trial expires so you have plenty of time to decide.",
+        "Your free consultation is a 30-minute call with a qualified accountant where we'll discuss your business needs, review your current financial situation, identify any immediate tax-saving opportunities, and recommend the most suitable package for you. There's absolutely no obligation to proceed.",
     },
     {
-      question: "Do you offer refunds?",
+      question: "Are your fees fixed or variable?",
       answer:
-        "Yes, we offer a 30-day money-back guarantee on all annual plans. If you're not satisfied for any reason within the first 30 days, contact our support team and we'll issue a full refund. Monthly plans are not eligible for refunds but can be canceled at any time.",
+        "All our packages are priced at a fixed monthly fee so you always know exactly what you'll pay—no surprises, no hourly rates, and no unexpected bills. Any additional one-off services (such as a business valuation or specialist R&D claim) would be quoted separately and agreed in advance.",
     },
     {
       question: "What payment methods do you accept?",
       answer:
-        "We accept all major credit cards (Visa, MasterCard, American Express), debit cards, and PayPal. For Enterprise plans, we also offer bank transfer and invoice payment options. All payments are processed securely through Stripe.",
+        "We accept all major credit and debit cards (Visa, MasterCard, American Express) as well as direct debit. Annual plans paid upfront receive a 20% discount. All payments are processed securely and invoices are issued monthly.",
     },
     {
-      question: "Is there a setup fee or hidden costs?",
+      question: "Do I need to provide my own accounting software?",
       answer:
-        "No, there are absolutely no setup fees or hidden costs. The price you see is the price you pay. All features, integrations, and updates are included in your subscription. We only charge extra for additional storage beyond 100GB per user.",
+        "No. Your monthly fee includes full access to our recommended cloud accounting platform (such as Xero or QuickBooks), which we'll set up and maintain for you. If you already use a platform, we can work with that too—we support all major UK-compatible accounting software.",
     },
     {
-      question: "Can I cancel my subscription anytime?",
+      question: "Will I have a dedicated accountant?",
       answer:
-        "Yes, you can cancel your subscription at any time with no penalties or cancellation fees. Simply go to your account settings and click 'Cancel Subscription'. You'll continue to have access until the end of your current billing period.",
+        "Yes. Every client is assigned a dedicated, qualified accountant who handles all aspects of your account and becomes familiar with your business. You'll have their direct contact details and can reach them by email or phone whenever you need. You'll never be passed around a call centre.",
     },
     {
-      question: "What if I exceed my transaction limit?",
+      question: "What if I miss a tax deadline?",
       answer:
-        "If you approach your transaction limit, we'll send you a notification with options to upgrade or purchase additional transaction packs. You won't lose any data, and your account won't be suspended. We'll work with you to find the best solution for your needs.",
+        "We take full responsibility for meeting all statutory deadlines on your behalf, including Corporation Tax, Self-Assessment, VAT returns, and Companies House filings. We have robust internal systems to ensure nothing is ever missed. In the unlikely event of an error on our part, we cover any resulting HMRC penalties.",
     },
     {
-      question: "Do you offer discounts for nonprofits or startups?",
+      question: "Do you offer discounts for early-stage startups?",
       answer:
-        "Yes! We offer a 25% discount for registered nonprofits and qualifying startups (less than 2 years old, under $1M revenue). Contact our sales team with your organization details to apply for the discount. Educational institutions also qualify for special pricing.",
+        "Yes! We offer a 25% introductory discount for the first 3 months for newly incorporated companies (less than 12 months old). We also offer special pricing for social enterprises and non-profits. Contact us to discuss your situation and we'll find a suitable arrangement.",
     },
   ];
 
