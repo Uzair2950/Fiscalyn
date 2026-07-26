@@ -127,6 +127,7 @@
 .nav-dropdown-trigger {
   background: none;
   border: none;
+  outline: none;
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-secondary);
@@ -138,6 +139,11 @@
   font-family: inherit;
   transition: color 0.2s ease;
   position: relative;
+}
+
+.nav-dropdown-trigger:focus,
+.nav-dropdown-trigger:focus-visible {
+  outline: none;
 }
 
 .nav-dropdown-trigger:hover,

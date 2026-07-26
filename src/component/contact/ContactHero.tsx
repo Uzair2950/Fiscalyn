@@ -84,14 +84,18 @@ const ContactHero: React.FC = () => {
             </span>
           </motion.div>
 
-          <motion.div
+          <motion.a
+            href="https://wa.me/447462229006"
+            target="_blank"
+            rel="noopener noreferrer"
             className="contact-hero-info-item"
+            style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
             whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.98 }}
           >
             <Phone size={20} className="contact-hero-info-icon" />
             <span className="contact-hero-info-text">+44 7462229006</span>
-          </motion.div>
+          </motion.a>
 
           <motion.div
             className="contact-hero-info-item"
@@ -99,7 +103,7 @@ const ContactHero: React.FC = () => {
             whileTap={{ scale: 0.98 }}
           >
             <MapPin size={20} className="contact-hero-info-icon" />
-            <span className="contact-hero-info-text">London, UK</span>
+            <span className="contact-hero-info-text">Global &amp; Worldwide</span>
           </motion.div>
         </motion.div>
       </div>

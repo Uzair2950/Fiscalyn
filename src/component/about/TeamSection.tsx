@@ -3,53 +3,55 @@ import { motion } from "framer-motion";
 import { Linkedin, Twitter } from "lucide-react";
 import "../../css/about/team-section.css";
 
+import teamMember1 from "../../assets/image/team/teamMember1.webp";
+import teamMember2 from "../../assets/image/team/teamMember2.webp";
+import teamMember3 from "../../assets/image/team/teamMember3.jpeg";
+import teamMember4 from "../../assets/image/team/teamMember4.webp";
+import teamMember5 from "../../assets/image/team/teamMember5.webp";
+import teamMember6 from "../../assets/image/team/teamMember6.jpeg";
+
 const TeamSection: React.FC = () => {
   const team = [
     {
-      name: "Alexandra Chen",
-      role: "Managing Director & Senior Accountant",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+      name: "Muhammad Sheheryar Khan",
+      role: "CEO",
+      image: teamMember1,
       linkedin: "#",
       twitter: "#",
     },
     {
-      name: "Marcus Johnson",
-      role: "Head of Tax & Compliance",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      name: "Khurram iqbal",
+      role: "Portfolio Manager",
+      image: teamMember2,
       linkedin: "#",
       twitter: "#",
     },
     {
-      name: "Sarah Williams",
-      role: "Payroll & Bookkeeping Manager",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+      name: "Bilal Ahmed",
+      role: "Portfolio Manager",
+      image: teamMember3,
       linkedin: "#",
       twitter: "#",
     },
     {
-      name: "David Park",
-      role: "Business Advisory Manager",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+      name: "Mahmood Alam",
+      role: "Chief Business Development Officer",
+      image: teamMember4,
       linkedin: "#",
       twitter: "#",
     },
     {
-      name: "Emma Thompson",
-      role: "VAT & Corporate Tax Specialist",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+      name: "Zeeshan Ghafoor",
+      role: "Portfolio Manager",
+      image: teamMember6,
       linkedin: "#",
       twitter: "#",
+
     },
     {
-      name: "James Lee",
-      role: "Client Relations Manager",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      name: "Uzair Muhammad",
+      role: "Chief Technology Officer",
+      image: teamMember5,
       linkedin: "#",
       twitter: "#",
     },

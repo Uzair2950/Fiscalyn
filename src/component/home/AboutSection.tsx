@@ -54,7 +54,7 @@ const AboutSection: React.FC = () => {
       icon: Lock,
       title: "Fully Compliant",
       description:
-        "HMRC registered, ACCA qualified, and always up to date with UK tax legislation.",
+        "International standards compliant, certified accountants up to date with global tax legislation.",
     },
     {
       icon: Users,
@@ -66,7 +66,7 @@ const AboutSection: React.FC = () => {
 
   const features: Feature[] = [
     { icon: Target, label: "100% on-time filing guarantee" },
-    { icon: Globe, label: "UK-wide coverage & advice" },
+    { icon: Globe, label: "Global coverage & cross-border advice" },
     { icon: Zap, label: "Transparent fixed monthly fees" },
   ];
 
@@ -115,14 +115,14 @@ const AboutSection: React.FC = () => {
           </motion.div>
 
           <motion.h2 variants={itemVariants}>
-            The UK's Trusted
+            Your Global
             <span className="about-gradient-text"> Accounting Partner</span>
           </motion.h2>
 
           <motion.p variants={itemVariants}>
             At <strong>47 Accountants</strong>, we believe great accountancy goes
-            beyond basic compliance. We're a team of qualified, experienced UK
-            accountants who work as a seamless extension of your business—keeping your
+            beyond basic compliance. We're a team of qualified, experienced international
+            accountants who work as a seamless extension of your business worldwide—keeping your
             books accurate, your taxes optimised, and your cash flow healthy.
           </motion.p>
 

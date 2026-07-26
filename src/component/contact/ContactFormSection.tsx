@@ -123,9 +123,20 @@ const ContactFormSection: React.FC = () => {
                 <div className="contact-item-details">
                   <h4>{info.title}</h4>
                   <p>{info.description}</p>
-                  <p style={{ fontWeight: 700, color: info.accentColor, marginTop: "4px" }}>
-                    {info.detail}
-                  </p>
+                  {info.title === "Call Us" ? (
+                    <a
+                      href="https://wa.me/447462229006"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontWeight: 700, color: info.accentColor, marginTop: "4px", display: "inline-block", textDecoration: "none" }}
+                    >
+                      {info.detail} (WhatsApp)
+                    </a>
+                  ) : (
+                    <p style={{ fontWeight: 700, color: info.accentColor, marginTop: "4px" }}>
+                      {info.detail}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}

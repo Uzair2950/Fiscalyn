@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
             </div>
 
             <p className="footer-tagline">
-              Expert accountancy and tax services for UK businesses. From
+              Expert accountancy and tax services for businesses worldwide. From
               bookkeeping to business advisory—we handle the numbers so you can
               focus on growth.
             </p>
@@ -222,10 +222,16 @@ const Footer: React.FC = () => {
             </form>
 
             <div className="footer-contact-info">
-              <div className="contact-info-item">
+              <a
+                href="https://wa.me/447462229006"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-info-item"
+                style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+              >
                 <Phone size={16} />
                 <span>+44 7462229006</span>
-              </div>
+              </a>
               <div className="contact-info-item">
                 <Mail size={16} />
                 <span>info@47accountants.com</span>

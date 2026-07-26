@@ -8,6 +8,7 @@ import Pricing from "./screen/Pricing";
 import Contact from "./screen/Contact";
 import Collaboration from "./screen/Collaboration";
 import Blog from "./screen/Blog";
+import BlogDetail from "./screen/BlogDetail";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/collaboration" element={<Collaboration />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />
       </Routes>
     </Router>
   );

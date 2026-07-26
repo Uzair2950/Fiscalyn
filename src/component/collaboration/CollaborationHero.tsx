@@ -39,8 +39,8 @@ const CollaborationHero: React.FC = () => {
 
             <p className="collab-hero-description">
               Expand your firm’s capacity without the risk or overhead of full-time hiring.
-              47 Accountants provides white-label bookkeeping, VAT returns, payroll, and statutory accounts
-              subcontracting for UK accounting practices and businesses.
+              47 Accountants provides white-label bookkeeping, tax returns, payroll, and statutory accounts
+              subcontracting for accounting practices and enterprise businesses worldwide.
             </p>
 
             <div className="collab-hero-cta-group">
@@ -72,7 +72,7 @@ const CollaborationHero: React.FC = () => {
               </div>
               <div className="collab-trust-item">
                 <Building2 size={18} className="collab-trust-icon" />
-                <span>UK GDPR &amp; HMRC Compliant</span>
+                <span>GDPR &amp; ISO Security Compliant</span>
               </div>
               <div className="collab-trust-item">
                 <Clock size={18} className="collab-trust-icon" />

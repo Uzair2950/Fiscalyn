@@ -59,16 +59,16 @@ const AboutHero: React.FC = () => {
           </motion.div>
 
           <h1 className="about-hero-headline">
-            Your Trusted UK
+            Your Trusted
             <span className="about-hero-gradient-text">
               {" "}
-              Accounting Partner
+              Global Accounting Partner
             </span>
           </h1>
 
           <p className="about-hero-description">
             We're on a mission to make expert accountancy accessible and
-            stress-free for every UK business. Qualified accountants,
+            stress-free for businesses around the globe. Certified accountants,
             transparent fees, and proactive financial advice—all in one place.
           </p>
 
@@ -177,8 +177,8 @@ const AboutHero: React.FC = () => {
               <Users size={20} />
             </div>
             <div className="floating-card-content">
-              <div className="floating-card-label">UK Experts</div>
-              <div className="floating-card-value">ACCA</div>
+              <div className="floating-card-label">Global Experts</div>
+              <div className="floating-card-value">Certified</div>
             </div>
           </motion.div>
         </motion.div>

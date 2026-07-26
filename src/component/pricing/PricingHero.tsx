@@ -65,7 +65,7 @@ const PricingHero: React.FC<PricingHeroProps> = ({ isAnnual, setIsAnnual }) => {
 
           <p className="pricing-hero-description">
             Choose the right accounting service plan for your business. All packages include
-            a dedicated ACCA-qualified UK accountant, full HMRC compliance, bookkeeping, and proactive tax advice.
+            a dedicated certified accountant, complete tax compliance, bookkeeping, and proactive financial advice.
           </p>
 
           <motion.div
@@ -115,7 +115,7 @@ const PricingHero: React.FC<PricingHeroProps> = ({ isAnnual, setIsAnnual }) => {
           >
             <div className="pricing-hero-trust-item">
               <span className="pricing-hero-trust-icon">✓</span>
-              <span>Dedicated ACCA Accountant</span>
+              <span>Dedicated Certified Accountant</span>
             </div>
             <div className="pricing-hero-trust-item">
               <span className="pricing-hero-trust-icon">✓</span>
@@ -123,7 +123,7 @@ const PricingHero: React.FC<PricingHeroProps> = ({ isAnnual, setIsAnnual }) => {
             </div>
             <div className="pricing-hero-trust-item">
               <span className="pricing-hero-trust-icon">✓</span>
-              <span>HMRC & Statutory Compliance Included</span>
+              <span>Global Statutory Compliance Included</span>
             </div>
           </motion.div>
         </motion.div>
