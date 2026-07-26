@@ -4,9 +4,9 @@ import {
   Sparkles,
   Lock,
   Users,
-  Zap,
   Target,
   Globe,
+  Zap,
   LucideIcon,
 } from "lucide-react";
 import "../../css/home/about.css";
@@ -15,13 +15,11 @@ interface Value {
   icon: LucideIcon;
   title: string;
   description: string;
-  color: string;
 }
 
 interface Feature {
   icon: LucideIcon;
   label: string;
-  color: string;
 }
 
 const AboutSection: React.FC = () => {
@@ -50,29 +48,26 @@ const AboutSection: React.FC = () => {
       icon: Sparkles,
       title: "Proactive Advice",
       description:
-        "We don't just file returns—we anticipate issues and identify opportunities",
-      color: "#635bff",
+        "We don't just file returns—we anticipate issues and identify tax-saving opportunities.",
     },
     {
       icon: Lock,
       title: "Fully Compliant",
       description:
-        "HMRC registered, ACCA qualified, and always up to date with UK legislation",
-      color: "#00d4ff",
+        "HMRC registered, ACCA qualified, and always up to date with UK tax legislation.",
     },
     {
       icon: Users,
       title: "Client Focused",
       description:
-        "Dedicated accountants who truly understand your business and goals",
-      color: "#00e676",
+        "Dedicated accountants who truly understand your business operations and goals.",
     },
   ];
 
   const features: Feature[] = [
-    { icon: Target, label: "100% on-time filing", color: "#635bff" },
-    { icon: Globe, label: "UK-wide coverage", color: "#00d4ff" },
-    { icon: Zap, label: "Fixed monthly pricing", color: "#00e676" },
+    { icon: Target, label: "100% on-time filing guarantee" },
+    { icon: Globe, label: "UK-wide coverage & advice" },
+    { icon: Zap, label: "Transparent fixed monthly fees" },
   ];
 
   return (
@@ -116,7 +111,7 @@ const AboutSection: React.FC = () => {
         >
           <motion.div variants={itemVariants} className="about-badge">
             <span className="about-badge-dot" />
-            <span>About Fiscalyn</span>
+            <span>About 47 Accountants</span>
           </motion.div>
 
           <motion.h2 variants={itemVariants}>
@@ -125,17 +120,17 @@ const AboutSection: React.FC = () => {
           </motion.h2>
 
           <motion.p variants={itemVariants}>
-            At <strong>Fiscalyn</strong>, we believe great accountancy goes
-            beyond compliance. We're a team of qualified, experienced
-            accountants who work as an extension of your business—keeping your
-            books clean, your taxes optimised, and your cash flow healthy.
+            At <strong>47 Accountants</strong>, we believe great accountancy goes
+            beyond basic compliance. We're a team of qualified, experienced UK
+            accountants who work as a seamless extension of your business—keeping your
+            books accurate, your taxes optimised, and your cash flow healthy.
           </motion.p>
 
           <motion.p variants={itemVariants}>
             From sole traders to growing limited companies, we provide expert
             bookkeeping, Corporation Tax, VAT, payroll, and strategic advisory
-            services under one roof. With Fiscalyn, you always know exactly
-            where your business stands financially—and what to do next.
+            services under one roof. With 47 Accountants, you always know exactly
+            where your business stands financially—and what steps to take next.
           </motion.p>
 
           <motion.div
@@ -151,12 +146,12 @@ const AboutSection: React.FC = () => {
               >
                 <div
                   className="home-value-icon"
-                  style={{ background: `${value.color}15` }}
+                  style={{ background: "var(--color-gold-soft)", color: "var(--color-gold-primary)" }}
                 >
-                  <value.icon size={24} color={value.color} strokeWidth={2} />
+                  <value.icon size={24} strokeWidth={2} />
                 </div>
                 <div className="home-value-content">
-                  <h3 style={{ color: value.color }}>{value.title}</h3>
+                  <h3 style={{ color: "var(--color-gold-primary)" }}>{value.title}</h3>
                   <p>{value.description}</p>
                 </div>
               </motion.div>
@@ -172,10 +167,10 @@ const AboutSection: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="visual-card-stack" style={{ position: 'relative', width: '100%', height: '100%', minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img 
-              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1000&h=800&fit=crop" 
-              alt="Senior accounting partner shaking hands and reviewing contracts" 
-              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', border: '1px solid rgba(255,255,255,0.1)' }} 
+            <img
+              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1000&h=800&fit=crop"
+              alt="Senior accounting partner reviewing client financial reports"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '24px', boxShadow: 'var(--shadow-card)', border: '1px solid var(--border-gold)' }}
             />
           </div>
 
@@ -188,13 +183,13 @@ const AboutSection: React.FC = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 * index, type: "spring" }}
-                whileHover={{ scale: 1.1, y: -5 }}
+                whileHover={{ scale: 1.05, y: -2 }}
               >
                 <div
                   className="feature-badge-icon"
-                  style={{ background: feature.color }}
+                  style={{ background: "var(--gradient-gold)", color: "var(--text-on-gold)" }}
                 >
-                  <feature.icon size={14} color="#fff" strokeWidth={2.5} />
+                  <feature.icon size={14} strokeWidth={2.5} />
                 </div>
                 <span>{feature.label}</span>
               </motion.div>

@@ -61,7 +61,7 @@ const ContactHero: React.FC = () => {
           </h1>
 
           <p className="contact-hero-description">
-            Have questions about 47accountants? Our team is ready to help. Reach
+            Have questions about 47 Accountants? Our team is ready to help. Reach
             out via email, phone, or fill out the form below and we'll get back
             to you within 24 hours.
           </p>
@@ -80,7 +80,7 @@ const ContactHero: React.FC = () => {
           >
             <Mail size={20} className="contact-hero-info-icon" />
             <span className="contact-hero-info-text">
-              hello@47accountants.com
+              info@47accountants.com
             </span>
           </motion.div>
 
@@ -90,7 +90,7 @@ const ContactHero: React.FC = () => {
             whileTap={{ scale: 0.98 }}
           >
             <Phone size={20} className="contact-hero-info-icon" />
-            <span className="contact-hero-info-text">+44 20 1234 5678</span>
+            <span className="contact-hero-info-text">+44 7462229006</span>
           </motion.div>
 
           <motion.div

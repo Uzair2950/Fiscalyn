@@ -4,7 +4,7 @@ import HeroSection from "../component/home/HeroSection";
 import ServicesOverview from "../component/home/ServicesOverview";
 import AssuranceScorecard from "../component/home/AssuranceScorecard";
 import ToolsSlider from "../component/home/ToolsSlider";
-import AboutSection from "../component/home/AboutSection";
+import AboutSection from "../component/home/AboutSection.tsx";
 import TestimonialsSection from "../component/home/TestimonialsSection";
 import FAQSection from "../component/home/FAQSection";
 import CTASection from "../component/home/CTASection";

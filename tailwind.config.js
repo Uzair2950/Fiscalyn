@@ -1,21 +1,22 @@
-// tailwind.config.cjs
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: "class", // 🔑 enable dark mode using class strategy
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui"], // optional: better typography
+        sans: ["Inter", "ui-sans-serif", "system-ui"],
       },
       colors: {
         brand: {
-          light: "#6366f1",
-          DEFAULT: "#4f46e5",
-          dark: "#4338ca",
+          light: "var(--color-gold-light)",
+          DEFAULT: "var(--color-gold-primary)",
+          dark: "var(--color-gold-dark)",
+          navy: "var(--color-navy)",
+          red: "var(--color-red)",
         },
       },
     },

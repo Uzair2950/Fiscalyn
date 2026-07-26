@@ -10,42 +10,36 @@ const ValuesSection: React.FC = () => {
       title: "Client First",
       description:
         "Every decision we make starts with our clients. Your financial wellbeing and business success is our purpose.",
-      color: "#ff6b6b",
     },
     {
       icon: Lightbulb,
       title: "Proactive Expertise",
       description:
         "We don't just react—we anticipate, plan ahead, and bring ideas that make a genuine difference to your finances.",
-      color: "#ffd93d",
     },
     {
       icon: Users,
       title: "Long-Term Partnership",
       description:
         "We build lasting relationships, becoming a trusted extension of your team—not just your year-end accountant.",
-      color: "#00e676",
     },
     {
       icon: Zap,
       title: "Clarity & Simplicity",
       description:
         "We cut through complexity and communicate in plain English, so you always know exactly where your business stands.",
-      color: "#00d4ff",
     },
     {
       icon: Shield,
       title: "Integrity & Compliance",
       description:
         "We uphold the highest standards of professional conduct—fully regulated, ACCA accredited, and always compliant.",
-      color: "#635bff",
     },
     {
       icon: Target,
       title: "Results Focused",
       description:
         "We measure our success by yours—from tax savings and on-time filings to profitable business growth.",
-      color: "#8b83ff",
     },
   ];
 
@@ -59,10 +53,9 @@ const ValuesSection: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <motion.div className="values-badge">
-            <span className="values-badge-dot" />
-            <span className="values-badge-text">Our Values</span>
-          </motion.div>
+          <div className="values-badge">
+            <span className="values-badge-text">Our Core Values</span>
+          </div>
 
           <h2 className="values-headline">
             The Principles That
@@ -70,8 +63,8 @@ const ValuesSection: React.FC = () => {
           </h2>
 
           <p className="values-subheadline">
-            These core values guide everything we do—from how we build our
-            product to how we support our customers and grow our team.
+            These core values guide everything we do—from how we serve our UK
+            clients to how we support and grow our accountancy team.
           </p>
         </motion.div>
 
@@ -80,22 +73,17 @@ const ValuesSection: React.FC = () => {
             <motion.div
               key={index}
               className="value-card"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -6 }}
             >
-              <div
-                className="value-icon"
-                style={{ background: `${value.color}15` }}
-              >
-                <value.icon size={28} color={value.color} strokeWidth={2} />
+              <div className="value-card-icon">
+                <value.icon size={26} strokeWidth={2} />
               </div>
-              <h3 className="value-title" style={{ color: value.color }}>
-                {value.title}
-              </h3>
-              <p className="value-description">{value.description}</p>
+              <h3 className="value-card-title">{value.title}</h3>
+              <p className="value-card-desc">{value.description}</p>
             </motion.div>
           ))}
         </div>

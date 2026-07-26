@@ -9,9 +9,8 @@ const OurStory: React.FC = () => {
       year: "2013",
       title: "Founded in London",
       description:
-        "47accountants was founded by a team of ACCA-qualified accountants with a vision to provide expert, jargon-free accounting services to UK businesses.",
+        "47 Accountants was founded by a team of ACCA-qualified accountants with a vision to provide expert, jargon-free accounting services to UK businesses.",
       icon: Rocket,
-      color: "#635bff",
     },
     {
       year: "2016",
@@ -19,7 +18,6 @@ const OurStory: React.FC = () => {
       description:
         "Grew our team and expanded into payroll, VAT, and business advisory services—becoming a full-service accountancy firm trusted by 400+ clients.",
       icon: Globe,
-      color: "#00d4ff",
     },
     {
       year: "2019",
@@ -27,7 +25,6 @@ const OurStory: React.FC = () => {
       description:
         "Became an early adopter of HMRC's Making Tax Digital initiative and helped over 800 clients transition seamlessly to digital VAT filing.",
       icon: Award,
-      color: "#00e676",
     },
     {
       year: "2025",
@@ -35,7 +32,6 @@ const OurStory: React.FC = () => {
       description:
         "Now serving 1,200+ UK businesses with a 97% client retention rate, combining expert accountants with smart cloud accounting technology.",
       icon: TrendingUp,
-      color: "#ff6b6b",
     },
   ];
 
@@ -49,63 +45,38 @@ const OurStory: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <motion.div className="our-story-badge">
-            <span className="our-story-badge-dot" />
-            <span className="our-story-badge-text">Our Journey</span>
-          </motion.div>
-
-          <h2 className="our-story-headline">
+          <div className="story-title">
             From a Small Practice to
-            <span className="our-story-gradient-text"> A Trusted Name</span>
-          </h2>
+            <span className="story-gradient-text"> A Trusted Name</span>
+          </div>
 
-          <p className="our-story-subheadline">
+          <p className="story-text">
             What started as a small accountancy firm in London has grown into a
             practice trusted by over 1,200 UK businesses—built on expertise,
             integrity, and results.
           </p>
         </motion.div>
 
-        <div className="timeline-wrapper">
+        <div className="timeline-wrapper" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "24px", marginTop: "40px" }}>
           {milestones.map((milestone, index) => (
             <motion.div
               key={index}
               className="timeline-item"
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              style={{ background: "var(--bg-main)", padding: "28px", borderRadius: "16px", border: "1px solid var(--border-gold)" }}
             >
-              <div className="timeline-content">
-                <div
-                  className="timeline-icon"
-                  style={{
-                    background: `${milestone.color}15`,
-                    border: `2px solid ${milestone.color}`,
-                  }}
-                >
-                  <milestone.icon
-                    size={24}
-                    color={milestone.color}
-                    strokeWidth={2}
-                  />
-                </div>
-                <div className="timeline-text">
-                  <div
-                    className="timeline-year"
-                    style={{ color: milestone.color }}
-                  >
-                    {milestone.year}
-                  </div>
-                  <h3 className="timeline-title">{milestone.title}</h3>
-                  <p className="timeline-description">
-                    {milestone.description}
-                  </p>
-                </div>
+              <div style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--color-gold-primary)", marginBottom: "8px" }}>
+                {milestone.year}
               </div>
-              {index < milestones.length - 1 && (
-                <div className="timeline-line" />
-              )}
+              <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "8px" }}>
+                {milestone.title}
+              </h3>
+              <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                {milestone.description}
+              </p>
             </motion.div>
           ))}
         </div>

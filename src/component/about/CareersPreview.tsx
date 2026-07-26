@@ -53,7 +53,7 @@ const CareersPreview: React.FC = () => {
             Build the Future with
             <span className="careers-preview-gradient-text">
               {" "}
-              47accountants
+              47 Accountants
             </span>
           </h2>
 

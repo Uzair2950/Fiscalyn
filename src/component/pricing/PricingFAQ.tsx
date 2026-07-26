@@ -10,7 +10,7 @@ const PricingFAQ: React.FC = () => {
     {
       question: "Can I switch from my current accountant easily?",
       answer:
-        "Yes, switching to 47accountants is completely hassle-free. We handle the entire transfer process on your behalf—contacting your previous accountant, collecting your records, and setting up your new account. Most clients are fully onboarded within 2–3 working days. There's no disruption to your business.",
+        "Yes, switching to 47 Accountants is completely hassle-free. We handle the entire transfer process on your behalf—contacting your previous accountant, collecting your records, and setting up your new account. Most clients are fully onboarded within 2–3 working days. There's no disruption to your business.",
     },
     {
       question: "What's included in the free consultation?",
@@ -63,10 +63,9 @@ const PricingFAQ: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <motion.div className="pricing-faq-badge">
-            <span className="pricing-faq-badge-dot" />
+          <div className="pricing-faq-badge">
             <span className="pricing-faq-badge-text">Pricing FAQs</span>
-          </motion.div>
+          </div>
 
           <h2 className="pricing-faq-headline">
             Common Questions About
@@ -79,80 +78,36 @@ const PricingFAQ: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="pricing-faq-list">
+        <div className="pricing-faq-accordion">
           {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              className="pricing-faq-item"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
+            <div key={index} className="pricing-faq-item">
               <button
-                className="pricing-faq-question-button"
+                className="pricing-faq-question"
                 onClick={() => toggleFAQ(index)}
-                aria-expanded={openIndex === index}
               >
-                <span className="pricing-faq-question-text">
-                  {faq.question}
-                </span>
-                <motion.div
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{
-                    duration: 0.3,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="pricing-faq-icon-wrapper"
-                >
+                <span>{faq.question}</span>
+                <span className="pricing-faq-icon">
                   {openIndex === index ? (
-                    <Minus size={20} color="#635bff" strokeWidth={2.5} />
+                    <Minus size={20} strokeWidth={2.5} />
                   ) : (
-                    <Plus size={20} color="#525f7f" strokeWidth={2.5} />
+                    <Plus size={20} strokeWidth={2.5} />
                   )}
-                </motion.div>
+                </span>
               </button>
 
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
-                    animate={{
-                      height: "auto",
-                      opacity: 1,
-                      transition: {
-                        height: {
-                          duration: 0.4,
-                          ease: [0.16, 1, 0.3, 1],
-                        },
-                        opacity: { duration: 0.3, delay: 0.1 },
-                      },
-                    }}
-                    exit={{
-                      height: 0,
-                      opacity: 0,
-                      transition: {
-                        height: {
-                          duration: 0.3,
-                          ease: [0.16, 1, 0.3, 1],
-                        },
-                        opacity: { duration: 0.2 },
-                      },
-                    }}
-                    className="pricing-faq-answer-wrapper"
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="pricing-faq-answer"
                   >
-                    <motion.div
-                      className="pricing-faq-answer-content"
-                      initial={{ y: -10 }}
-                      animate={{ y: 0 }}
-                      transition={{ duration: 0.3, delay: 0.1 }}
-                    >
-                      <p className="pricing-faq-answer-text">{faq.answer}</p>
-                    </motion.div>
+                    <p style={{ margin: 0 }}>{faq.answer}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

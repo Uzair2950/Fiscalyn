@@ -12,12 +12,8 @@ interface Testimonial {
   rating: number;
   text: string;
   metric: string;
-  color: string;
-}
-
-interface Company {
-  name: string;
-  logo: string;
+  accentBg: string;
+  accentText: string;
 }
 
 const TestimonialsSection: React.FC = () => {
@@ -32,9 +28,10 @@ const TestimonialsSection: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
       rating: 5,
-      text: "Switching to 47accountants was the best business decision I made. Our accounts are always done on time, and they’ve already saved us over £18,000 in tax through smart planning. Couldn’t be happier.",
+      text: "Switching to 47 Accountants was the best business decision I made. Our accounts are always done on time, and they’ve already saved us over £18,000 in tax through smart planning. Couldn’t be happier.",
       metric: "£18K tax saved",
-      color: "#635bff",
+      accentBg: "var(--color-gold-soft)",
+      accentText: "var(--color-gold-primary)",
     },
     {
       id: 2,
@@ -44,9 +41,10 @@ const TestimonialsSection: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
       rating: 5,
-      text: "Our monthly management accounts are crystal clear. The 47accountants team takes the time to explain exactly where our money is going and what we can do to improve margins. Genuinely proactive advice.",
+      text: "Our monthly management accounts are crystal clear. The 47 Accountants team takes the time to explain exactly where our money is going and what we can do to improve margins. Genuinely proactive advice.",
       metric: "23% margin improvement",
-      color: "#00d4ff",
+      accentBg: "var(--color-navy-soft)",
+      accentText: "var(--color-navy-light)",
     },
     {
       id: 3,
@@ -56,9 +54,10 @@ const TestimonialsSection: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
       rating: 5,
-      text: "As a startup founder, I used to dread tax season. Now I don’t even think about it. 47accountants handles everything seamlessly—and they helped us structure our director salaries to save nearly £12,000 a year.",
+      text: "As a business founder, I used to dread tax season. Now I don’t even think about it. 47 Accountants handles everything seamlessly—and they helped us structure our director salaries to save nearly £12,000 a year.",
       metric: "£12K saved per year",
-      color: "#00e676",
+      accentBg: "var(--color-red-soft)",
+      accentText: "var(--color-red)",
     },
     {
       id: 4,
@@ -68,9 +67,10 @@ const TestimonialsSection: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
       rating: 5,
-      text: "We never have to worry about HMRC deadlines or MTD submissions anymore. Every VAT return, payroll run, and tax filing is done accurately and on time. The compliance burden has completely lifted from our shoulders.",
+      text: "We never have to worry about HMRC deadlines or MTD submissions anymore. Every VAT return, payroll run, and tax filing is done accurately and on time. The compliance burden has completely lifted.",
       metric: "100% on-time filing",
-      color: "#ff6b6b",
+      accentBg: "var(--color-navy-soft)",
+      accentText: "var(--color-navy-light)",
     },
     {
       id: 5,
@@ -80,32 +80,10 @@ const TestimonialsSection: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1508214751196-bfd1411309df?w=400&h=400&fit=crop",
       rating: 5,
-      text: "We’ve worked with three different accountants over the years. 47accountants is by far the most responsive and knowledgeable. They feel like a genuine partner in our growth, not just someone who files our returns.",
-      metric: "97% retention rate",
-      color: "#ffd93d",
-    },
-  ];
-
-  const companies: Company[] = [
-    {
-      name: "Xero",
-      logo: "https://cdn.worldvectorlogo.com/logos/xero-1.svg",
-    },
-    {
-      name: "QuickBooks",
-      logo: "https://cdn.worldvectorlogo.com/logos/quickbooks.svg",
-    },
-    {
-      name: "Sage",
-      logo: "https://cdn.worldvectorlogo.com/logos/sage-logo.svg",
-    },
-    {
-      name: "Stripe",
-      logo: "https://cdn.worldvectorlogo.com/logos/stripe-4.svg",
-    },
-    {
-      name: "HMRC",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/2/23/HM_Revenue_and_Customs_logo.svg",
+      text: "We’ve worked with three different accountants over the years. 47 Accountants is by far the most responsive and knowledgeable. They feel like a genuine partner in our growth.",
+      metric: "97% client retention",
+      accentBg: "var(--color-gold-soft)",
+      accentText: "var(--color-gold-primary)",
     },
   ];
 
@@ -172,7 +150,7 @@ const TestimonialsSection: React.FC = () => {
           <motion.div className="testimonials-badge">
             <span className="testimonials-badge-dot" />
             <span className="testimonials-badge-text">
-              Loved by 10,000+ Businesses
+              Trusted by 1,200+ Businesses
             </span>
           </motion.div>
 
@@ -185,8 +163,7 @@ const TestimonialsSection: React.FC = () => {
           </h2>
 
           <p className="testimonials-subheadline">
-            Join thousands of satisfied businesses who've transformed their
-            financial operations with 47accountants.
+            Join hundreds of satisfied UK businesses who have transformed their accounting with 47 Accountants.
           </p>
         </motion.div>
 
@@ -199,15 +176,15 @@ const TestimonialsSection: React.FC = () => {
             <motion.div
               key={activeIndex}
               className="testimonial-card"
-              initial={{ opacity: 0, x: 100, scale: 0.95 }}
+              initial={{ opacity: 0, x: 80, scale: 0.96 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -100, scale: 0.95 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ opacity: 0, x: -80, scale: 0.96 }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="testimonial-quote-icon">
                 <Quote
                   size={32}
-                  color={activeTestimonial.color}
+                  color="var(--color-gold-primary)"
                   strokeWidth={1.5}
                 />
               </div>
@@ -216,9 +193,9 @@ const TestimonialsSection: React.FC = () => {
                 {[...Array(activeTestimonial.rating)].map((_, i) => (
                   <Star
                     key={i}
-                    size={16}
-                    fill="#ffd93d"
-                    color="#ffd93d"
+                    size={18}
+                    fill="var(--color-gold-primary)"
+                    color="var(--color-gold-primary)"
                     strokeWidth={0}
                   />
                 ))}
@@ -246,14 +223,14 @@ const TestimonialsSection: React.FC = () => {
                 <motion.div
                   className="testimonial-metric-badge"
                   style={{
-                    background: `${activeTestimonial.color}15`,
-                    border: `1px solid ${activeTestimonial.color}30`,
+                    background: activeTestimonial.accentBg,
+                    borderColor: activeTestimonial.accentText,
                   }}
                   whileHover={{ scale: 1.05 }}
                 >
                   <span
                     className="testimonial-metric-text"
-                    style={{ color: activeTestimonial.color }}
+                    style={{ color: activeTestimonial.accentText }}
                   >
                     {activeTestimonial.metric}
                   </span>
@@ -262,81 +239,40 @@ const TestimonialsSection: React.FC = () => {
             </motion.div>
           </AnimatePresence>
 
-          <motion.button
+          <button
             className="testimonial-nav-button testimonial-nav-button-left"
             onClick={prevTestimonial}
-            whileHover={{ scale: 1.1, x: -3 }}
-            whileTap={{ scale: 0.95 }}
             aria-label="Previous testimonial"
           >
-            <ChevronLeft size={20} />
-          </motion.button>
+            <ChevronLeft size={28} strokeWidth={2.5} />
+          </button>
 
-          <motion.button
+          <button
             className="testimonial-nav-button testimonial-nav-button-right"
             onClick={nextTestimonial}
-            whileHover={{ scale: 1.1, x: 3 }}
-            whileTap={{ scale: 0.95 }}
             aria-label="Next testimonial"
           >
-            <ChevronRight size={20} />
-          </motion.button>
+            <ChevronRight size={28} strokeWidth={2.5} />
+          </button>
 
           <div className="testimonials-dots-container">
             {testimonials.map((_, index) => (
-              <motion.button
+              <button
                 key={index}
                 className="testimonial-dot"
                 style={{
+                  width: index === activeIndex ? "28px" : "10px",
                   background:
-                    index === activeIndex ? "#635bff" : "rgba(0, 0, 0, 0.2)",
+                    index === activeIndex
+                      ? "var(--color-gold-primary)"
+                      : "rgba(255, 255, 255, 0.2)",
                 }}
                 onClick={() => setActiveIndex(index)}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
           </div>
         </div>
-
-        <motion.div
-          className="testimonials-companies-section"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <p className="testimonials-companies-text">
-            Trusted Integrations & Partners
-          </p>
-          <div className="testimonials-companies-grid">
-            {companies.map((company, index) => (
-              <motion.div
-                key={index}
-                className="testimonial-company-logo"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * index, type: "spring" }}
-                whileHover={{ scale: 1.1, y: -5 }}
-              >
-                <img
-                  src={company.logo}
-                  alt={`${company.name} logo`}
-                  className="testimonial-company-logo-img"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
-                    if (target.parentElement) {
-                      target.parentElement.innerHTML = `<div class="testimonial-logo-fallback">${company.name}</div>`;
-                    }
-                  }}
-                />
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

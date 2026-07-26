@@ -14,6 +14,8 @@ const ContactFormSection: React.FC = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [resultMsg, setResultMsg] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -26,21 +28,44 @@ const ContactFormSection: React.FC = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
-      setIsSubmitting(false);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        company: "",
-        subject: "",
-        message: "",
+    setResultMsg(null);
+
+    const bodyFormData = new FormData(e.currentTarget);
+    const apiKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "90e33005-9188-488c-94c9-f77126a0b480";
+    bodyFormData.append("access_key", apiKey);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: bodyFormData,
       });
-    }, 1500);
+
+      const data = await response.json();
+      if (data.success) {
+        setIsSuccess(true);
+        setResultMsg("Thank you! Your message has been sent successfully. We will get back to you shortly.");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          company: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setIsSuccess(false);
+        setResultMsg(data.message || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      setIsSuccess(false);
+      setResultMsg("An error occurred while sending your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -49,16 +74,18 @@ const ContactFormSection: React.FC = () => {
       title: "Email Us",
       description:
         "Send us your enquiry anytime and a qualified accountant will respond within 1 business day.",
-      detail: "hello@47accountants.com",
-      color: "#635bff",
+      detail: "info@47accountants.com",
+      accentBg: "var(--color-navy-soft)",
+      accentColor: "var(--color-navy-light)",
     },
     {
       icon: Phone,
       title: "Call Us",
       description:
         "Speak directly with your accountant Monday to Friday, 9am–6pm GMT. No call centres.",
-      detail: "+44 20 1234 5678",
-      color: "#00d4ff",
+      detail: "+44 7462229006",
+      accentBg: "var(--color-gold-soft)",
+      accentColor: "var(--color-gold-primary)",
     },
     {
       icon: MessageCircle,
@@ -66,199 +93,147 @@ const ContactFormSection: React.FC = () => {
       description:
         "Schedule a free 30-minute consultation with one of our ACCA-qualified accountants at your convenience.",
       detail: "Free & No Obligation",
-      color: "#00e676",
+      accentBg: "var(--color-red-soft)",
+      accentColor: "var(--color-red)",
     },
   ];
 
   return (
     <section className="contact-form-section">
       <div className="contact-form-container">
-        <div className="contact-form-grid">
-          <motion.div
-            className="contact-form-wrapper"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="contact-form-title">Send Us a Message</h2>
-            <p className="contact-form-subtitle">
-              Fill out the form below and our team will get back to you as soon
-              as possible.
-            </p>
+        <div className="contact-info-card">
+          <h2 className="contact-info-title">Get in Touch</h2>
+          <p className="contact-info-desc">
+            We are here to answer your questions and assist with your business tax and accounting needs.
+          </p>
 
-            <div className="contact-form">
-              <div className="contact-form-row">
-                <div className="contact-form-group">
-                  <label className="contact-form-label" htmlFor="firstName">
-                    First Name <span className="contact-form-required">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    className="contact-form-input"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    placeholder="John"
-                  />
+          <div className="contact-info-list">
+            {contactInfo.map((info, index) => (
+              <div key={index} className="contact-item">
+                <div
+                  className="contact-item-icon"
+                  style={{
+                    background: info.accentBg,
+                    color: info.accentColor,
+                    borderColor: info.accentColor,
+                  }}
+                >
+                  <info.icon size={22} strokeWidth={2} />
                 </div>
-
-                <div className="contact-form-group">
-                  <label className="contact-form-label" htmlFor="lastName">
-                    Last Name <span className="contact-form-required">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    className="contact-form-input"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    placeholder="Doe"
-                  />
+                <div className="contact-item-details">
+                  <h4>{info.title}</h4>
+                  <p>{info.description}</p>
+                  <p style={{ fontWeight: 700, color: info.accentColor, marginTop: "4px" }}>
+                    {info.detail}
+                  </p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
 
-              <div className="contact-form-row">
-                <div className="contact-form-group">
-                  <label className="contact-form-label" htmlFor="email">
-                    Email Address{" "}
-                    <span className="contact-form-required">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="contact-form-input"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="john.doe@company.com"
-                  />
-                </div>
+        <div className="contact-form-card">
+          <h2 className="contact-info-title" style={{ marginBottom: "20px" }}>
+            Send Us a Message
+          </h2>
+          
+          {resultMsg && (
+            <div
+              style={{
+                padding: "14px 18px",
+                borderRadius: "12px",
+                marginBottom: "20px",
+                fontSize: "0.95rem",
+                fontWeight: 600,
+                background: isSuccess ? "rgba(34, 197, 94, 0.15)" : "rgba(239, 68, 68, 0.15)",
+                border: `1px solid ${isSuccess ? "#22c55e" : "#ef4444"}`,
+                color: isSuccess ? "#22c55e" : "#ef4444",
+              }}
+            >
+              {resultMsg}
+            </div>
+          )}
 
-                <div className="contact-form-group">
-                  <label className="contact-form-label" htmlFor="phone">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="contact-form-input"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+44 20 1234 5678"
-                  />
-                </div>
-              </div>
-
-              <div className="contact-form-group">
-                <label className="contact-form-label" htmlFor="company">
-                  Company Name
-                </label>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label className="form-label">First &amp; Last Name</label>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                 <input
                   type="text"
-                  id="company"
-                  name="company"
-                  className="contact-form-input"
-                  value={formData.company}
+                  name="firstName"
+                  className="form-input"
+                  value={formData.firstName}
                   onChange={handleChange}
-                  placeholder="Your Company Ltd"
+                  placeholder="First Name"
+                  required
+                />
+                <input
+                  type="text"
+                  name="lastName"
+                  className="form-input"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  placeholder="Last Name"
+                  required
                 />
               </div>
-
-              <div className="contact-form-group">
-                <label className="contact-form-label" htmlFor="subject">
-                  Subject <span className="contact-form-required">*</span>
-                </label>
-                <select
-                  id="subject"
-                  name="subject"
-                  className="contact-form-select"
-                  value={formData.subject}
-                  onChange={handleChange}
-                >
-                  <option value="">Select a subject</option>
-                  <option value="bookkeeping">Bookkeeping Enquiry</option>
-                  <option value="tax">Tax &amp; Self-Assessment</option>
-                  <option value="vat">VAT &amp; MTD</option>
-                  <option value="payroll">Payroll Services</option>
-                  <option value="advisory">Business Advisory</option>
-                  <option value="switching">Switching Accountant</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div className="contact-form-group">
-                <label className="contact-form-label" htmlFor="message">
-                  Message <span className="contact-form-required">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  className="contact-form-textarea"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell us more about your inquiry..."
-                />
-              </div>
-
-              <motion.button
-                className="contact-form-submit"
-                disabled={isSubmitting}
-                onClick={handleSubmit}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
-                <ArrowRight size={20} />
-              </motion.button>
             </div>
-          </motion.div>
 
-          <motion.div
-            className="contact-info-cards"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={index}
-                className="contact-info-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -5 }}
+            <div className="form-group">
+              <label className="form-label">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                className="form-input"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="john@company.com"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Subject</label>
+              <select
+                name="subject"
+                className="form-select"
+                value={formData.subject}
+                onChange={handleChange}
+                required
               >
-                <div className="contact-info-card-header">
-                  <div
-                    className="contact-info-card-icon"
-                    style={{
-                      background: `${info.color}15`,
-                      border: `2px solid ${info.color}`,
-                    }}
-                  >
-                    <info.icon size={28} color={info.color} strokeWidth={2} />
-                  </div>
-                  <h3 className="contact-info-card-title">{info.title}</h3>
-                </div>
-                <p className="contact-info-card-description">
-                  {info.description}
-                </p>
-                <div
-                  className="contact-info-card-detail"
-                  style={{ color: info.color }}
-                >
-                  <info.icon size={18} />
-                  <span>{info.detail}</span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                <option value="">Select a subject</option>
+                <option value="Bookkeeping Services">Bookkeeping Services</option>
+                <option value="Tax & Compliance">Tax &amp; Compliance</option>
+                <option value="VAT Services">VAT Services</option>
+                <option value="Payroll & Pensions">Payroll &amp; Pensions</option>
+                <option value="Business Advisory">Business Advisory</option>
+                <option value="Other Enquiry">Other</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Message</label>
+              <textarea
+                name="message"
+                className="form-textarea"
+                rows={4}
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="How can we help your business?"
+                required
+              />
+            </div>
+
+            <motion.button
+              type="submit"
+              className="form-submit-btn"
+              disabled={isSubmitting}
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span>{isSubmitting ? "Sending..." : "Book Consultation"}</span>
+            </motion.button>
+          </form>
         </div>
       </div>
     </section>

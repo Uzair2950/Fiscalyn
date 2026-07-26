@@ -1,0 +1,245 @@
+/* Collaboration Hero - 47accountants Royal Theme */
+
+.collab-hero-section {
+  width: 100%;
+  min-height: 80vh;
+  background: var(--bg-main);
+  padding: 140px 5vw 80px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.collab-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.collab-hero-grid-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, var(--color-gold-glow) 1px, transparent 1px);
+  background-size: 36px 36px;
+  opacity: 0.35;
+}
+
+.collab-hero-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.collab-hero-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--gradient-orb-primary);
+  top: -150px;
+  right: -100px;
+}
+
+.collab-hero-orb-2 {
+  width: 600px;
+  height: 600px;
+  background: var(--gradient-orb-secondary);
+  bottom: -200px;
+  left: -150px;
+}
+
+.collab-hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.collab-hero-content-wrapper {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.collab-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: var(--color-gold-soft);
+  border: 1px solid var(--border-gold);
+  border-radius: 50px;
+  margin-bottom: 24px;
+}
+
+.collab-hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold-primary);
+}
+
+.collab-hero-badge-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gold-primary);
+}
+
+.collab-hero-headline {
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.collab-hero-gradient-text {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+.collab-hero-description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  max-width: 620px;
+}
+
+.collab-hero-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.collab-primary-btn {
+  padding: 16px 32px;
+  background: var(--gradient-gold);
+  color: var(--text-on-gold);
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 1px solid var(--border-gold-strong);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  box-shadow: var(--shadow-gold);
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.collab-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+}
+
+.collab-secondary-btn {
+  padding: 16px 32px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 1px solid var(--border-gold);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.collab-secondary-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--color-gold-primary);
+  color: var(--color-gold-primary);
+}
+
+.collab-trust-badges {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.collab-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.collab-trust-icon {
+  color: var(--color-gold-primary);
+}
+
+.collab-hero-visual {
+  position: relative;
+}
+
+.collab-visual-card {
+  background: var(--bg-card);
+  border-radius: 24px;
+  border: 1px solid var(--border-gold);
+  padding: 36px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+
+.collab-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.collab-stat-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.collab-stat-box:hover {
+  border-color: var(--color-gold-primary);
+  transform: translateY(-4px);
+}
+
+.collab-stat-num {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-gold-primary);
+  margin-bottom: 6px;
+}
+
+.collab-stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .collab-hero-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

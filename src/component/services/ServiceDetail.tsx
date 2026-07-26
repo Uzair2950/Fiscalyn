@@ -27,7 +27,6 @@ const ServiceDetail: React.FC = () => {
         "Receipt capture & management",
         "Monthly management reports",
       ],
-      color: "#635bff",
       image:
         "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=600&fit=crop",
       position: "left",
@@ -46,7 +45,6 @@ const ServiceDetail: React.FC = () => {
         "Penalty protection & alerts",
         "Tax planning & optimisation",
       ],
-      color: "#00d4ff",
       image:
         "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop",
       position: "right",
@@ -65,7 +63,6 @@ const ServiceDetail: React.FC = () => {
         "Director's salary & dividend planning",
         "Investment & expansion advice",
       ],
-      color: "#00e676",
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       position: "left",
@@ -84,7 +81,6 @@ const ServiceDetail: React.FC = () => {
         "CIS deduction tracking",
         "Holiday & statutory pay calculations",
       ],
-      color: "#ffb300",
       image:
         "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop",
       position: "right",
@@ -103,7 +99,6 @@ const ServiceDetail: React.FC = () => {
         "HMRC VAT inspection support",
         "Input tax recovery maximisation",
       ],
-      color: "#f44336",
       image:
         "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop",
       position: "left",
@@ -122,7 +117,6 @@ const ServiceDetail: React.FC = () => {
         "Share allotments & transfers",
         "Minute & resolution drafting",
       ],
-      color: "#9c27b0",
       image:
         "https://images.unsplash.com/photo-1507209696998-3c532be9b2b5?w=800&h=600&fit=crop",
       position: "right",
@@ -139,10 +133,9 @@ const ServiceDetail: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <motion.div className="service-detail-badge">
-            <span className="service-detail-badge-dot" />
-            <span className="service-detail-badge-text">Our Services</span>
-          </motion.div>
+          <div className="service-detail-badge">
+            <span className="service-detail-badge-text">Our Core Services</span>
+          </div>
 
           <h2 className="service-detail-headline">
             Six Core Services.
@@ -154,79 +147,36 @@ const ServiceDetail: React.FC = () => {
 
           <p className="service-detail-subheadline">
             From bookkeeping and tax compliance to payroll, VAT, and business
-            advisory— 47accountants provides every accounting service your UK
-            business needs, all under one roof.
+            advisory— 47 Accountants provides every accounting service your UK
+            business needs.
           </p>
         </motion.div>
 
-        <div className="service-detail-list">
+        <div className="service-detail-grid">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className={`service-detail-item service-detail-item-${service.position}`}
-              initial={{ opacity: 0, y: 40 }}
+              className="service-detail-card"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <motion.div
-                className="service-detail-image-wrapper"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="service-detail-image"
-                />
-                <div className="service-detail-image-overlay" />
-              </motion.div>
-
-              <div className="service-detail-content">
-                <div
-                  className="service-detail-icon"
-                  style={{
-                    background: `${service.color}15`,
-                    border: `2px solid ${service.color}`,
-                  }}
-                >
-                  <service.icon
-                    size={32}
-                    color={service.color}
-                    strokeWidth={2}
-                  />
+              <div>
+                <div className="service-detail-icon">
+                  <service.icon size={28} strokeWidth={2} />
                 </div>
+                <h3 className="service-detail-card-title">{service.title}</h3>
+                <p className="service-detail-card-desc">{service.description}</p>
 
-                <div className="service-detail-text">
-                  <div
-                    className="service-detail-subtitle"
-                    style={{ color: service.color }}
-                  >
-                    {service.subtitle}
-                  </div>
-                  <h3
-                    className="service-detail-title"
-                    style={{ color: service.color }}
-                  >
-                    {service.title}
-                  </h3>
-                  <p className="service-detail-description">
-                    {service.description}
-                  </p>
-                </div>
-
-                <div className="service-detail-features">
+                <ul className="service-detail-features" style={{ marginTop: '20px' }}>
                   {service.features.map((feature, idx) => (
-                    <div key={idx} className="service-detail-feature-item">
-                      <CheckCircle
-                        size={18}
-                        color={service.color}
-                        strokeWidth={2.5}
-                      />
+                    <li key={idx} className="service-detail-feature-item">
+                      <CheckCircle size={16} className="service-detail-feature-icon" />
                       <span>{feature}</span>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </motion.div>
           ))}

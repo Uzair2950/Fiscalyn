@@ -68,7 +68,7 @@ const ServicesHero: React.FC = () => {
 
           <p className="services-hero-description">
             From managed bookkeeping and tax compliance to business advisory and
-            payroll—47accountants delivers all the accounting services your
+            payroll—47 Accountants delivers all the accounting services your
             business needs, handled by qualified professionals.
           </p>
 
@@ -105,7 +105,7 @@ const ServicesHero: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               onClick={() => (window.location.href = "/contact")}
             >
-              <span>Get Started Free</span>
+              <span>Book Free Consultation</span>
               <ArrowRight size={20} />
             </motion.button>
             <motion.button
@@ -114,7 +114,7 @@ const ServicesHero: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               onClick={() => (window.location.href = "/contact")}
             >
-              Schedule Demo
+              Contact Us
             </motion.button>
           </motion.div>
         </motion.div>
@@ -128,7 +128,7 @@ const ServicesHero: React.FC = () => {
           <div className="services-hero-image-wrapper">
             <img
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop"
-              alt="Financial Dashboard"
+              alt="Financial Analysis & Accounting"
               className="services-hero-image"
             />
             <div className="services-hero-image-overlay" />
@@ -146,15 +146,12 @@ const ServicesHero: React.FC = () => {
               ease: "easeInOut",
             }}
           >
-            <div
-              className="floating-card-icon"
-              style={{ background: "#635bff" }}
-            >
-              <Zap size={20} color="#fff" />
+            <div className="floating-card-icon">
+              <Zap size={20} />
             </div>
             <div className="floating-card-content">
-              <div className="floating-card-label">Processing</div>
-              <div className="floating-card-value">2.1M</div>
+              <div className="floating-card-label">Accuracy</div>
+              <div className="floating-card-value">100%</div>
             </div>
           </motion.div>
 
@@ -171,15 +168,12 @@ const ServicesHero: React.FC = () => {
               delay: 1,
             }}
           >
-            <div
-              className="floating-card-icon"
-              style={{ background: "#00d4ff" }}
-            >
-              <CheckCircle size={20} color="#fff" />
+            <div className="floating-card-icon">
+              <CheckCircle size={20} />
             </div>
             <div className="floating-card-content">
-              <div className="floating-card-label">Success Rate</div>
-              <div className="floating-card-value">99.8%</div>
+              <div className="floating-card-label">Retention</div>
+              <div className="floating-card-value">99%</div>
             </div>
           </motion.div>
         </motion.div>

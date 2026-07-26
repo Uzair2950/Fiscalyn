@@ -69,7 +69,7 @@ const AssuranceScorecard: React.FC = () => {
       suffix: "+",
       description:
         "Over a decade of specialist expertise in UK accountancy, tax compliance, and business advisory.",
-      color: "#635bff",
+      color: "var(--color-gold-primary)",
     },
     {
       icon: Users,
@@ -78,7 +78,7 @@ const AssuranceScorecard: React.FC = () => {
       suffix: "+",
       description:
         "Trusted by over 1,200 UK businesses—from sole traders and startups to growing SMEs.",
-      color: "#00d4ff",
+      color: "var(--color-navy-light)",
     },
     {
       icon: TrendingUp,
@@ -87,7 +87,7 @@ const AssuranceScorecard: React.FC = () => {
       suffix: "%",
       description:
         "Near-perfect record for timely HMRC submissions, VAT returns, and year-end accounts.",
-      color: "#00e676",
+      color: "var(--color-gold-primary)",
     },
     {
       icon: Shield,
@@ -96,7 +96,7 @@ const AssuranceScorecard: React.FC = () => {
       suffix: "%",
       description:
         "Industry-leading retention rate—our clients stay because we deliver real, measurable value.",
-      color: "#ff6b6b",
+      color: "var(--color-red)",
     },
   ];
 
@@ -125,8 +125,8 @@ const AssuranceScorecard: React.FC = () => {
   };
 
   return (
-    <section className="assurance-scorecard-section">
-      <div className="scorecard-wrapper">
+    <section className="scorecard-section">
+      <div className="scorecard-container">
         <motion.div
           className="scorecard-header"
           initial={{ opacity: 0, y: 30 }}
@@ -134,22 +134,26 @@ const AssuranceScorecard: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h2>
+          <div className="scorecard-badge">
+            <span className="scorecard-badge-text">Why Choose Us</span>
+          </div>
+
+          <h2 className="scorecard-headline">
             Why UK Businesses
             <span className="scorecard-gradient-text">
               {" "}
-              Trust 47accountants
+              Trust 47 Accountants
             </span>
           </h2>
-          <p className="scorecard-intro">
+          <p className="scorecard-subheadline">
             Our track record speaks for itself. These aren't just
-            numbers—they're a testament to our unwavering commitment to getting
+            numbers—they're a testament to our commitment to getting
             your finances right.
           </p>
         </motion.div>
 
         <motion.div
-          className="stats-grid"
+          className="scorecard-grid"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -158,91 +162,25 @@ const AssuranceScorecard: React.FC = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="stat-card"
+              className="scorecard-card"
               variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
+              whileHover={{ y: -6 }}
             >
               <div
-                className="stat-icon-wrapper"
-                style={{ background: `${stat.color}15` }}
+                className="scorecard-metric-value"
+                ref={stat.value.ref}
+                style={{ color: stat.color }}
               >
-                <stat.icon size={32} color={stat.color} strokeWidth={2} />
+                {typeof stat.value.count === "number"
+                  ? stat.value.count.toLocaleString()
+                  : stat.value.count}
+                {stat.suffix}
               </div>
 
-              <div className="stat-content">
-                <div className="stat-value-wrapper" ref={stat.value.ref}>
-                  <span className="stat-value" style={{ color: stat.color }}>
-                    {typeof stat.value.count === "number"
-                      ? stat.value.count.toLocaleString()
-                      : stat.value.count}
-                  </span>
-                  <span className="stat-suffix" style={{ color: stat.color }}>
-                    {stat.suffix}
-                  </span>
-                </div>
-
-                <h3 className="stat-title">{stat.title}</h3>
-                <p className="stat-description">{stat.description}</p>
-              </div>
-
-              <div
-                className="stat-card-glow"
-                style={{
-                  background: `radial-gradient(circle at center, ${stat.color}20, transparent 70%)`,
-                }}
-              />
+              <h3 className="scorecard-metric-label">{stat.title}</h3>
+              <p className="scorecard-metric-desc">{stat.description}</p>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          className="scorecard-trust-section"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="trust-badge-wrapper">
-            <div className="trust-badge">
-              <div className="trust-badge-icon">🏆</div>
-              <div className="trust-badge-content">
-                <span className="trust-badge-title">ACCA Accredited</span>
-                <span className="trust-badge-subtitle">
-                  Fully Qualified Accountants
-                </span>
-              </div>
-            </div>
-
-            <div className="trust-badge">
-              <div className="trust-badge-icon">🔒</div>
-              <div className="trust-badge-content">
-                <span className="trust-badge-title">HMRC Registered</span>
-                <span className="trust-badge-subtitle">
-                  MTD & VAT Compliant
-                </span>
-              </div>
-            </div>
-
-            <div className="trust-badge">
-              <div className="trust-badge-icon">⚡</div>
-              <div className="trust-badge-content">
-                <span className="trust-badge-title">ICO Registered</span>
-                <span className="trust-badge-subtitle">
-                  GDPR & Data Compliant
-                </span>
-              </div>
-            </div>
-
-            <div className="trust-badge">
-              <div className="trust-badge-icon">🌟</div>
-              <div className="trust-badge-content">
-                <span className="trust-badge-title">4.9/5 Rating</span>
-                <span className="trust-badge-subtitle">
-                  From 500+ Client Reviews
-                </span>
-              </div>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

@@ -10,7 +10,7 @@ const ServicesCTA: React.FC = () => {
     "Dedicated qualified accountant",
     "HMRC & Companies House compliance handled",
     "Seamless switching from your current accountant",
-    "Money-back guarantee",
+    "100% filing accuracy guarantee",
   ];
 
   const stats = [
@@ -60,7 +60,7 @@ const ServicesCTA: React.FC = () => {
         >
           <motion.div className="services-cta-badge">
             <Sparkles size={16} />
-            <span className="services-cta-badge-text">Limited Time Offer</span>
+            <span className="services-cta-badge-text">Expert Accounting Partner</span>
           </motion.div>
 
           <h2 className="services-cta-headline">
@@ -69,7 +69,7 @@ const ServicesCTA: React.FC = () => {
           </h2>
 
           <p className="services-cta-description">
-            Join over 1,200 UK businesses who trust 47accountants with their
+            Join over 1,200 UK businesses who trust 47 Accountants with their
             accounting, tax, and financial planning. Book your free
             consultation—no commitment required.
           </p>
@@ -84,7 +84,7 @@ const ServicesCTA: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
               >
-                <CheckCircle size={20} color="#00e676" strokeWidth={2.5} />
+                <CheckCircle size={20} className="services-cta-trust-icon" strokeWidth={2.5} />
                 <span>{benefit}</span>
               </motion.div>
             ))}
@@ -112,7 +112,7 @@ const ServicesCTA: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               onClick={() => (window.location.href = "/contact")}
             >
-              Schedule a Demo
+              Contact Us
             </motion.button>
           </motion.div>
 
@@ -125,7 +125,7 @@ const ServicesCTA: React.FC = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.05 }}
               >
                 <div className="services-cta-stat-value">{stat.value}</div>
                 <div className="services-cta-stat-label">{stat.label}</div>

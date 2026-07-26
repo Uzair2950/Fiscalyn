@@ -6,7 +6,8 @@ import "../../css/home/hero.css";
 interface FloatingBadge {
   icon: LucideIcon;
   label: string;
-  color: string;
+  bgColor: string;
+  textColor: string;
   delay: number;
 }
 
@@ -31,9 +32,9 @@ const HeroSection: React.FC = () => {
   };
 
   const floatingBadges: FloatingBadge[] = [
-    { icon: Shield, label: "HMRC Compliant", color: "#635bff", delay: 0.5 },
-    { icon: Zap, label: "MTD Ready", color: "#00d4ff", delay: 0.7 },
-    { icon: TrendingUp, label: "Tax Optimised", color: "#00e676", delay: 0.9 },
+    { icon: Shield, label: "HMRC Compliant", bgColor: "var(--color-navy)", textColor: "#ffffff", delay: 0.5 },
+    { icon: Zap, label: "MTD Ready", bgColor: "var(--color-gold-primary)", textColor: "var(--text-on-gold)", delay: 0.7 },
+    { icon: TrendingUp, label: "Tax Optimised", bgColor: "var(--color-red)", textColor: "#ffffff", delay: 0.9 },
   ];
 
   return (
@@ -106,7 +107,7 @@ const HeroSection: React.FC = () => {
               className="hero-secondary-btn"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => (window.location.href = "/contact")}
+              onClick={() => (window.location.href = "/services")}
             >
               View Our Services
             </motion.button>
@@ -135,11 +136,11 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=900&fit=crop" 
-                alt="Accounting professionals collaborating" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)' }} 
-              />
+            <img 
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=900&fit=crop" 
+              alt="Accounting professionals collaborating" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '24px', border: '1px solid var(--border-gold)', boxShadow: 'var(--shadow-card)' }} 
+            />
           </motion.div>
 
           {floatingBadges.map((badge, index) => (
@@ -152,9 +153,9 @@ const HeroSection: React.FC = () => {
             >
               <div
                 className="floating-badge-icon"
-                style={{ background: badge.color }}
+                style={{ background: badge.bgColor, color: badge.textColor }}
               >
-                <badge.icon size={16} color="#fff" />
+                <badge.icon size={16} />
               </div>
               <span className="floating-badge-label">{badge.label}</span>
             </motion.div>

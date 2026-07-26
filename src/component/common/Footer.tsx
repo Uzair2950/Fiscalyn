@@ -4,7 +4,6 @@ import { motion, Variants } from "framer-motion";
 import {
   ArrowRight,
   Mail,
-  MapPin,
   Phone,
   Linkedin,
   Twitter,
@@ -12,6 +11,8 @@ import {
   LucideIcon,
 } from "lucide-react";
 import "../../css/common/footer.css";
+
+import LogoBadge from "../../assets/image/LogoBadge.webp";
 
 interface FooterLink {
   name: string;
@@ -22,7 +23,6 @@ interface FooterLink {
 interface FooterLinks {
   platform: FooterLink[];
   company: FooterLink[];
-  resources: FooterLink[];
   legal: FooterLink[];
 }
 
@@ -49,30 +49,18 @@ const Footer: React.FC = () => {
   const footerLinks: FooterLinks = {
     platform: [
       { name: "Services", path: "/services" },
-      { name: "Pricing", path: "/pricing" },
       { name: "Bookkeeping", path: "/services" },
       { name: "Tax & Compliance", path: "/services" },
       { name: "Payroll", path: "/services" },
     ],
     company: [
       { name: "About Us", path: "/about" },
-      { name: "Careers", path: "/careers", badge: "Hiring" },
       { name: "Blog", path: "/blog" },
-      { name: "Press Kit", path: "/press" },
       { name: "Contact", path: "/contact" },
-    ],
-    resources: [
-      { name: "Help Centre", path: "/help" },
-      { name: "Client Portal", path: "/portal" },
-      { name: "HMRC Guides", path: "/guides" },
-      { name: "Tax Calculators", path: "/tools" },
-      { name: "Referral Scheme", path: "/referral" },
     ],
     legal: [
       { name: "Privacy Policy", path: "/privacy" },
       { name: "Terms of Service", path: "/terms" },
-      { name: "Cookie Policy", path: "/cookies" },
-      { name: "Regulatory Info", path: "/compliance" },
     ],
   };
 
@@ -115,41 +103,12 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <motion.div className="footer-brand" variants={itemVariants}>
             <div className="footer-logo">
-              <div className="footer-logo-icon">
-                <svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="4"
-                    y="4"
-                    width="32"
-                    height="32"
-                    rx="8"
-                    fill="url(#footerLogoGradient)"
-                  />
-                  <path
-                    d="M12 16h16M12 20h12M12 24h16"
-                    stroke="white"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                  />
-                  <defs>
-                    <linearGradient
-                      id="footerLogoGradient"
-                      x1="4"
-                      y1="4"
-                      x2="36"
-                      y2="36"
-                    >
-                      <stop offset="0%" stopColor="#635bff" />
-                      <stop offset="100%" stopColor="#00d4ff" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <span className="footer-logo-text">47accountants</span>
+              <img
+                src={LogoBadge}
+                alt="47 Accountants logo badge"
+                className="footer-logo-badge"
+              />
+              <span className="footer-logo-text">47 Accountants</span>
             </div>
 
             <p className="footer-tagline">
@@ -201,19 +160,6 @@ const Footer: React.FC = () => {
                       {link.badge && (
                         <span className="footer-badge">{link.badge}</span>
                       )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="footer-links-column">
-              <h4 className="footer-column-title">Resources</h4>
-              <ul className="footer-links-list">
-                {footerLinks.resources.map((link, index) => (
-                  <li key={index}>
-                    <Link to={link.path} className="footer-link">
-                      {link.name}
                     </Link>
                   </li>
                 ))}
@@ -277,16 +223,12 @@ const Footer: React.FC = () => {
 
             <div className="footer-contact-info">
               <div className="contact-info-item">
-                <MapPin size={16} />
-                <span>London, United Kingdom</span>
-              </div>
-              <div className="contact-info-item">
                 <Phone size={16} />
-                <span>+44 20 1234 5678</span>
+                <span>+44 7462229006</span>
               </div>
               <div className="contact-info-item">
                 <Mail size={16} />
-                <span>hello@47accountants.com</span>
+                <span>info@47accountants.com</span>
               </div>
             </div>
           </motion.div>
@@ -296,7 +238,7 @@ const Footer: React.FC = () => {
         <div className="footer-bottom">
           <div className="footer-bottom-content">
             <p className="footer-copyright">
-              © {new Date().getFullYear()} 47accountants Ltd. All rights
+              © {new Date().getFullYear()} 47 Accountants Ltd. All rights
               reserved.
             </p>
 

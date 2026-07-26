@@ -163,9 +163,9 @@ const PricingCards: React.FC<PricingCardsProps> = ({ isAnnual }) => {
                       }`}
                     >
                       {feature.available ? (
-                        <Check size={18} color="#00e676" strokeWidth={2.5} />
+                        <Check size={18} color="var(--color-gold-primary)" strokeWidth={2.5} />
                       ) : (
-                        <X size={18} color="#ff6b6b" strokeWidth={2.5} />
+                        <X size={18} color="var(--text-muted)" strokeWidth={2} />
                       )}
                       <span>{feature.text}</span>
                     </li>

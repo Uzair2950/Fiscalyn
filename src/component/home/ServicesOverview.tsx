@@ -20,7 +20,8 @@ interface Service {
   subtitle: string;
   description: string;
   features: string[];
-  color: string;
+  accentColor: string;
+  softBg: string;
 }
 
 const ServicesOverview: React.FC = () => {
@@ -37,7 +38,8 @@ const ServicesOverview: React.FC = () => {
         "Multi-currency management",
         "Monthly reconciliations",
       ],
-      color: "#635bff",
+      accentColor: "var(--color-gold-primary)",
+      softBg: "var(--color-gold-soft)",
     },
     {
       icon: Shield,
@@ -48,10 +50,11 @@ const ServicesOverview: React.FC = () => {
         "Comprehensive Corporation Tax and Self-Assessment services. We ensure full compliance with HMRC regulations while identifying legal opportunities to optimize your tax position.",
       features: [
         "Corporation Tax returns",
-        "Year-end accounts",
+        "Year-end statutory accounts",
         "HMRC representation",
       ],
-      color: "#00d4ff",
+      accentColor: "var(--color-navy)",
+      softBg: "var(--color-navy-soft)",
     },
     {
       icon: BarChart3,
@@ -65,7 +68,8 @@ const ServicesOverview: React.FC = () => {
         "Budgeting & Forecasting",
         "Profitability analysis",
       ],
-      color: "#00e676",
+      accentColor: "var(--color-gold-primary)",
+      softBg: "var(--color-gold-soft)",
     },
     {
       icon: Users,
@@ -75,11 +79,12 @@ const ServicesOverview: React.FC = () => {
       description:
         "End-to-end payroll management for your team. We handle PAYE, payslips, and pension auto-enrolment so you remain a compliant and punctual employer.",
       features: [
-        "RTI submissions",
+        "RTI submissions to HMRC",
         "P60 & P45 processing",
         "Pension administration",
       ],
-      color: "#ffb300",
+      accentColor: "var(--color-navy)",
+      softBg: "var(--color-navy-soft)",
     },
     {
       icon: Receipt,
@@ -89,11 +94,12 @@ const ServicesOverview: React.FC = () => {
       description:
         "Navigating the complexities of VAT. From registration to quarterly MTD-compliant filings, we ensure you stay on the right side of HMRC while maximizing recovery.",
       features: [
-        "VAT registration",
-        "Quarterly returns",
+        "VAT registration & setup",
+        "Quarterly returns filing",
         "Scheme optimization",
       ],
-      color: "#f44336",
+      accentColor: "var(--color-red)",
+      softBg: "var(--color-red-soft)",
     },
     {
       icon: Briefcase,
@@ -107,7 +113,8 @@ const ServicesOverview: React.FC = () => {
         "Confirmation statements",
         "Registered office services",
       ],
-      color: "#9c27b0",
+      accentColor: "var(--color-gold-primary)",
+      softBg: "var(--color-gold-soft)",
     },
   ];
 
@@ -116,14 +123,14 @@ const ServicesOverview: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
         delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
@@ -136,29 +143,32 @@ const ServicesOverview: React.FC = () => {
 
   return (
     <section className="services-overview-section">
-      <div className="services-wrapper">
+      <div className="services-overview-container">
         <motion.div
-          className="services-header"
+          className="services-overview-header"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h2>
+          <div className="services-overview-badge">
+            <span className="services-overview-badge-text">Our Core Accounting Services</span>
+          </div>
+          <h2 className="services-overview-headline">
             Complete Financial Solutions
-            <span className="services-gradient-text">
+            <span className="services-overview-gradient-text">
               {" "}
-              Built for Modern Business
+              Built for UK Business
             </span>
           </h2>
-          <p className="services-intro">
-            From day-to-day operations to strategic planning, 47accountants
-            delivers end-to-end financial services that scale with your success.
+          <p className="services-overview-subheadline">
+            From day-to-day operations to strategic planning, 47 Accountants
+            delivers end-to-end accounting services that scale with your success.
           </p>
         </motion.div>
 
         <motion.div
-          className="services-grid"
+          className="services-overview-grid"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -169,73 +179,48 @@ const ServicesOverview: React.FC = () => {
               key={index}
               className="service-card"
               variants={itemVariants}
-              whileHover={{ y: -8 }}
+              whileHover={{ y: -6 }}
             >
-              <div className="service-card-header">
+              <div>
                 <div
-                  className="service-icon-wrapper"
-                  style={{ background: `${service.color}15` }}
+                  className="service-card-icon"
+                  style={{
+                    background: service.softBg,
+                    color: service.accentColor,
+                    borderColor: service.accentColor,
+                  }}
                 >
-                  <service.icon
-                    size={28}
-                    color={service.color}
-                    strokeWidth={2}
-                  />
+                  <service.icon size={26} strokeWidth={2} />
                 </div>
-                <span
-                  className="service-number"
-                  style={{ color: service.color }}
-                >
-                  {service.number}
-                </span>
-              </div>
+                <h3 className="service-card-title">{service.title}</h3>
+                <p className="service-card-desc">{service.description}</p>
 
-              <div className="service-card-content">
-                <h3 className="service-title">{service.title}</h3>
-                <p className="service-subtitle">{service.subtitle}</p>
-                <p className="service-description">{service.description}</p>
-
-                <ul className="service-features">
+                <ul className="service-detail-features">
                   {service.features.map((feature, idx) => (
-                    <li key={idx}>
-                      <CheckCircle size={16} color={service.color} />
+                    <li key={idx} className="service-detail-feature-item">
+                      <CheckCircle
+                        size={16}
+                        style={{ color: service.accentColor }}
+                        className="service-detail-feature-icon"
+                      />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <motion.div className="service-card-footer" whileHover={{ x: 5 }}>
-                <span style={{ color: service.color }}>Learn More</span>
-                <ArrowRight size={18} color={service.color} />
-              </motion.div>
+              <div style={{ marginTop: '20px' }}>
+                <a
+                  href="/services"
+                  className="service-card-link"
+                  style={{ color: service.accentColor }}
+                >
+                  <span>Learn More</span>
+                  <ArrowRight size={16} />
+                </a>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          className="services-cta"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="services-cta-content">
-            <h3>Ready to transform your financial operations?</h3>
-            <p>
-              Join thousands of businesses already using 47accountants to
-              streamline their finances.
-            </p>
-          </div>
-          <motion.button
-            className="services-cta-button"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => (window.location.href = "/services")}
-          >
-            <span>View All Services</span>
-            <ArrowRight size={20} />
-          </motion.button>
         </motion.div>
       </div>
     </section>

@@ -4,7 +4,6 @@ import AboutHero from "../component/about/AboutHero";
 import OurStory from "../component/about/OurStory";
 import ValuesSection from "../component/about/ValuesSection";
 import TeamSection from "../component/about/TeamSection";
-import CareersPreview from "../component/about/CareersPreview";
 import Footer from "../component/common/Footer";
 
 const About: React.FC = () => {
@@ -15,7 +14,6 @@ const About: React.FC = () => {
       <OurStory />
       <ValuesSection />
       <TeamSection />
-      <CareersPreview />
       <Footer />
     </>
   );

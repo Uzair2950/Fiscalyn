@@ -54,19 +54,18 @@ const PricingHero: React.FC<PricingHeroProps> = ({ isAnnual, setIsAnnual }) => {
           >
             <span className="pricing-hero-badge-dot" />
             <span className="pricing-hero-badge-text">
-              Simple, Transparent Pricing
+              Transparent Accounting Packages
             </span>
           </motion.div>
 
           <h1 className="pricing-hero-headline">
-            Simple, Transparent Fees.
-            <span className="pricing-hero-gradient-text"> No Surprises.</span>
+            Fixed Monthly Fees.
+            <span className="pricing-hero-gradient-text"> No Hidden Charges.</span>
           </h1>
 
           <p className="pricing-hero-description">
-            Choose the right accounting package for your business. All plans include
-            a dedicated qualified accountant, fixed monthly pricing, and a free
-            initial consultation with no obligation.
+            Choose the right accounting service plan for your business. All packages include
+            a dedicated ACCA-qualified UK accountant, full HMRC compliance, bookkeeping, and proactive tax advice.
           </p>
 
           <motion.div
@@ -94,7 +93,7 @@ const PricingHero: React.FC<PricingHeroProps> = ({ isAnnual, setIsAnnual }) => {
                 isAnnual ? "active" : ""
               }`}
             >
-              Annual
+              Annual (2 Months Free)
             </span>
             {isAnnual && (
               <motion.span
@@ -116,15 +115,15 @@ const PricingHero: React.FC<PricingHeroProps> = ({ isAnnual, setIsAnnual }) => {
           >
             <div className="pricing-hero-trust-item">
               <span className="pricing-hero-trust-icon">✓</span>
-              <span>No credit card required</span>
+              <span>Dedicated ACCA Accountant</span>
             </div>
             <div className="pricing-hero-trust-item">
               <span className="pricing-hero-trust-icon">✓</span>
-              <span>14-day free trial</span>
+              <span>Fixed Fee Guarantee</span>
             </div>
             <div className="pricing-hero-trust-item">
               <span className="pricing-hero-trust-icon">✓</span>
-              <span>Cancel anytime</span>
+              <span>HMRC & Statutory Compliance Included</span>
             </div>
           </motion.div>
         </motion.div>

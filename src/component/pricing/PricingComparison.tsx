@@ -245,8 +245,7 @@ const PricingComparison: React.FC = () => {
           </h2>
 
           <p className="pricing-comparison-subheadline">
-            See exactly what's included in each plan. All features are available
-            during your free trial.
+            Compare our fixed monthly accounting packages. Book a free consultation to find the right service plan for your business.
           </p>
         </motion.div>
 

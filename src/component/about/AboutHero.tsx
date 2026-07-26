@@ -82,27 +82,18 @@ const AboutHero: React.FC = () => {
               className="about-hero-primary-btn"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => {
-                const el = document.getElementsByClassName(
-                  "careers-preview-section",
-                )[0];
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => (window.location.href = "/contact")}
             >
-              <span>Join Our Team</span>
+              <span>Book Consultation</span>
               <ArrowRight size={20} />
             </motion.button>
             <motion.button
               className="about-hero-secondary-btn"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => {
-                const el =
-                  document.getElementsByClassName("our-story-section")[0];
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => (window.location.href = "/services")}
             >
-              Our Story
+              Our Services
             </motion.button>
           </motion.div>
 
@@ -142,7 +133,7 @@ const AboutHero: React.FC = () => {
           <div className="about-hero-image-wrapper">
             <img
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop"
-              alt="47accountants Team"
+              alt="47 Accountants Team"
               className="about-hero-image"
             />
             <div className="about-hero-image-overlay" />
@@ -160,11 +151,8 @@ const AboutHero: React.FC = () => {
               ease: "easeInOut",
             }}
           >
-            <div
-              className="floating-card-icon"
-              style={{ background: "#635bff" }}
-            >
-              <Target size={20} color="#fff" />
+            <div className="floating-card-icon">
+              <Target size={20} />
             </div>
             <div className="floating-card-content">
               <div className="floating-card-label">Mission-Driven</div>
@@ -185,15 +173,12 @@ const AboutHero: React.FC = () => {
               delay: 1,
             }}
           >
-            <div
-              className="floating-card-icon"
-              style={{ background: "#00d4ff" }}
-            >
-              <Users size={20} color="#fff" />
+            <div className="floating-card-icon">
+              <Users size={20} />
             </div>
             <div className="floating-card-content">
-              <div className="floating-card-label">Global Team</div>
-              <div className="floating-card-value">50+</div>
+              <div className="floating-card-label">UK Experts</div>
+              <div className="floating-card-value">ACCA</div>
             </div>
           </motion.div>
         </motion.div>

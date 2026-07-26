@@ -30,89 +30,88 @@ const FAQSection: React.FC = () => {
     {
       category: "Getting Started",
       icon: Sparkles,
-      color: "#635bff",
+      color: "var(--color-gold-primary)",
       questions: [
         {
-          question: "How quickly can I get started with 47accountants?",
+          question: "How quickly can I get started with 47 Accountants?",
           answer:
-            "You can be up and running in under 5 minutes! Simply sign up for a free trial, connect your bank accounts and accounting software through our one-click integrations, and you're ready to go. Our onboarding wizard guides you through each step, and our support team is available 24/7 if you need assistance.",
+            "Getting started is simple. Contact us for an initial consultation, and our qualified accountants will manage your complete onboarding and hassle-free transition from your previous accountant within 2–3 working days.",
         },
         {
-          question: "Do I need to install any software?",
+          question: "Do I need to manage my own accounting software?",
           answer:
-            "No installation required! 47accountants is a cloud-based platform accessible from any device with an internet connection. Simply log in through your web browser or use our mobile apps for iOS and Android. All your data syncs automatically across all devices in real-time.",
+            "No. As part of our service, we set up, configure, and maintain leading UK cloud accounting platforms (such as Xero or QuickBooks) for you. If you already have software set up, we seamlessly take over its management.",
         },
         {
-          question: "Can I import my existing financial data?",
+          question: "How is my historical financial data migrated?",
           answer:
-            "Absolutely! 47accountants supports bulk imports from Excel, CSV, and all major accounting software including Xero, QuickBooks, Sage, and more. Our smart import tool automatically maps your data fields and validates everything before importing. Historical data from the past 7 years can be migrated seamlessly.",
+            "Our team of qualified accountants handles the complete migration of your historical books, tax records, and payroll data, ensuring full HMRC compliance and continuous audit readiness.",
         },
       ],
     },
     {
-      category: "Pricing & Plans",
+      category: "Pricing & Fixed Fees",
       icon: Zap,
-      color: "#00d4ff",
+      color: "var(--color-gold-primary)",
       questions: [
         {
-          question: "What's included in the free trial?",
+          question: "Are your monthly accounting fees fixed?",
           answer:
-            "Your 14-day free trial includes full access to all Premium features with no credit card required. You'll get unlimited users, all integrations, real-time analytics, automated compliance, and priority support. No features are locked, and you can upgrade, downgrade, or cancel anytime during or after the trial.",
+            "Yes! We provide transparent, agreed-upon fixed monthly pricing with no hidden charges, unexpected billing, or setup fees. You get comprehensive accounting, tax filing, and dedicated advice included.",
         },
         {
-          question: "Are there any hidden fees or charges?",
+          question: "What is included in your monthly packages?",
           answer:
-            "Never! We believe in transparent pricing with no surprises. The price you see is the price you pay—no setup fees, no hidden charges, no per-transaction costs. All features, integrations, and updates are included in your subscription. We only charge extra for additional storage beyond 100GB.",
+            "Our packages include dedicated accountant support, complete bookkeeping, VAT returns, Corporation Tax, Year-End statutory accounts, payroll processing, and proactive tax optimization advice.",
         },
         {
-          question: "Can I change my plan at any time?",
+          question: "Can I upgrade or adjust my service package as my business grows?",
           answer:
-            "Yes, you have complete flexibility! Upgrade or downgrade your plan anytime from your account settings. Changes take effect immediately, and we'll prorate any charges or credits automatically. If you downgrade, you'll retain access to premium features until the end of your current billing cycle.",
+            "Absolutly. Whether you are expanding from a sole trader to a limited company or require fractional CFO advisory, we adapt your service plan smoothly to match your evolving business requirements.",
         },
       ],
     },
     {
-      category: "Security & Compliance",
+      category: "Compliance & Security",
       icon: Shield,
-      color: "#00e676",
+      color: "var(--color-gold-primary)",
       questions: [
         {
-          question: "How secure is my financial data?",
+          question: "Are your accountants qualified and registered?",
           answer:
-            "Your data security is our top priority. We use bank-grade 256-bit SSL encryption for all data transmission and AES-256 encryption for data at rest. Our infrastructure is SOC 2 Type II certified, ISO 27001 compliant, and hosted on enterprise-grade servers with 99.9% uptime SLA. We perform regular third-party security audits and penetration testing.",
+            "Yes, 47 Accountants is powered by ACCA-qualified UK accountants, fully registered with HMRC and adhering strictly to UK accounting standards and Companies House regulations.",
         },
         {
-          question: "Is 47accountants compliant with UK regulations?",
+          question: "Is 47 Accountants compliant with UK MTD and HMRC rules?",
           answer:
-            "Yes, we're fully compliant with all UK financial regulations including Making Tax Digital (MTD), GDPR, FCA guidelines, and Companies House requirements. We automatically handle HMRC submissions, VAT returns, CIS reporting, and all statutory filings. Our compliance engine is updated in real-time whenever regulations change.",
+            "We handle 100% of your HMRC statutory filings, Making Tax Digital (MTD) compliance, VAT submissions, and CIS reporting, keeping your business fully compliant and penalty-free.",
         },
         {
-          question: "Who has access to my data?",
+          question: "How is my confidential financial information protected?",
           answer:
-            "Only you and the team members you explicitly authorize have access to your data. Our staff cannot view your financial information unless you grant permission for support purposes. We never sell, share, or use your data for any purpose other than providing our service. You maintain complete ownership and can export or delete your data anytime.",
+            "We enforce bank-grade 256-bit encryption and strict GDPR controls. Your personal and corporate financial data is accessible only by your dedicated accounting team and stored on secure UK enterprise servers.",
         },
       ],
     },
     {
-      category: "Features & Integrations",
+      category: "Services & Advisory",
       icon: HelpCircle,
-      color: "#ff6b6b",
+      color: "var(--color-gold-primary)",
       questions: [
         {
-          question:
-            "What accounting software does 47accountants integrate with?",
+          question: "Which accounting platforms do your accountants work with?",
           answer:
-            "We integrate with 100+ platforms including Xero, QuickBooks, Sage, FreeAgent, KashFlow, and all major UK accounting software. We also connect with payment processors (Stripe, PayPal, Square), banks (Open Banking API), e-commerce platforms (Shopify, WooCommerce), and CRM systems (Salesforce, HubSpot). New integrations are added monthly based on customer requests.",
+            "Our accounting team works with all major UK platforms including Xero, QuickBooks, Sage, FreeAgent, KashFlow, Dext, and AutoEntry. We optimize your workflow across whatever software you prefer.",
         },
         {
-          question: "Can I customize reports and dashboards?",
+          question: "Will I have a dedicated accountant assigned to my business?",
           answer:
-            "Absolutely! Our platform offers fully customizable dashboards with drag-and-drop widgets, custom report builders, and white-label options. Create unlimited custom reports, save your preferred views, schedule automated report delivery, and export to Excel, PDF, or CSV. You can also set up custom KPI tracking and automated alerts.",
+            "Yes. You will be assigned a named, dedicated UK accountant who understands your industry, answers your calls and emails promptly, and offers proactive advice throughout the year.",
         },
         {
-          question: "Do you offer customer support?",
+          question: "Do you assist with HMRC tax audits and enquiries?",
           answer:
-            "We provide 24/7 customer support via live chat, email, and phone for all plans. Premium customers get priority support with <2 hour response time and a dedicated account manager. We also offer free onboarding sessions, comprehensive documentation, video tutorials, webinar training, and an active community forum.",
+            "Yes. In the event of an HMRC enquiry or tax review, your dedicated accountant will represent your business, manage all communications, and present all necessary documentation directly to HMRC.",
         },
       ],
     },
@@ -175,21 +174,23 @@ const FAQSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.div className="faq-badge">
-            <HelpCircle size={16} color="#635bff" />
+            <HelpCircle size={16} color="var(--color-gold-primary)" />
             <span className="faq-badge-text">Frequently Asked Questions</span>
           </motion.div>
           <h2 className="faq-headline">
             Everything You Need to Know
-            <span className="faq-gradient-text"> About 47accountants</span>
+            <span className="faq-gradient-text"> About 47 Accountants</span>
           </h2>
           <p className="faq-subheadline">
-            Got questions? We've got answers. Can't find what you're looking
-            for?
-            <span className="faq-contact-link">
+            Have questions about switching to 47 Accountants or our accounting services?
+            <span
+              className="faq-contact-link"
+              onClick={() => (window.location.href = "/contact")}
+            >
               {" "}
-              Contact our support team
+              Speak with an accountant
             </span>{" "}
-            anytime.
+            today.
           </p>
         </motion.div>
 
@@ -204,18 +205,8 @@ const FAQSection: React.FC = () => {
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
             >
               <div className="faq-category-header">
-                <div
-                  className="faq-category-icon"
-                  style={{
-                    background: `${category.color}15`,
-                    border: `1px solid ${category.color}30`,
-                  }}
-                >
-                  <category.icon
-                    size={20}
-                    color={category.color}
-                    strokeWidth={2}
-                  />
+                <div className="faq-category-icon">
+                  <category.icon size={20} strokeWidth={2} />
                 </div>
                 <h3 className="faq-category-title">{category.category}</h3>
               </div>
@@ -225,13 +216,7 @@ const FAQSection: React.FC = () => {
                   const globalIndex = categoryIndex * 100 + questionIndex;
                   const isOpen = openIndex === globalIndex;
                   return (
-                    <motion.div
-                      key={questionIndex}
-                      className="faq-item"
-                      whileHover={{
-                        backgroundColor: "rgba(99, 91, 255, 0.02)",
-                      }}
-                    >
+                    <motion.div key={questionIndex} className="faq-item">
                       <button
                         className="faq-question-button"
                         onClick={() =>
@@ -251,13 +236,9 @@ const FAQSection: React.FC = () => {
                           className="faq-icon-wrapper"
                         >
                           {isOpen ? (
-                            <Minus
-                              size={20}
-                              color={category.color}
-                              strokeWidth={2.5}
-                            />
+                            <Minus size={20} strokeWidth={2.5} />
                           ) : (
-                            <Plus size={20} color="#525f7f" strokeWidth={2.5} />
+                            <Plus size={20} strokeWidth={2.5} />
                           )}
                         </motion.div>
                       </button>
@@ -276,10 +257,7 @@ const FAQSection: React.FC = () => {
                               animate={{ y: 0 }}
                               transition={{ duration: 0.3, delay: 0.1 }}
                             >
-                              <div
-                                className="faq-answer-border"
-                                style={{ background: category.color }}
-                              />
+                              <div className="faq-answer-border" />
                               <p className="faq-answer-text">{faq.answer}</p>
                             </motion.div>
                           </motion.div>
@@ -301,10 +279,9 @@ const FAQSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <div className="faq-cta-content">
-            <h3 className="faq-cta-headline">Still have questions?</h3>
+            <h3 className="faq-cta-headline">Ready to discuss your accounting needs?</h3>
             <p className="faq-cta-text">
-              Our support team is here to help. Get in touch and we'll respond
-              within 2 hours.
+              Our team of dedicated accountants is here to help optimize your business finance and tax structure.
             </p>
           </div>
           <div className="faq-cta-buttons">
@@ -314,15 +291,15 @@ const FAQSection: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               onClick={() => (window.location.href = "/contact")}
             >
-              Contact Support
+              Book Free Consultation
             </motion.button>
             <motion.button
               className="faq-secondary-button"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => (window.location.href = "/contact")}
+              onClick={() => (window.location.href = "/services")}
             >
-              Schedule a Demo
+              View Services
             </motion.button>
           </div>
         </motion.div>

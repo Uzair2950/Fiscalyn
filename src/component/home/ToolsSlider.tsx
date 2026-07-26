@@ -42,8 +42,8 @@ const ToolsSlider: React.FC = () => {
     },
     {
       id: 7,
-      name: "Slack",
-      logo: "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg",
+      name: "FreeAgent",
+      logo: "https://cdn.worldvectorlogo.com/logos/freeagent.svg",
     },
     {
       id: 8,
@@ -76,12 +76,11 @@ const ToolsSlider: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2>
-            Seamlessly Integrated with
-            <span className="tools-gradient-text"> Industry-Leading Tools</span>
+            We Work With All Major
+            <span className="tools-gradient-text"> Accounting Platforms & Software</span>
           </h2>
           <p className="tools-intro">
-            Connect your existing financial stack in minutes. 47accountants
-            works flawlessly with the tools you already love.
+            Our qualified accountants seamlessly manage your finances across industry-leading UK accounting software, payment systems, and financial platforms.
           </p>
         </motion.div>
 
@@ -128,13 +127,12 @@ const ToolsSlider: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <p className="tools-cta-text">
-            <strong>100+ integrations</strong> and counting. Can't find your
-            tool?{" "}
+            <strong>Supported across 100+ UK financial systems</strong>. Using custom software?{" "}
             <span
               className="tools-cta-link"
               onClick={() => (window.location.href = "/contact")}
             >
-              Request an integration →
+              Ask our accounting team →
             </span>
           </p>
         </motion.div>

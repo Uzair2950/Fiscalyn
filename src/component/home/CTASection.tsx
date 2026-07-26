@@ -97,7 +97,7 @@ const CTASection: React.FC = () => {
           </motion.h2>
 
           <motion.p variants={itemVariants} className="cta-subheadline">
-            Join over 1,200 UK businesses who trust 47accountants with their
+            Join over 1,200 UK businesses who trust 47 Accountants with their
             accounting, tax compliance, and financial planning. Book your free
             consultation today.
           </motion.p>
