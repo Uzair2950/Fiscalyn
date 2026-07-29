@@ -9,7 +9,7 @@ const OurStory: React.FC = () => {
       year: "2013",
       title: "Founded in London",
       description:
-        "47 Accountants was founded by a team of ACCA-qualified accountants with a vision to provide expert, jargon-free accounting services to UK businesses.",
+        "47 Accountants was founded by a team of ACCA-qualified accountants with a vision to provide expert, jargon-free accounting services to global businesses.",
       icon: Rocket,
     },
     {
@@ -30,7 +30,7 @@ const OurStory: React.FC = () => {
       year: "2025",
       title: "Growing with Our Clients",
       description:
-        "Now serving 1,200+ UK businesses with a 97% client retention rate, combining expert accountants with smart cloud accounting technology.",
+        "Now serving 1,200+ global businesses with a 97% client retention rate, combining expert accountants with smart cloud accounting technology.",
       icon: TrendingUp,
     },
   ];
@@ -52,7 +52,7 @@ const OurStory: React.FC = () => {
 
           <p className="story-text">
             What started as a small accountancy firm in London has grown into a
-            practice trusted by over 1,200 UK businesses—built on expertise,
+            practice trusted by over 1,200 global businesses—built on expertise,
             integrity, and results.
           </p>
         </motion.div>

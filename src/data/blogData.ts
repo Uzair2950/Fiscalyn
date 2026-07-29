@@ -1,3 +1,10 @@
+import teamMember1 from "../assets/image/team/teamMember1.webp";
+import teamMember2 from "../assets/image/team/teamMember2.webp";
+import teamMember3 from "../assets/image/team/teamMember3.webp";
+import teamMember4 from "../assets/image/team/teamMember4.webp";
+import teamMember5 from "../assets/image/team/teamMember5.webp";
+import teamMember6 from "../assets/image/team/teamMember6.webp";
+
 export interface BlogSection {
   heading: string;
   body: string;
@@ -66,12 +73,12 @@ const UNIQUE_FINANCE_IMAGES = [
 ];
 
 const AUTHORS = [
-  { name: "Muhammad Sheheryar Khan", role: "CEO & Senior Financial Advisor", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&q=80&fm=jpg&fit=crop" },
-  { name: "Khurram Iqbal", role: "Portfolio Manager & Tax Strategist", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&q=80&fm=jpg&fit=crop" },
-  { name: "Bilal Ahmed", role: "Portfolio Manager & Audit Specialist", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80&fm=jpg&fit=crop" },
-  { name: "Mahmood Alam", role: "Chief Business Development Officer", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80&fm=jpg&fit=crop" },
-  { name: "Zeeshan Ghafoor", role: "Portfolio Manager & Practice Advisory", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80&fm=jpg&fit=crop" },
-  { name: "Uzair Muhammad", role: "Chief Technology Officer", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&q=80&fm=jpg&fit=crop" },
+  { name: "Muhammad Sheheryar Khan", role: "CEO & Senior Financial Advisor", avatar: teamMember1 },
+  { name: "Khurram Iqbal", role: "Portfolio Manager & Tax Strategist", avatar: teamMember2 },
+  { name: "Bilal Ahmed", role: "Portfolio Manager & Audit Specialist", avatar: teamMember3 },
+  { name: "Mahmood Alam", role: "Chief Business Development Officer", avatar: teamMember4 },
+  { name: "Zeeshan Ghafoor", role: "Portfolio Manager & Practice Advisory", avatar: teamMember6 },
+  { name: "Uzair Muhammad", role: "Chief Technology Officer", avatar: teamMember5 },
 ];
 
 interface CoreTopic {

@@ -28,7 +28,7 @@ const BlogDetail: React.FC = () => {
               Article Not Found
             </h1>
             <p style={{ color: "var(--text-secondary)", marginBottom: "30px" }}>
-              The UK accounting article you are looking for might have been moved or updated.
+              The global accounting article you are looking for might have been moved or updated.
             </p>
             <Link to="/blog" className="back-to-blogs-btn">
               <ArrowLeft size={16} />
@@ -133,7 +133,7 @@ const BlogDetail: React.FC = () => {
               <div className="key-takeaways-box">
                 <div className="key-takeaways-header">
                   <ShieldCheck size={24} />
-                  <span>Key Takeaways for UK Businesses</span>
+                  <span>Key Takeaways for Global Businesses</span>
                 </div>
                 <ul className="key-takeaways-list">
                   {post.keyTakeaways.map((takeaway, idx) => (
@@ -157,7 +157,7 @@ const BlogDetail: React.FC = () => {
 
               {/* Consultation Call to Action */}
               <div className="blog-consultation-cta">
-                <h3>Need Strategic UK Tax or Outsourcing Guidance?</h3>
+                <h3>Need Strategic Global Tax or Outsourcing Guidance?</h3>
                 <p>
                   Our team of FCCA and CTA specialists can help your business or accountancy practice optimize profits, ensure 100% HMRC compliance, and scale efficiently.
                 </p>

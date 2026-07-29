@@ -163,7 +163,7 @@ const TestimonialsSection: React.FC = () => {
           </h2>
 
           <p className="testimonials-subheadline">
-            Join hundreds of satisfied UK businesses who have transformed their accounting with 47 Accountants.
+            Join hundreds of satisfied global businesses who have transformed their accounting with 47 Accountants.
           </p>
         </motion.div>
 

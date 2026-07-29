@@ -62,7 +62,7 @@ const ServicesHero: React.FC = () => {
             Expert Accounting Services
             <span className="services-hero-gradient-text">
               {" "}
-              for UK Businesses
+              for Global Businesses
             </span>
           </h1>
 

@@ -2,6 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import "../../css/home/tools-slider.css";
 
+import xeroLogo from "../../assets/image/toolsSlider/xero_logo.webp";
+import sageLogo from "../../assets/image/toolsSlider/sage_logo.webp";
+import paypalLogo from "../../assets/image/toolsSlider/paypal_logo.webp";
+import squareLogo from "../../assets/image/toolsSlider/square_logo.webp";
+import freeAgentLogo from "../../assets/image/toolsSlider/freeagent_logo.webp";
+import hubSpotLogo from "../../assets/image/toolsSlider/hubstop_logo.webp";
+
 interface Tool {
   id: number;
   name: string;
@@ -13,7 +20,7 @@ const ToolsSlider: React.FC = () => {
     {
       id: 1,
       name: "Xero",
-      logo: "https://cdn.worldvectorlogo.com/logos/xero-2.svg",
+      logo: xeroLogo,
     },
     {
       id: 2,
@@ -28,22 +35,22 @@ const ToolsSlider: React.FC = () => {
     {
       id: 4,
       name: "Sage",
-      logo: "https://cdn.worldvectorlogo.com/logos/sage-50.svg",
+      logo: sageLogo,
     },
     {
       id: 5,
       name: "PayPal",
-      logo: "https://cdn.worldvectorlogo.com/logos/paypal-2.svg",
+      logo: paypalLogo,
     },
     {
       id: 6,
       name: "Square",
-      logo: "https://cdn.worldvectorlogo.com/logos/square-2.svg",
+      logo: squareLogo,
     },
     {
       id: 7,
       name: "FreeAgent",
-      logo: "https://cdn.worldvectorlogo.com/logos/freeagent.svg",
+      logo: freeAgentLogo,
     },
     {
       id: 8,
@@ -53,7 +60,7 @@ const ToolsSlider: React.FC = () => {
     {
       id: 9,
       name: "HubSpot",
-      logo: "https://cdn.worldvectorlogo.com/logos/hubspot-2.svg",
+      logo: hubSpotLogo,
     },
     {
       id: 10,
@@ -80,7 +87,7 @@ const ToolsSlider: React.FC = () => {
             <span className="tools-gradient-text"> Accounting Platforms & Software</span>
           </h2>
           <p className="tools-intro">
-            Our qualified accountants seamlessly manage your finances across industry-leading UK accounting software, payment systems, and financial platforms.
+            Our qualified accountants seamlessly manage your finances across industry-leading global accounting software, payment systems, and financial platforms.
           </p>
         </motion.div>
 
@@ -127,7 +134,7 @@ const ToolsSlider: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <p className="tools-cta-text">
-            <strong>Supported across 100+ UK financial systems</strong>. Using custom software?{" "}
+            <strong>Supported across 100+ global financial systems</strong>. Using custom software?{" "}
             <span
               className="tools-cta-link"
               onClick={() => (window.location.href = "/contact")}

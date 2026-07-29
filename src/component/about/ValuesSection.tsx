@@ -63,7 +63,7 @@ const ValuesSection: React.FC = () => {
           </h2>
 
           <p className="values-subheadline">
-            These core values guide everything we do—from how we serve our UK
+            These core values guide everything we do—from how we serve our global
             clients to how we support and grow our accountancy team.
           </p>
         </motion.div>

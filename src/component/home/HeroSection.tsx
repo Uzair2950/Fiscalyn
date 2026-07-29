@@ -78,18 +78,18 @@ const HeroSection: React.FC = () => {
           <motion.div variants={itemVariants} className="hero-badge">
             <span className="hero-badge-dot" />
             <span className="hero-badge-text">
-              Trusted by 1,200+ UK Businesses
+              Trusted by 1,200+ Global Businesses
             </span>
           </motion.div>
 
           <motion.h1 variants={itemVariants}>
             Expert Accounting &amp; Tax Services for
-            <span className="hero-gradient-text"> UK Businesses</span>
+            <span className="hero-gradient-text"> Global Businesses</span>
           </motion.h1>
 
           <motion.p variants={itemVariants} className="hero-description">
-            47accountants delivers expert bookkeeping, tax compliance, payroll,
-            and business advisory services tailored for UK businesses. From HMRC
+            47 Accountants delivers expert bookkeeping, tax compliance, payroll,
+            and business advisory services tailored for global businesses. From HMRC
             submissions to year-end accounts—we handle every detail.
           </motion.p>
 

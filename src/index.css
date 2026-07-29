@@ -63,6 +63,7 @@ a {
   text-decoration: inherit;
   transition: color 0.2s ease;
 }
+
 a:hover {
   color: var(--color-gold-hover);
 }
@@ -85,12 +86,15 @@ button {
   cursor: pointer;
   transition: border-color 0.25s, background-color 0.25s;
 }
+
 button:hover {
   border-color: var(--color-gold-primary);
 }
+
 button:focus {
   outline: none;
 }
+
 button:focus-visible {
   outline: 2px solid var(--color-gold-primary);
   outline-offset: 2px;

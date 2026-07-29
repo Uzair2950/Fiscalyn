@@ -128,7 +128,7 @@ const Blog: React.FC = () => {
         {/* Results Meta Info */}
         <div className="blog-results-meta">
           <span>
-            Showing <strong>{filteredPosts.length}</strong> UK accounting articles
+            Showing <strong>{filteredPosts.length}</strong> global accounting articles
             {selectedCategory !== "All" && ` in "${selectedCategory}"`}
           </span>
           <span>

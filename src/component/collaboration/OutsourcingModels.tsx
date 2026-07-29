@@ -23,7 +23,7 @@ const OutsourcingModels: React.FC = () => {
       icon: Layers,
       title: "Peak Season Subcontracting",
       description:
-        "Scale your practice instantly during busy January tax deadlines or quarterly VAT rushes. Outsource overflow workload to ACCA-qualified UK tax professionals.",
+        "Scale your practice instantly during busy January tax deadlines or quarterly VAT rushes. Outsource overflow workload to ACCA-qualified tax professionals.",
       features: [
         "On-demand capacity scaling",
         "Self-Assessment tax return filing",
@@ -39,7 +39,7 @@ const OutsourcingModels: React.FC = () => {
       description:
         "Assign a dedicated pod of senior accountants and managers exclusively to your practice. They function as a seamless extension of your internal team.",
       features: [
-        "Dedicated senior UK accountant manager",
+        "Dedicated senior accountant manager",
         "Custom Workflow & SLA procedures",
         "Daily progress & capacity syncs",
         "Up to 60% operational cost savings",

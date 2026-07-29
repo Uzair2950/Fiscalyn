@@ -69,7 +69,7 @@ const ServicesCTA: React.FC = () => {
           </h2>
 
           <p className="services-cta-description">
-            Join over 1,200 UK businesses who trust 47 Accountants with their
+            Join over 1,200 global businesses who trust 47 Accountants with their
             accounting, tax, and financial planning. Book your free
             consultation—no commitment required.
           </p>

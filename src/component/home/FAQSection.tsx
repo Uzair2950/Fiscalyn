@@ -40,7 +40,7 @@ const FAQSection: React.FC = () => {
         {
           question: "Do I need to manage my own accounting software?",
           answer:
-            "No. As part of our service, we set up, configure, and maintain leading UK cloud accounting platforms (such as Xero or QuickBooks) for you. If you already have software set up, we seamlessly take over its management.",
+            "No. As part of our service, we set up, configure, and maintain leading global cloud accounting platforms (such as Xero or QuickBooks) for you. If you already have software set up, we seamlessly take over its management.",
         },
         {
           question: "How is my historical financial data migrated?",
@@ -79,17 +79,17 @@ const FAQSection: React.FC = () => {
         {
           question: "Are your accountants qualified and registered?",
           answer:
-            "Yes, 47 Accountants is powered by ACCA-qualified UK accountants, fully registered with HMRC and adhering strictly to UK accounting standards and Companies House regulations.",
+            "Yes, 47 Accountants is powered by ACCA-qualified accountants, fully registered and adhering strictly to global accounting standards and corporate regulations.",
         },
         {
-          question: "Is 47 Accountants compliant with UK MTD and HMRC rules?",
+          question: "Is 47 Accountants compliant with global tax and regulatory rules?",
           answer:
             "We handle 100% of your HMRC statutory filings, Making Tax Digital (MTD) compliance, VAT submissions, and CIS reporting, keeping your business fully compliant and penalty-free.",
         },
         {
           question: "How is my confidential financial information protected?",
           answer:
-            "We enforce bank-grade 256-bit encryption and strict GDPR controls. Your personal and corporate financial data is accessible only by your dedicated accounting team and stored on secure UK enterprise servers.",
+            "We enforce bank-grade 256-bit encryption and strict GDPR controls. Your personal and corporate financial data is accessible only by your dedicated accounting team and stored on secure enterprise servers.",
         },
       ],
     },
@@ -101,12 +101,12 @@ const FAQSection: React.FC = () => {
         {
           question: "Which accounting platforms do your accountants work with?",
           answer:
-            "Our accounting team works with all major UK platforms including Xero, QuickBooks, Sage, FreeAgent, KashFlow, Dext, and AutoEntry. We optimize your workflow across whatever software you prefer.",
+            "Our accounting team works with all major global platforms including Xero, QuickBooks, Sage, FreeAgent, KashFlow, Dext, and AutoEntry. We optimize your workflow across whatever software you prefer.",
         },
         {
           question: "Will I have a dedicated accountant assigned to my business?",
           answer:
-            "Yes. You will be assigned a named, dedicated UK accountant who understands your industry, answers your calls and emails promptly, and offers proactive advice throughout the year.",
+            "Yes. You will be assigned a named, dedicated accountant who understands your industry, answers your calls and emails promptly, and offers proactive advice throughout the year.",
         },
         {
           question: "Do you assist with HMRC tax audits and enquiries?",

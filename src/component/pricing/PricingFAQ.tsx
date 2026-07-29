@@ -30,7 +30,7 @@ const PricingFAQ: React.FC = () => {
     {
       question: "Do I need to provide my own accounting software?",
       answer:
-        "No. Your monthly fee includes full access to our recommended cloud accounting platform (such as Xero or QuickBooks), which we'll set up and maintain for you. If you already use a platform, we can work with that too—we support all major UK-compatible accounting software.",
+        "No. Your monthly fee includes full access to our recommended cloud accounting platform (such as Xero or QuickBooks), which we'll set up and maintain for you. If you already use a platform, we can work with that too—we support all major global accounting software.",
     },
     {
       question: "Will I have a dedicated accountant?",

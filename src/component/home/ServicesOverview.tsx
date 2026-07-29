@@ -158,7 +158,7 @@ const ServicesOverview: React.FC = () => {
             Complete Financial Solutions
             <span className="services-overview-gradient-text">
               {" "}
-              Built for UK Business
+              Built for Global Businesses
             </span>
           </h2>
           <p className="services-overview-subheadline">

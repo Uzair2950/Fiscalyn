@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 import "../../css/about/team-section.css";
 
 import teamMember1 from "../../assets/image/team/teamMember1.webp";
 import teamMember2 from "../../assets/image/team/teamMember2.webp";
-import teamMember3 from "../../assets/image/team/teamMember3.jpeg";
+import teamMember3 from "../../assets/image/team/teamMember3.webp";
 import teamMember4 from "../../assets/image/team/teamMember4.webp";
 import teamMember5 from "../../assets/image/team/teamMember5.webp";
-import teamMember6 from "../../assets/image/team/teamMember6.jpeg";
+import teamMember6 from "../../assets/image/team/teamMember6.webp";
 
 const TeamSection: React.FC = () => {
   const team = [
@@ -17,43 +17,42 @@ const TeamSection: React.FC = () => {
       role: "CEO",
       image: teamMember1,
       linkedin: "#",
-      twitter: "#",
+      instagram: "#",
     },
     {
       name: "Khurram iqbal",
       role: "Portfolio Manager",
       image: teamMember2,
       linkedin: "#",
-      twitter: "#",
+      instagram: "#",
     },
     {
       name: "Bilal Ahmed",
       role: "Portfolio Manager",
       image: teamMember3,
       linkedin: "#",
-      twitter: "#",
+      instagram: "#",
     },
     {
       name: "Mahmood Alam",
       role: "Chief Business Development Officer",
       image: teamMember4,
       linkedin: "#",
-      twitter: "#",
+      instagram: "#",
     },
     {
       name: "Zeeshan Ghafoor",
       role: "Portfolio Manager",
       image: teamMember6,
       linkedin: "#",
-      twitter: "#",
-
+      instagram: "#",
     },
     {
       name: "Uzair Muhammad",
       role: "Chief Technology Officer",
       image: teamMember5,
       linkedin: "#",
-      twitter: "#",
+      instagram: "#",
     },
   ];
 
@@ -102,11 +101,11 @@ const TeamSection: React.FC = () => {
                 />
                 <div className="team-overlay">
                   <div className="team-social">
-                    <a href={member.linkedin} className="team-social-link">
+                    <a href={member.linkedin} className="team-social-link" aria-label="LinkedIn">
                       <Linkedin size={18} />
                     </a>
-                    <a href={member.twitter} className="team-social-link">
-                      <Twitter size={18} />
+                    <a href={member.instagram} className="team-social-link" aria-label="Instagram">
+                      <Instagram size={18} />
                     </a>
                   </div>
                 </div>

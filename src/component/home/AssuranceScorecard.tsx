@@ -68,7 +68,7 @@ const AssuranceScorecard: React.FC = () => {
       value: useCountUp(12),
       suffix: "+",
       description:
-        "Over a decade of specialist expertise in UK accountancy, tax compliance, and business advisory.",
+        "Over a decade of specialist expertise in global accountancy, tax compliance, and business advisory.",
       color: "var(--color-gold-primary)",
     },
     {
@@ -77,7 +77,7 @@ const AssuranceScorecard: React.FC = () => {
       value: useCountUp(1200),
       suffix: "+",
       description:
-        "Trusted by over 1,200 UK businesses—from sole traders and startups to growing SMEs.",
+        "Trusted by over 1,200 global businesses—from sole traders and startups to growing SMEs.",
       color: "var(--color-navy-light)",
     },
     {
@@ -139,7 +139,7 @@ const AssuranceScorecard: React.FC = () => {
           </div>
 
           <h2 className="scorecard-headline">
-            Why UK Businesses
+            Why Global Businesses
             <span className="scorecard-gradient-text">
               {" "}
               Trust 47 Accountants

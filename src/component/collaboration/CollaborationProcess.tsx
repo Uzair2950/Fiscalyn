@@ -8,7 +8,7 @@ const CollaborationProcess: React.FC = () => {
       num: "01",
       title: "Practice NDA & Agreement",
       description:
-        "We sign a comprehensive UK non-disclosure & subcontracting agreement protecting your practice IP, client ownership, and data privacy.",
+        "We sign a comprehensive non-disclosure & subcontracting agreement protecting your practice IP, client ownership, and data privacy.",
     },
     {
       num: "02",

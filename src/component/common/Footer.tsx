@@ -6,8 +6,7 @@ import {
   Mail,
   Phone,
   Linkedin,
-  Twitter,
-  Github,
+  Instagram,
   LucideIcon,
 } from "lucide-react";
 import "../../css/common/footer.css";
@@ -66,8 +65,7 @@ const Footer: React.FC = () => {
 
   const socialLinks: SocialLink[] = [
     { icon: Linkedin, url: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Twitter, url: "https://twitter.com", label: "Twitter" },
-    { icon: Github, url: "https://github.com", label: "GitHub" },
+    { icon: Instagram, url: "https://instagram.com", label: "Instagram" },
   ];
 
   const containerVariants: Variants = {
@@ -184,7 +182,7 @@ const Footer: React.FC = () => {
           <motion.div className="footer-newsletter" variants={itemVariants}>
             <h4 className="footer-column-title">Stay Updated</h4>
             <p className="newsletter-description">
-              Get the latest UK tax updates, accounting tips, and business
+              Get the latest global tax updates, accounting tips, and business
               finance insights.
             </p>
 

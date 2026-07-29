@@ -88,7 +88,7 @@ const CTASection: React.FC = () => {
         >
           <motion.div variants={itemVariants} className="cta-badge">
             <span className="cta-badge-icon">✨</span>
-            <span className="cta-badge-text">Expert UK Accountants</span>
+            <span className="cta-badge-text">Expert Global Accountants</span>
           </motion.div>
 
           <motion.h2 variants={itemVariants} className="cta-headline">
@@ -97,7 +97,7 @@ const CTASection: React.FC = () => {
           </motion.h2>
 
           <motion.p variants={itemVariants} className="cta-subheadline">
-            Join over 1,200 UK businesses who trust 47 Accountants with their
+            Join over 1,200 global businesses who trust 47 Accountants with their
             accounting, tax compliance, and financial planning. Book your free
             consultation today.
           </motion.p>

@@ -147,7 +147,7 @@ const ServiceDetail: React.FC = () => {
 
           <p className="service-detail-subheadline">
             From bookkeeping and tax compliance to payroll, VAT, and business
-            advisory— 47 Accountants provides every accounting service your UK
+            advisory— 47 Accountants provides every accounting service your global
             business needs.
           </p>
         </motion.div>
