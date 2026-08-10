@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, Variants } from "framer-motion";
-import { Award, Users, TrendingUp, Shield, LucideIcon } from "lucide-react";
+import { Award, TrendingUp, Shield, LucideIcon } from "lucide-react";
 import "../../css/home/assurance-scorecard.css";
 
 interface CountUpResult {
@@ -64,21 +64,12 @@ const AssuranceScorecard: React.FC = () => {
   const stats: Stat[] = [
     {
       icon: Award,
-      title: "Years in Practice",
+      title: "Team Members Experience",
       value: useCountUp(12),
-      suffix: "+",
+      suffix: "+ Years",
       description:
-        "Over a decade of specialist expertise in global accountancy, tax compliance, and business advisory.",
+        "Over 12+ years of senior expertise in global accountancy, tax compliance, and business advisory.",
       color: "var(--color-gold-primary)",
-    },
-    {
-      icon: Users,
-      title: "Clients Served",
-      value: useCountUp(1200),
-      suffix: "+",
-      description:
-        "Trusted by over 1,200 global businesses—from sole traders and startups to growing SMEs.",
-      color: "var(--color-navy-light)",
     },
     {
       icon: TrendingUp,

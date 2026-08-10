@@ -5,9 +5,8 @@ import "../../css/about/about-hero.css";
 
 const AboutHero: React.FC = () => {
   const stats = [
-    { icon: Users, value: "1,200+", label: "Clients Served" },
+    { icon: Sparkles, value: "12+ Years", label: "Team Members Experience" },
     { icon: Target, value: "100%", label: "On-Time Filing" },
-    { icon: Sparkles, value: "12+", label: "Years in Practice" },
   ];
 
   return (

@@ -275,23 +275,23 @@ export const industriesData: IndustryData[] = [
   {
     id: "global-sub-entities",
     title: "Global Enterprises & Subsidiaries",
-    subtitle: "UK branch setup, intercompany transfer pricing & consolidation.",
+    subtitle: "Cross-border entity setup, intercompany transfer pricing & global consolidation.",
     badge: "Cross-Border Corporate",
     icon: Globe,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1000&h=700&fit=crop",
     description:
-      "We serve international parent companies establishing or managing UK subsidiaries. We handle full UK incorporation, corporate secretarial representation, intercompany transfer pricing documentation, and multi-currency consolidated reporting back to HQ.",
+      "We partner with multinational corporations, international parent entities, and fast-expanding global groups. We manage multi-jurisdiction financial consolidation, cross-border corporate secretarial compliance, transfer pricing documentation, and multi-currency reporting back to global HQ.",
     challenges: [
-      "Meeting strict UK statutory filing deadlines for overseas parent groups",
-      "Aligning UK local GAAP (FRS 102) with US GAAP or IFRS parent reporting",
-      "Documenting arm's-length intercompany transfer pricing policies",
-      "Managing foreign currency exchange exposure and intercompany loans",
+      "Navigating complex cross-border statutory filing compliance across multiple jurisdictions",
+      "Harmonizing local financial statements with US GAAP, IFRS, or parent group reporting standards",
+      "Establishing arm's-length intercompany transfer pricing policies and documentation",
+      "Managing foreign currency exchange risks, intercompany loans, and withholding taxes",
     ],
     solutions: [
-      "Complete UK subsidiary formation & registered office address",
-      "Monthly management reporting packages aligned to parent group templates",
-      "Transfer pricing agreement drafting & HMRC compliance defense",
-      "Group VAT registration & withholding tax treaty claims",
+      "End-to-end multi-country entity formation, secretarial compliance & local governance",
+      "Unified monthly consolidated management reporting packs tailored for global HQ",
+      "Global transfer pricing agreement drafting & international tax authority defense",
+      "Cross-border VAT/GST registration, double tax treaty optimization & international filings",
     ],
     keyMetric: {
       value: "30+",
