@@ -22,6 +22,7 @@ interface FooterLink {
 interface FooterLinks {
   platform: FooterLink[];
   company: FooterLink[];
+  solutions: FooterLink[];
   legal: FooterLink[];
 }
 
@@ -47,15 +48,22 @@ const Footer: React.FC = () => {
 
   const footerLinks: FooterLinks = {
     platform: [
-      { name: "Services", path: "/services" },
-      { name: "Bookkeeping", path: "/services" },
-      { name: "Tax & Compliance", path: "/services" },
-      { name: "Payroll", path: "/services" },
+      { name: "Managed Bookkeeping", path: "/services/bookkeeping" },
+      { name: "Tax & Compliance", path: "/services/tax-compliance" },
+      { name: "Business Advisory", path: "/services/business-advisory" },
+      { name: "Payroll & Pensions", path: "/services/payroll-pensions" },
+      { name: "VAT Services", path: "/services/vat-services" },
+      { name: "Company Secretarial", path: "/services/company-secretarial" },
     ],
     company: [
       { name: "About Us", path: "/about" },
+      { name: "Industries", path: "/industries" },
       { name: "Blog", path: "/blog" },
       { name: "Contact", path: "/contact" },
+    ],
+    solutions: [
+      { name: "For Businesses", path: "/solutions/for-businesses" },
+      { name: "Workload Outsourcing", path: "/solutions/outsource-workload" },
     ],
     legal: [
       { name: "Privacy Policy", path: "/privacy" },
@@ -158,6 +166,19 @@ const Footer: React.FC = () => {
                       {link.badge && (
                         <span className="footer-badge">{link.badge}</span>
                       )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="footer-links-column">
+              <h4 className="footer-column-title">Solutions</h4>
+              <ul className="footer-links-list">
+                {footerLinks.solutions.map((link, index) => (
+                  <li key={index}>
+                    <Link to={link.path} className="footer-link">
+                      {link.name}
                     </Link>
                   </li>
                 ))}

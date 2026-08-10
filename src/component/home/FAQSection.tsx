@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
   Plus,
@@ -7,6 +8,10 @@ import {
   Sparkles,
   Shield,
   Zap,
+  Globe,
+  Lock,
+  BarChart3,
+  BookOpen,
   LucideIcon,
 } from "lucide-react";
 import "../../css/home/faq.css";
@@ -25,93 +30,109 @@ interface FAQCategory {
 
 const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const navigate = useNavigate();
 
   const faqs: FAQCategory[] = [
     {
-      category: "Getting Started",
+      category: "Services & Global Scope",
       icon: Sparkles,
       color: "var(--color-gold-primary)",
       questions: [
         {
-          question: "How quickly can I get started with 47 Accountants?",
+          question: "What services does 47 Accountants provide?",
           answer:
-            "Getting started is simple. Contact us for an initial consultation, and our qualified accountants will manage your complete onboarding and hassle-free transition from your previous accountant within 2–3 working days.",
+            "47 Accountants delivers complete financial management for growing and global entities. Our core services encompass Managed Bookkeeping, Tax & Compliance (Corporation Tax & Self-Assessment), Business Advisory & Fractional CFO support, Payroll & Pension administration, VAT & Making Tax Digital (MTD) filings, and Companies House Secretarial governance.",
         },
         {
-          question: "Do I need to manage my own accounting software?",
+          question: "Do you support international businesses operating in multiple countries?",
           answer:
-            "No. As part of our service, we set up, configure, and maintain leading global cloud accounting platforms (such as Xero or QuickBooks) for you. If you already have software set up, we seamlessly take over its management.",
+            "Yes. We specialize in cross-border accounting, foreign subsidiary setups, international tax planning, multi-currency ledger management, and global regulatory compliance for UK entities and overseas companies expanding internationally.",
         },
         {
-          question: "How is my historical financial data migrated?",
+          question: "Do you offer Fractional CFO or Strategic Advisory services?",
           answer:
-            "Our team of qualified accountants handles the complete migration of your historical books, tax records, and payroll data, ensuring full HMRC compliance and continuous audit readiness.",
+            "Yes. Our Business Advisory service provides fractional CFO leadership, 3-statement financial modeling, multi-year cash flow forecasting, gross margin optimization, dividend/salary structuring, and fundraising/investor deck readiness.",
+        },
+        {
+          question: "Do you support crypto, e-commerce, or tech startups with complex transactions?",
+          answer:
+            "Absolutly. We have deep expertise reconciling high-volume digital transactions across Shopify, Amazon, Stripe, PayPal, SaaS recurring billing platforms, digital assets/crypto transactions, and claiming specialized R&D tax credits for innovative tech firms.",
         },
       ],
     },
     {
-      category: "Pricing & Fixed Fees",
-      icon: Zap,
+      category: "Bookkeeping, Tax & Governance",
+      icon: BookOpen,
       color: "var(--color-gold-primary)",
       questions: [
         {
-          question: "Are your monthly accounting fees fixed?",
+          question: "What is included in your Managed Bookkeeping service?",
           answer:
-            "Yes! We provide transparent, agreed-upon fixed monthly pricing with no hidden charges, unexpected billing, or setup fees. You get comprehensive accounting, tax filing, and dedicated advice included.",
+            "Managed Bookkeeping includes a dedicated senior bookkeeper, daily or weekly transaction categorization, multi-currency bank & credit card reconciliations, digitised receipt management, accounts payable/receivable tracking, and trial-balance ready monthly financial reports.",
         },
         {
-          question: "What is included in your monthly packages?",
+          question: "How do your VAT Services handle Making Tax Digital (MTD) and global sales taxes?",
           answer:
-            "Our packages include dedicated accountant support, complete bookkeeping, VAT returns, Corporation Tax, Year-End statutory accounts, payroll processing, and proactive tax optimization advice.",
+            "We manage 100% MTD-compliant digital submissions directly with HMRC. We evaluate and optimize VAT scheme selection (Standard, Flat Rate, Cash Accounting) and manage complex cross-border VAT, One Stop Shop (OSS/IOSS), import VAT postponed accounting, and reverse charges.",
         },
         {
-          question: "Can I upgrade or adjust my service package as my business grows?",
+          question: "What falls under Company Secretarial services?",
           answer:
-            "Absolutly. Whether you are expanding from a sole trader to a limited company or require fractional CFO advisory, we adapt your service plan smoothly to match your evolving business requirements.",
+            "Our secretarial services manage your Companies House statutory obligations: annual confirmation statement filings, company incorporations, share allotments/transfers, director and PSC register maintenance, registered office privacy address services, and board meeting resolution drafting.",
+        },
+        {
+          question: "Can 47 Accountants help with Audit Preparation and Statutory Financial Statements?",
+          answer:
+            "Yes. We prepare fully compliant statutory financial statements under FRS 102 / FRS 105 standards, assemble audit workpapers, liaise directly with external auditors, and resolve audit queries efficiently.",
         },
       ],
     },
     {
-      category: "Compliance & Security",
+      category: "International Tax & Setup",
+      icon: Globe,
+      color: "var(--color-gold-primary)",
+      questions: [
+        {
+          question: "Can you manage cross-border payroll and pension administration?",
+          answer:
+            "Yes. We operate complete weekly and monthly PAYE payroll runs, issue secure digital employee payslips, submit Real Time Information (RTI) to HMRC, handle statutory leave calculations, and ensure workplace pension auto-enrolment compliance with providers like NEST, Smart Pension, and Aviva.",
+        },
+        {
+          question: "How do you assist with Transfer Pricing and International Tax Planning?",
+          answer:
+            "We advise multi-entity and global corporate groups on compliant transfer pricing methodologies, intercompany service agreements, double taxation treaty relief, permanent establishment risk mitigation, and optimal global tax structuring.",
+        },
+        {
+          question: "Which software platforms do you work with?",
+          answer:
+            "We work fluently across all major cloud platforms including Xero, QuickBooks, Sage, FreeAgent, Dext, AutoEntry, and custom ERP systems. We handle full setup, configuration, and data synchronization for your business.",
+        },
+        {
+          question: "How do we transfer our existing financial records to 47 Accountants?",
+          answer:
+            "Switching is seamless. Our qualified accountants manage your complete onboarding and hassle-free data transition from your current accountant or software within 2–3 business days with zero disruption to your daily operations.",
+        },
+      ],
+    },
+    {
+      category: "Engagement, Pricing & Security",
       icon: Shield,
       color: "var(--color-gold-primary)",
       questions: [
         {
-          question: "Are your accountants qualified and registered?",
+          question: "How does 47 Accountants charge for services?",
           answer:
-            "Yes, 47 Accountants is powered by ACCA-qualified accountants, fully registered and adhering strictly to global accounting standards and corporate regulations.",
+            "We operate on transparent, agreed-upon fixed monthly pricing with no hidden charges, unexpected billings, or setup fees. All routine support, filings, and advice are included in your custom monthly agreement.",
         },
         {
-          question: "Is 47 Accountants compliant with global tax and regulatory rules?",
+          question: "How do you ensure our financial data remains secure?",
           answer:
-            "We handle 100% of your HMRC statutory filings, Making Tax Digital (MTD) compliance, VAT submissions, and CIS reporting, keeping your business fully compliant and penalty-free.",
+            "Your data security is paramount. We enforce bank-grade 256-bit encryption, strict multi-factor authentication, and full GDPR compliance. Your financial information is accessible strictly by your assigned accounting team on secure servers.",
         },
         {
-          question: "How is my confidential financial information protected?",
+          question: "How often will I receive financial reports?",
           answer:
-            "We enforce bank-grade 256-bit encryption and strict GDPR controls. Your personal and corporate financial data is accessible only by your dedicated accounting team and stored on secure enterprise servers.",
-        },
-      ],
-    },
-    {
-      category: "Services & Advisory",
-      icon: HelpCircle,
-      color: "var(--color-gold-primary)",
-      questions: [
-        {
-          question: "Which accounting platforms do your accountants work with?",
-          answer:
-            "Our accounting team works with all major global platforms including Xero, QuickBooks, Sage, FreeAgent, KashFlow, Dext, and AutoEntry. We optimize your workflow across whatever software you prefer.",
-        },
-        {
-          question: "Will I have a dedicated accountant assigned to my business?",
-          answer:
-            "Yes. You will be assigned a named, dedicated accountant who understands your industry, answers your calls and emails promptly, and offers proactive advice throughout the year.",
-        },
-        {
-          question: "Do you assist with HMRC tax audits and enquiries?",
-          answer:
-            "Yes. In the event of an HMRC enquiry or tax review, your dedicated accountant will represent your business, manage all communications, and present all necessary documentation directly to HMRC.",
+            "You receive reconciled financial performance statements—including Profit & Loss, Balance Sheet, and custom KPI metrics—on a monthly basis. Quarterly executive board reviews are also conducted for advisory clients.",
         },
       ],
     },
@@ -182,10 +203,10 @@ const FAQSection: React.FC = () => {
             <span className="faq-gradient-text"> About 47 Accountants</span>
           </h2>
           <p className="faq-subheadline">
-            Have questions about switching to 47 Accountants or our accounting services?
+            Have questions about our accounting services or switching to 47 Accountants?
             <span
               className="faq-contact-link"
-              onClick={() => (window.location.href = "/contact")}
+              onClick={() => navigate("/contact")}
             >
               {" "}
               Speak with an accountant
@@ -289,7 +310,7 @@ const FAQSection: React.FC = () => {
               className="faq-primary-button"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => (window.location.href = "/contact")}
+              onClick={() => navigate("/contact")}
             >
               Book Free Consultation
             </motion.button>
@@ -297,9 +318,9 @@ const FAQSection: React.FC = () => {
               className="faq-secondary-button"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => (window.location.href = "/services")}
+              onClick={() => navigate("/services/bookkeeping")}
             >
-              View Services
+              Explore Services
             </motion.button>
           </div>
         </motion.div>

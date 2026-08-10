@@ -14,7 +14,7 @@ const TeamSection: React.FC = () => {
   const team = [
     {
       name: "Muhammad Sheheryar Khan",
-      role: "CEO",
+      role: "Managing Partner",
       image: teamMember1,
       linkedin: "#",
       instagram: "#",

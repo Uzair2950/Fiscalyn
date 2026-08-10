@@ -1,31 +1,45 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowRight, Sun, Moon, ChevronDown, BookOpen, Users } from "lucide-react";
+import {
+  Menu,
+  X,
+  ArrowRight,
+  Sun,
+  Moon,
+  ChevronDown,
+  BookOpen,
+  Users,
+  Shield,
+  BarChart3,
+  Receipt,
+  Briefcase,
+  Building2,
+  Layers,
+} from "lucide-react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useTheme } from "../../hooks/useTheme";
 import LogoBadge from "../../assets/image/LogoBadge.webp";
 import "../../css/common/navbar.css";
 
-interface NavLink {
-  name: string;
-  path: string;
-}
-
-interface DropdownItem {
+interface ServiceDropdownItem {
   name: string;
   path: string;
   icon: React.ElementType;
+  desc: string;
 }
 
 const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
-  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<boolean>(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState<boolean>(false);
+  const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState<boolean>(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState<boolean>(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState<boolean>(false);
 
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
-  const dropdownRef = useRef<HTMLLIElement>(null);
+  const servicesDropdownRef = useRef<HTMLLIElement>(null);
+  const solutionsDropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     const handleScroll = (): void => {
@@ -37,34 +51,89 @@ const NavBar: React.FC = () => {
 
   useEffect(() => {
     setIsOpen(false);
-    setDropdownOpen(false);
-    setMobileDropdownOpen(false);
+    setServicesDropdownOpen(false);
+    setSolutionsDropdownOpen(false);
+    setMobileServicesOpen(false);
+    setMobileSolutionsOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location.pathname]);
 
-  // Close dropdown on outside click
+  // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setDropdownOpen(false);
+      if (
+        servicesDropdownRef.current &&
+        !servicesDropdownRef.current.contains(event.target as Node)
+      ) {
+        setServicesDropdownOpen(false);
+      }
+      if (
+        solutionsDropdownRef.current &&
+        !solutionsDropdownRef.current.contains(event.target as Node)
+      ) {
+        setSolutionsDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const navLinks: NavLink[] = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
+  const serviceDropdownItems: ServiceDropdownItem[] = [
+    {
+      name: "Managed Bookkeeping",
+      path: "/services/bookkeeping",
+      icon: BookOpen,
+      desc: "Real-time ledgers & reconciliations",
+    },
+    {
+      name: "Tax & Compliance",
+      path: "/services/tax-compliance",
+      icon: Shield,
+      desc: "Corporation Tax & statutory returns",
+    },
+    {
+      name: "Business Advisory",
+      path: "/services/business-advisory",
+      icon: BarChart3,
+      desc: "Financial forecasting & strategy",
+    },
+    {
+      name: "Payroll & Pensions",
+      path: "/services/payroll-pensions",
+      icon: Users,
+      desc: "PAYE, payslips & pension admin",
+    },
+    {
+      name: "VAT Services",
+      path: "/services/vat-services",
+      icon: Receipt,
+      desc: "MTD filings & scheme optimization",
+    },
+    {
+      name: "Company Secretarial",
+      path: "/services/company-secretarial",
+      icon: Briefcase,
+      desc: "Statutory governance & filings",
+    },
   ];
 
-  const dropdownItems: DropdownItem[] = [
-    { name: "Blogs", path: "/blog", icon: BookOpen },
-    { name: "Collaboration", path: "/collaboration", icon: Users },
+  const solutionsDropdownItems: ServiceDropdownItem[] = [
+    {
+      name: "For Businesses",
+      path: "/solutions/for-businesses",
+      icon: Building2,
+      desc: "Accounting, tax & advisory for growing companies",
+    },
+    {
+      name: "Workload Outsourcing",
+      path: "/solutions/outsource-workload",
+      icon: Layers,
+      desc: "White-label accounting & capacity for CPA practices",
+    },
   ];
 
-  const isDropdownActive = dropdownItems.some((item) => location.pathname === item.path);
+  const isServicesActive = location.pathname.startsWith("/services");
+  const isSolutionsActive = location.pathname.startsWith("/solutions");
 
   const menuVariants: Variants = {
     initial: { opacity: 0, height: 0 },
@@ -97,8 +166,20 @@ const NavBar: React.FC = () => {
 
   const dropdownVariants: Variants = {
     initial: { opacity: 0, y: 12, x: "-50%", scale: 0.95 },
-    animate: { opacity: 1, y: 0, x: "-50%", scale: 1, transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] } },
-    exit: { opacity: 0, y: 12, x: "-50%", scale: 0.95, transition: { duration: 0.15 } },
+    animate: {
+      opacity: 1,
+      y: 0,
+      x: "-50%",
+      scale: 1,
+      transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
+    },
+    exit: {
+      opacity: 0,
+      y: 12,
+      x: "-50%",
+      scale: 0.95,
+      transition: { duration: 0.15 },
+    },
   };
 
   return (
@@ -126,74 +207,185 @@ const NavBar: React.FC = () => {
 
         <div className="desktop-nav-content">
           <ul className="nav-links">
-            {navLinks.map((link) => (
-              <motion.li
-                key={link.path}
-                whileHover={{ y: -2 }}
-                transition={{ duration: 0.2 }}
+            <motion.li whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+              <Link
+                to="/"
+                className={location.pathname === "/" ? "active" : ""}
               >
-                <Link
-                  to={link.path}
-                  className={location.pathname === link.path ? "active" : ""}
-                >
-                  {link.name}
-                  {location.pathname === link.path && (
-                    <motion.span
-                      className="active-indicator"
-                      layoutId="activeIndicator"
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    />
-                  )}
-                </Link>
-              </motion.li>
-            ))}
+                Home
+                {location.pathname === "/" && (
+                  <motion.span
+                    className="active-indicator"
+                    layoutId="activeIndicator"
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                )}
+              </Link>
+            </motion.li>
 
-            {/* Dropdown Menu (Blogs & Collaboration) */}
+            <motion.li whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+              <Link
+                to="/about"
+                className={location.pathname === "/about" ? "active" : ""}
+              >
+                About
+                {location.pathname === "/about" && (
+                  <motion.span
+                    className="active-indicator"
+                    layoutId="activeIndicator"
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                )}
+              </Link>
+            </motion.li>
+
+            {/* Services Dropdown Menu */}
             <li
-              ref={dropdownRef}
+              ref={servicesDropdownRef}
               className="nav-dropdown-container"
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
+              onMouseEnter={() => setServicesDropdownOpen(true)}
+              onMouseLeave={() => setServicesDropdownOpen(false)}
             >
               <button
-                className={`nav-dropdown-trigger ${isDropdownActive ? "active" : ""}`}
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                aria-expanded={dropdownOpen}
+                className={`nav-dropdown-trigger ${isServicesActive ? "active" : ""}`}
+                onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                aria-expanded={servicesDropdownOpen}
               >
-                <span>More</span>
+                <span>Services</span>
                 <ChevronDown
                   size={16}
-                  className={`dropdown-chevron ${dropdownOpen ? "open" : ""}`}
+                  className={`dropdown-chevron ${servicesDropdownOpen ? "open" : ""}`}
                 />
-                {isDropdownActive && (
-                  <span className="active-indicator" />
-                )}
+                {isServicesActive && <span className="active-indicator" />}
               </button>
 
               <AnimatePresence>
-                {dropdownOpen && (
+                {servicesDropdownOpen && (
                   <motion.div
-                    className="nav-dropdown-menu"
+                    className="services-dropdown-menu"
                     variants={dropdownVariants}
                     initial="initial"
                     animate="animate"
                     exit="exit"
                   >
-                    {dropdownItems.map((item) => (
+                    {serviceDropdownItems.map((item) => (
                       <Link
                         key={item.path}
                         to={item.path}
-                        className={`dropdown-item ${location.pathname === item.path ? "active" : ""}`}
-                        onClick={() => setDropdownOpen(false)}
+                        className={`service-dropdown-item ${location.pathname === item.path ? "active" : ""}`}
+                        onClick={() => setServicesDropdownOpen(false)}
                       >
-                        <item.icon size={18} className="dropdown-item-icon" />
-                        <span>{item.name}</span>
+                        <div className="service-dropdown-icon">
+                          <item.icon size={18} />
+                        </div>
+                        <div>
+                          <span className="service-dropdown-title">{item.name}</span>
+                          <span className="service-dropdown-desc">{item.desc}</span>
+                        </div>
                       </Link>
                     ))}
                   </motion.div>
                 )}
               </AnimatePresence>
             </li>
+
+            {/* Solutions Dropdown Menu */}
+            <li
+              ref={solutionsDropdownRef}
+              className="nav-dropdown-container"
+              onMouseEnter={() => setSolutionsDropdownOpen(true)}
+              onMouseLeave={() => setSolutionsDropdownOpen(false)}
+            >
+              <button
+                className={`nav-dropdown-trigger ${isSolutionsActive ? "active" : ""}`}
+                onClick={() => setSolutionsDropdownOpen(!solutionsDropdownOpen)}
+                aria-expanded={solutionsDropdownOpen}
+              >
+                <span>Solutions</span>
+                <ChevronDown
+                  size={16}
+                  className={`dropdown-chevron ${solutionsDropdownOpen ? "open" : ""}`}
+                />
+                {isSolutionsActive && <span className="active-indicator" />}
+              </button>
+
+              <AnimatePresence>
+                {solutionsDropdownOpen && (
+                  <motion.div
+                    className="services-dropdown-menu solutions-dropdown-custom"
+                    variants={dropdownVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    {solutionsDropdownItems.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className={`service-dropdown-item ${location.pathname === item.path ? "active" : ""}`}
+                        onClick={() => setSolutionsDropdownOpen(false)}
+                      >
+                        <div className="service-dropdown-icon">
+                          <item.icon size={18} />
+                        </div>
+                        <div>
+                          <span className="service-dropdown-title">{item.name}</span>
+                          <span className="service-dropdown-desc">{item.desc}</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </li>
+
+            <motion.li whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+              <Link
+                to="/industries"
+                className={location.pathname === "/industries" ? "active" : ""}
+              >
+                Industries
+                {location.pathname === "/industries" && (
+                  <motion.span
+                    className="active-indicator"
+                    layoutId="activeIndicator"
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                )}
+              </Link>
+            </motion.li>
+
+            <motion.li whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+              <Link
+                to="/blog"
+                className={location.pathname.startsWith("/blog") ? "active" : ""}
+              >
+                Blog
+                {location.pathname.startsWith("/blog") && (
+                  <motion.span
+                    className="active-indicator"
+                    layoutId="activeIndicator"
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                )}
+              </Link>
+            </motion.li>
+
+            <motion.li whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+              <Link
+                to="/collaboration"
+                className={location.pathname === "/collaboration" ? "active" : ""}
+              >
+                Collaboration
+                {location.pathname === "/collaboration" && (
+                  <motion.span
+                    className="active-indicator"
+                    layoutId="activeIndicator"
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                )}
+              </Link>
+            </motion.li>
           </ul>
 
           {/* Theme Toggle Button */}
@@ -278,44 +470,51 @@ const NavBar: React.FC = () => {
             exit="exit"
           >
             <div className="mobile-menu-content">
-              {navLinks.map((link) => (
-                <motion.div
-                  variants={linkVariants}
-                  key={link.path}
-                  className="mobile-menu-item"
+              <motion.div variants={linkVariants} className="mobile-menu-item">
+                <Link
+                  to="/"
+                  className={location.pathname === "/" ? "active-mobile" : ""}
                 >
-                  <Link
-                    to={link.path}
-                    className={
-                      location.pathname === link.path ? "active-mobile" : ""
-                    }
-                  >
-                    {link.name}
-                    {location.pathname === link.path && (
-                      <motion.div
-                        className="mobile-active-dot"
-                        layoutId="mobileActiveDot"
-                      />
-                    )}
-                  </Link>
-                </motion.div>
-              ))}
+                  Home
+                  {location.pathname === "/" && (
+                    <motion.div
+                      className="mobile-active-dot"
+                      layoutId="mobileActiveDot"
+                    />
+                  )}
+                </Link>
+              </motion.div>
 
-              {/* Mobile Accordion for More (Blogs & Collaboration) */}
+              <motion.div variants={linkVariants} className="mobile-menu-item">
+                <Link
+                  to="/about"
+                  className={location.pathname === "/about" ? "active-mobile" : ""}
+                >
+                  About
+                  {location.pathname === "/about" && (
+                    <motion.div
+                      className="mobile-active-dot"
+                      layoutId="mobileActiveDot"
+                    />
+                  )}
+                </Link>
+              </motion.div>
+
+              {/* Mobile Accordion for Services */}
               <motion.div variants={linkVariants} className="mobile-menu-item">
                 <button
-                  className={`mobile-dropdown-trigger ${isDropdownActive ? "active-mobile" : ""}`}
-                  onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                  className={`mobile-dropdown-trigger ${isServicesActive ? "active-mobile" : ""}`}
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 >
-                  <span>More</span>
+                  <span>Services</span>
                   <ChevronDown
                     size={18}
-                    className={`dropdown-chevron ${mobileDropdownOpen ? "open" : ""}`}
+                    className={`dropdown-chevron ${mobileServicesOpen ? "open" : ""}`}
                   />
                 </button>
-                {mobileDropdownOpen && (
+                {mobileServicesOpen && (
                   <div className="mobile-dropdown-list">
-                    {dropdownItems.map((item) => (
+                    {serviceDropdownItems.map((item) => (
                       <Link
                         key={item.path}
                         to={item.path}
@@ -327,6 +526,79 @@ const NavBar: React.FC = () => {
                     ))}
                   </div>
                 )}
+              </motion.div>
+
+              {/* Mobile Accordion for Solutions */}
+              <motion.div variants={linkVariants} className="mobile-menu-item">
+                <button
+                  className={`mobile-dropdown-trigger ${isSolutionsActive ? "active-mobile" : ""}`}
+                  onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+                >
+                  <span>Solutions</span>
+                  <ChevronDown
+                    size={18}
+                    className={`dropdown-chevron ${mobileSolutionsOpen ? "open" : ""}`}
+                  />
+                </button>
+                {mobileSolutionsOpen && (
+                  <div className="mobile-dropdown-list">
+                    {solutionsDropdownItems.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className={`mobile-dropdown-subitem ${location.pathname === item.path ? "active" : ""}`}
+                      >
+                        <item.icon size={16} />
+                        <span>{item.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+
+              <motion.div variants={linkVariants} className="mobile-menu-item">
+                <Link
+                  to="/industries"
+                  className={location.pathname === "/industries" ? "active-mobile" : ""}
+                >
+                  Industries
+                  {location.pathname === "/industries" && (
+                    <motion.div
+                      className="mobile-active-dot"
+                      layoutId="mobileActiveDot"
+                    />
+                  )}
+                </Link>
+              </motion.div>
+
+              <motion.div variants={linkVariants} className="mobile-menu-item">
+                <Link
+                  to="/blog"
+                  className={location.pathname.startsWith("/blog") ? "active-mobile" : ""}
+                >
+                  Blog
+                  {location.pathname.startsWith("/blog") && (
+                    <motion.div
+                      className="mobile-active-dot"
+                      layoutId="mobileActiveDot"
+                    />
+                  )}
+                </Link>
+              </motion.div>
+
+              <motion.div variants={linkVariants} className="mobile-menu-item">
+                <Link
+                  to="/collaboration"
+                  className={location.pathname === "/collaboration" ? "active-mobile" : ""}
+                >
+                  Collaboration
+                  {location.pathname === "/collaboration" && (
+                    <motion.div
+                      className="mobile-active-dot"
+                      layoutId="mobileActiveDot"
+                    />
+                  )}
+                </Link>
               </motion.div>
 
               <motion.div

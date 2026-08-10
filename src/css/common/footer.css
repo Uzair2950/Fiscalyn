@@ -28,8 +28,8 @@
 /* Main Footer Content */
 .footer-main {
   display: grid;
-  grid-template-columns: 1.2fr 2fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 2.4fr 1.1fr;
+  gap: 40px;
   padding-bottom: 60px;
 }
 
@@ -104,7 +104,7 @@
 .footer-links-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap: 24px;
 }
 
 .footer-links-column {

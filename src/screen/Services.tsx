@@ -1,22 +1,8 @@
 import React from "react";
-import NavBar from "../component/common/Navbar";
-import ServicesHero from "../component/services/ServicesHero";
-import ServiceDetail from "../component/services/ServiceDetail";
-import ProcessSection from "../component/services/ProcessSection";
-import ServicesCTA from "../component/services/ServicesCTA";
-import Footer from "../component/common/Footer";
+import { Navigate } from "react-router-dom";
 
 const Services: React.FC = () => {
-  return (
-    <>
-      <NavBar />
-      <ServicesHero />
-      <ServiceDetail />
-      <ProcessSection />
-      <ServicesCTA />
-      <Footer />
-    </>
-  );
+  return <Navigate to="/services/bookkeeping" replace />;
 };
 
 export default Services;

@@ -1,0 +1,289 @@
+/* Solutions & Engagement Page Styles - 47 Accountants Theme */
+
+.solutions-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  padding-top: 90px;
+}
+
+/* ---------------- Hero Section ---------------- */
+.solutions-hero-section {
+  position: relative;
+  padding: 80px 0 60px;
+  overflow: hidden;
+  background: var(--bg-main);
+}
+
+.solutions-hero-bg-orb {
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: var(--gradient-orb-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(70px);
+  z-index: 0;
+}
+
+.solutions-hero-bg-orb-2 {
+  position: absolute;
+  bottom: -100px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: var(--gradient-orb-secondary);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(70px);
+  z-index: 0;
+}
+
+.solutions-hero-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 5vw;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.solutions-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 30px;
+  background: var(--color-gold-soft);
+  border: 1px solid var(--border-gold);
+  color: var(--color-gold-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.solutions-hero-title {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.solutions-gradient-text {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.solutions-hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-gold-primary);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.solutions-hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  max-width: 640px;
+}
+
+.solutions-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.solutions-hero-image-wrapper {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), var(--shadow-gold);
+  border: 1px solid var(--border-gold);
+}
+
+.solutions-hero-image {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.solutions-hero-image-wrapper:hover .solutions-hero-image {
+  transform: scale(1.03);
+}
+
+/* ---------------- Metrics Section ---------------- */
+.solutions-metrics-section {
+  padding: 40px 0;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.solutions-metrics-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 5vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* ---------------- Pillars / Features ---------------- */
+.solutions-section-padding {
+  padding: 90px 0;
+}
+
+.solutions-section-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+.solutions-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.solutions-pillar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 36px 32px;
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.solutions-pillar-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card), var(--shadow-gold);
+}
+
+.solutions-pillar-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--color-gold-soft);
+  color: var(--color-gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--border-gold);
+}
+
+.solutions-pillar-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.solutions-pillar-desc {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ---------------- Capabilities Checklist Section ---------------- */
+.capabilities-section {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.capability-card {
+  background: var(--bg-main);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.3s ease;
+}
+
+.capability-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-gold);
+}
+
+.capability-icon {
+  color: var(--color-gold-primary);
+  flex-shrink: 0;
+}
+
+.capability-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ---------------- Responsive Styles ---------------- */
+@media (max-width: 1024px) {
+  .solutions-hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .solutions-hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .solutions-hero-actions {
+    justify-content: center;
+  }
+
+  .solutions-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .solutions-metrics-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .solutions-pillar-card {
+    flex-direction: column;
+    padding: 28px 24px;
+  }
+
+  .solutions-hero-image {
+    height: 300px;
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
 import {
   BookOpen,
@@ -14,6 +15,7 @@ import {
 import "../../css/home/services-overview.css";
 
 interface Service {
+  slug: string;
   icon: LucideIcon;
   number: string;
   title: string;
@@ -27,6 +29,7 @@ interface Service {
 const ServicesOverview: React.FC = () => {
   const services: Service[] = [
     {
+      slug: "bookkeeping",
       icon: BookOpen,
       number: "01",
       title: "Managed Bookkeeping",
@@ -42,6 +45,7 @@ const ServicesOverview: React.FC = () => {
       softBg: "var(--color-gold-soft)",
     },
     {
+      slug: "tax-compliance",
       icon: Shield,
       number: "02",
       title: "Tax & Compliance",
@@ -57,6 +61,7 @@ const ServicesOverview: React.FC = () => {
       softBg: "var(--color-navy-soft)",
     },
     {
+      slug: "business-advisory",
       icon: BarChart3,
       number: "03",
       title: "Business Advisory",
@@ -72,6 +77,7 @@ const ServicesOverview: React.FC = () => {
       softBg: "var(--color-gold-soft)",
     },
     {
+      slug: "payroll-pensions",
       icon: Users,
       number: "04",
       title: "Payroll & Pensions",
@@ -87,6 +93,7 @@ const ServicesOverview: React.FC = () => {
       softBg: "var(--color-navy-soft)",
     },
     {
+      slug: "vat-services",
       icon: Receipt,
       number: "05",
       title: "VAT Services",
@@ -102,6 +109,7 @@ const ServicesOverview: React.FC = () => {
       softBg: "var(--color-red-soft)",
     },
     {
+      slug: "company-secretarial",
       icon: Briefcase,
       number: "06",
       title: "Company Secretarial",
@@ -210,14 +218,14 @@ const ServicesOverview: React.FC = () => {
               </div>
 
               <div style={{ marginTop: '20px' }}>
-                <a
-                  href="/services"
+                <Link
+                  to={`/services/${service.slug}`}
                   className="service-card-link"
                   style={{ color: service.accentColor }}
                 >
                   <span>Learn More</span>
                   <ArrowRight size={16} />
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}
