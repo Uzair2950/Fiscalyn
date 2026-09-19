@@ -1,35 +1,61 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
-import Home from "./screen/Home";
-import About from "./screen/About";
-import ServiceDetailPage from "./screen/ServiceDetailPage";
-import Industries from "./screen/Industries";
-import ForBusinessesPage from "./screen/ForBusinessesPage";
-import WorkloadOutsourcingPage from "./screen/WorkloadOutsourcingPage";
-import Pricing from "./screen/Pricing";
-import Contact from "./screen/Contact";
-import Collaboration from "./screen/Collaboration";
-import Blog from "./screen/Blog";
-import BlogDetail from "./screen/BlogDetail";
+const Home = lazy(() => import("./screen/Home"));
+const About = lazy(() => import("./screen/About"));
+const ServiceDetailPage = lazy(() => import("./screen/ServiceDetailPage"));
+const Industries = lazy(() => import("./screen/Industries"));
+const ForBusinessesPage = lazy(() => import("./screen/ForBusinessesPage"));
+const WorkloadOutsourcingPage = lazy(() => import("./screen/WorkloadOutsourcingPage"));
+const Pricing = lazy(() => import("./screen/Pricing"));
+const Contact = lazy(() => import("./screen/Contact"));
+const Collaboration = lazy(() => import("./screen/Collaboration"));
+const Blog = lazy(() => import("./screen/Blog"));
+const BlogDetail = lazy(() => import("./screen/BlogDetail"));
+const Privacy = lazy(() => import("./screen/Privacy"));
+const Terms = lazy(() => import("./screen/Terms"));
+const Sitemap = lazy(() => import("./screen/Sitemap"));
+const NotFound = lazy(() => import("./screen/NotFound"));
+
+const routeFallback = (
+  <div
+    role="status"
+    aria-live="polite"
+    style={{
+      minHeight: "100vh",
+      display: "grid",
+      placeItems: "center",
+      background: "var(--bg-main)",
+      color: "var(--text-secondary)",
+    }}
+  >
+    Loading page…
+  </div>
+);
 
 const App: React.FC = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Navigate to="/services/bookkeeping" replace />} />
-        <Route path="/services/:serviceSlug" element={<ServiceDetailPage />} />
-        <Route path="/industries" element={<Industries />} />
-        <Route path="/solutions/for-businesses" element={<ForBusinessesPage />} />
-        <Route path="/solutions/outsource-workload" element={<WorkloadOutsourcingPage />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/collaboration" element={<Collaboration />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogDetail />} />
-      </Routes>
+      <Suspense fallback={routeFallback}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Navigate to="/services/bookkeeping" replace />} />
+          <Route path="/services/:serviceSlug" element={<ServiceDetailPage />} />
+          <Route path="/industries" element={<Industries />} />
+          <Route path="/solutions/for-businesses" element={<ForBusinessesPage />} />
+          <Route path="/solutions/outsource-workload" element={<WorkloadOutsourcingPage />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/collaboration" element={<Collaboration />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/sitemap" element={<Sitemap />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 };

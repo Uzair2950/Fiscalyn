@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Calendar, Clock, CheckCircle2, RefreshCw } from "lucide-react";
 
 interface CalendlyWidgetProps {
@@ -44,8 +45,12 @@ const CalendlyWidget: React.FC<CalendlyWidgetProps> = ({
 
   const [isLoading, setIsLoading] = useState(true);
   const [eventBooked, setEventBooked] = useState(false);
+  const [hasConsent, setHasConsent] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
+    if (!hasConsent || isPlaceholder) return;
+
     // Inject Calendly CSS
     const linkId = "calendly-widget-css";
     if (!document.getElementById(linkId)) {
@@ -74,9 +79,9 @@ const CalendlyWidget: React.FC<CalendlyWidgetProps> = ({
     // Listen to Calendly postMessage events
     const handleCalendlyEvent = (e: MessageEvent) => {
       if (
-        e.data &&
-        e.data.event &&
-        e.data.event.indexOf("calendly.event_scheduled") !== -1
+        e.origin === "https://calendly.com" &&
+        e.source === iframeRef.current?.contentWindow &&
+        e.data?.event === "calendly.event_scheduled"
       ) {
         setEventBooked(true);
       }
@@ -86,11 +91,11 @@ const CalendlyWidget: React.FC<CalendlyWidgetProps> = ({
     return () => {
       window.removeEventListener("message", handleCalendlyEvent);
     };
-  }, []);
+  }, [hasConsent, isPlaceholder]);
 
   return (
     <div className="calendly-embed-container" style={{ position: "relative", width: "100%" }}>
-      {eventBooked && (
+      {hasConsent && eventBooked && (
         <div
           style={{
             padding: "20px",
@@ -168,13 +173,50 @@ const CalendlyWidget: React.FC<CalendlyWidgetProps> = ({
           >
             <div style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: 700, color: "var(--color-gold-primary)", marginBottom: "6px" }}>
               <Clock size={16} />
-              <span>Available Credentials in .env:</span>
+              <span>Required setting in .env:</span>
             </div>
             <pre style={{ margin: 0, fontFamily: "monospace", fontSize: "0.8rem", color: "#e2e8f0" }}>
-              VITE_CALENDLY_URL=https://calendly.com/your-username/30min{"\n"}
-              VITE_CALENDLY_API_KEY=your_calendly_api_key_here
+              VITE_CALENDLY_URL=https://calendly.com/your-username/30min
             </pre>
           </div>
+        </div>
+      ) : !hasConsent ? (
+        <div
+          style={{
+            minHeight: "360px",
+            borderRadius: "20px",
+            border: "1px solid var(--border-gold)",
+            background: "var(--bg-card)",
+            padding: "40px 24px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          <Calendar size={34} style={{ color: "var(--color-gold-primary)", marginBottom: "14px" }} />
+          <h3 style={{ color: "var(--text-primary)", marginBottom: "10px" }}>
+            Load the Calendly scheduler
+          </h3>
+          <p style={{ color: "var(--text-secondary)", maxWidth: "520px", lineHeight: 1.6, marginBottom: "18px" }}>
+            Calendly is a third-party service. Loading it shares technical data,
+            such as your IP address and browser information, with Calendly.
+            Details are available in our <Link to="/privacy">Privacy Policy</Link>.
+          </p>
+          <button
+            type="button"
+            onClick={() => setHasConsent(true)}
+            style={{
+              background: "var(--gradient-gold)",
+              color: "var(--text-on-gold)",
+              border: "1px solid var(--border-gold-strong)",
+              fontWeight: 700,
+              padding: "12px 20px",
+            }}
+          >
+            Load Calendly
+          </button>
         </div>
       ) : (
         <div style={{ minHeight: height, position: "relative" }}>
@@ -200,6 +242,7 @@ const CalendlyWidget: React.FC<CalendlyWidgetProps> = ({
             </div>
           )}
           <iframe
+            ref={iframeRef}
             src={finalUrl}
             width="100%"
             height={height}

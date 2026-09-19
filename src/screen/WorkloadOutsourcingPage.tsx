@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
-  Users2,
   ArrowRight,
   CheckCircle2,
   PhoneCall,
-  Lock,
   HelpCircle,
   Plus,
   Minus,

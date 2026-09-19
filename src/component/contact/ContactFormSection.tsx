@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Phone, MessageCircle, Calendar, Send } from "lucide-react";
+import Web3FormsCaptcha, {
+  HCaptchaInstance,
+} from "../common/Web3FormsCaptcha";
+import { submitWeb3Form } from "../../lib/web3forms";
 import CalendlyWidget from "./CalendlyWidget";
 import "../../css/contact/contact-form.css";
 
 const ContactFormSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<"calendly" | "message">("calendly");
+  const [activeTab, setActiveTab] = useState<"calendly" | "message">("message");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -18,6 +23,8 @@ const ContactFormSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [resultMsg, setResultMsg] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<HCaptchaInstance>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -32,41 +39,49 @@ const ContactFormSection: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setResultMsg(null);
 
-    const bodyFormData = new FormData(e.currentTarget);
-    const apiKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "1931c57d-6924-40cf-b9d2-a21a9107a019";
-    bodyFormData.append("access_key", apiKey);
+    if (!captchaToken) {
+      setIsSuccess(false);
+      setResultMsg("Please complete the CAPTCHA verification.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: bodyFormData,
+      await submitWeb3Form({
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        subject: formData.subject,
+        message: formData.message,
+        from_name: "47 Accountants Website",
+        request_type: "General contact enquiry",
+        botcheck: "",
+        "h-captcha-response": captchaToken,
       });
 
-      const data = await response.json();
-      if (data.success) {
-        setIsSuccess(true);
-        setResultMsg("Thank you! Your message has been sent successfully. We will get back to you shortly.");
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          company: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        setIsSuccess(false);
-        setResultMsg(data.message || "Failed to send message. Please try again.");
-      }
-    } catch (error) {
+      setIsSuccess(true);
+      setResultMsg("Thank you! Your message has been sent successfully. We will get back to you shortly.");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        company: "",
+        subject: "",
+        message: "",
+      });
+    } catch {
       setIsSuccess(false);
       setResultMsg("An error occurred while sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);
+      setCaptchaToken("");
+      captchaRef.current?.resetCaptcha();
     }
   };
 
@@ -235,6 +250,8 @@ const ContactFormSection: React.FC = () => {
               
               {resultMsg && (
                 <div
+                  role={isSuccess ? "status" : "alert"}
+                  aria-live="polite"
                   style={{
                     padding: "14px 18px",
                     borderRadius: "12px",
@@ -285,6 +302,7 @@ const ContactFormSection: React.FC = () => {
                     onChange={handleChange}
                     placeholder="john@company.com"
                     required
+                    autoComplete="email"
                   />
                 </div>
 
@@ -319,6 +337,16 @@ const ContactFormSection: React.FC = () => {
                     required
                   />
                 </div>
+
+                <Web3FormsCaptcha
+                  captchaRef={captchaRef}
+                  onTokenChange={setCaptchaToken}
+                />
+
+                <p className="form-privacy-note">
+                  By submitting, you agree that we may process your details to
+                  answer your enquiry. See our <Link to="/privacy">Privacy Policy</Link>.
+                </p>
 
                 <motion.button
                   type="submit"

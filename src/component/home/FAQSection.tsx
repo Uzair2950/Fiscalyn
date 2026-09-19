@@ -7,10 +7,7 @@ import {
   HelpCircle,
   Sparkles,
   Shield,
-  Zap,
   Globe,
-  Lock,
-  BarChart3,
   BookOpen,
   LucideIcon,
 } from "lucide-react";

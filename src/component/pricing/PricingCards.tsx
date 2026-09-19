@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Check, X, ArrowRight } from "lucide-react";
 import "../../css/pricing/pricing-cards.css";
 
@@ -78,7 +78,7 @@ const PricingCards: React.FC<PricingCardsProps> = ({ isAnnual }) => {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -89,7 +89,7 @@ const PricingCards: React.FC<PricingCardsProps> = ({ isAnnual }) => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
@@ -115,7 +115,7 @@ const PricingCards: React.FC<PricingCardsProps> = ({ isAnnual }) => {
             <motion.div
               key={index}
               className={`pricing-card ${plan.featured ? "featured" : ""}`}
-              variants={itemVariants as any}
+              variants={itemVariants}
               whileHover={{ y: -8 }}
             >
               {plan.popular && (

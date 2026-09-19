@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
 import { ArrowRight, CheckCircle, Zap, Shield, LucideIcon } from "lucide-react";
+import Web3FormsCaptcha, {
+  HCaptchaInstance,
+} from "../common/Web3FormsCaptcha";
+import { submitWeb3Form } from "../../lib/web3forms";
 import "../../css/home/cta.css";
 
 interface CTAFeature {
@@ -16,15 +21,54 @@ interface CTAStat {
 const CTASection: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<HCaptchaInstance>(null);
+  const [formStatus, setFormStatus] = useState<
+    { type: "success" | "error"; message: string } | null
+  >(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
+    setFormStatus(null);
+
+    if (!captchaToken) {
+      setFormStatus({
+        type: "error",
+        message: "Please complete the CAPTCHA verification.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
-    setTimeout(() => {
-      console.log("Email submitted:", email);
+
+    try {
+      await submitWeb3Form({
+        email,
+        subject: "Free consultation request from 47 Accountants website",
+        from_name: "47 Accountants Website",
+        request_type: "Consultation request",
+        botcheck: "",
+        "h-captcha-response": captchaToken,
+      });
+
       setEmail("");
+      setFormStatus({
+        type: "success",
+        message: "Thank you. Your consultation request has been received.",
+      });
+    } catch {
+      setFormStatus({
+        type: "error",
+        message:
+          "We could not send your request. Please try again or email info@47accountants.com.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+      setCaptchaToken("");
+      captchaRef.current?.resetCaptcha();
+    }
   };
 
   const containerVariants: Variants = {
@@ -110,6 +154,7 @@ const CTASection: React.FC = () => {
             <div className="cta-input-wrapper">
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your work email"
                 value={email}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -118,6 +163,7 @@ const CTASection: React.FC = () => {
                 className="cta-input"
                 required
                 disabled={isSubmitting}
+                autoComplete="email"
               />
               <motion.button
                 type="submit"
@@ -132,9 +178,26 @@ const CTASection: React.FC = () => {
                 <ArrowRight size={20} />
               </motion.button>
             </div>
+            <Web3FormsCaptcha
+              captchaRef={captchaRef}
+              onTokenChange={setCaptchaToken}
+            />
             <p className="cta-form-note">
               Free consultation • No obligation • ACCA qualified accountants
             </p>
+            <p className="form-privacy-note">
+              By submitting, you agree that we may use your details to respond
+              as described in our <Link to="/privacy">Privacy Policy</Link>.
+            </p>
+            {formStatus && (
+              <p
+                className={`cta-form-status cta-form-status-${formStatus.type}`}
+                role={formStatus.type === "error" ? "alert" : "status"}
+                aria-live="polite"
+              >
+                {formStatus.message}
+              </p>
+            )}
           </motion.form>
 
           <motion.div variants={itemVariants} className="cta-features">

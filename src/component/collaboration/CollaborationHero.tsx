@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Building2, ShieldCheck, Users, Clock } from "lucide-react";
+import { ArrowRight, Building2, ShieldCheck, Clock } from "lucide-react";
 import "../../css/collaboration/collaboration-hero.css";
 
 const CollaborationHero: React.FC = () => {

@@ -11,7 +11,6 @@ import {
   Zap,
   Sparkles,
   PhoneCall,
-  Globe2,
 } from "lucide-react";
 import NavBar from "../component/common/Navbar";
 import Footer from "../component/common/Footer";

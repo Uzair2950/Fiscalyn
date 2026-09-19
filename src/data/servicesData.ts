@@ -6,18 +6,6 @@ import {
   Receipt,
   Briefcase,
   LucideIcon,
-  CheckCircle2,
-  Clock,
-  Zap,
-  Award,
-  FileText,
-  PieChart,
-  Building2,
-  Lock,
-  Globe,
-  TrendingUp,
-  DollarSign,
-  Calculator,
 } from "lucide-react";
 
 export interface KeyMetric {

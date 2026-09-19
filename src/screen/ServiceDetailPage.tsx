@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
   ArrowRight,
@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import NavBar from "../component/common/Navbar";
 import Footer from "../component/common/Footer";
+import NotFound from "./NotFound";
 import { servicesData, ServiceData } from "../data/servicesData";
 import "../css/services/service-page.css";
 
@@ -20,16 +21,16 @@ const ServiceDetailPage: React.FC = () => {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Default to bookkeeping if slug is missing or not matched
-  const currentSlug = serviceSlug && servicesData[serviceSlug] ? serviceSlug : "bookkeeping";
-  const service: ServiceData = servicesData[currentSlug];
+  const service: ServiceData | undefined = serviceSlug
+    ? servicesData[serviceSlug]
+    : undefined;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [serviceSlug]);
 
   if (!service) {
-    return <Navigate to="/services/bookkeeping" replace />;
+    return <NotFound />;
   }
 
   const toggleFaq = (index: number) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
 import {
@@ -9,6 +9,10 @@ import {
   Instagram,
   LucideIcon,
 } from "lucide-react";
+import Web3FormsCaptcha, {
+  HCaptchaInstance,
+} from "./Web3FormsCaptcha";
+import { submitWeb3Form } from "../../lib/web3forms";
 import "../../css/common/footer.css";
 
 import LogoBadge from "../../assets/image/LogoBadge.webp";
@@ -35,15 +39,53 @@ interface SocialLink {
 const Footer: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<HCaptchaInstance>(null);
+  const [formStatus, setFormStatus] = useState<
+    { type: "success" | "error"; message: string } | null
+  >(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
+    setFormStatus(null);
+
+    if (!captchaToken) {
+      setFormStatus({
+        type: "error",
+        message: "Please complete the CAPTCHA verification.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
-    setTimeout(() => {
-      console.log("Newsletter signup:", email);
+
+    try {
+      await submitWeb3Form({
+        email,
+        subject: "Newsletter subscription request from 47 Accountants website",
+        from_name: "47 Accountants Website",
+        request_type: "Newsletter subscription",
+        botcheck: "",
+        "h-captcha-response": captchaToken,
+      });
+
       setEmail("");
+      setFormStatus({
+        type: "success",
+        message: "Thank you. Your subscription request has been received.",
+      });
+    } catch {
+      setFormStatus({
+        type: "error",
+        message: "We could not submit your request. Please try again.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+      setCaptchaToken("");
+      captchaRef.current?.resetCaptcha();
+    }
   };
 
   const footerLinks: FooterLinks = {
@@ -212,6 +254,7 @@ const Footer: React.FC = () => {
                 <Mail size={18} className="newsletter-icon" />
                 <input
                   type="email"
+                  name="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -220,6 +263,7 @@ const Footer: React.FC = () => {
                   className="newsletter-input"
                   required
                   disabled={isSubmitting}
+                  autoComplete="email"
                 />
               </div>
               <motion.button
@@ -238,6 +282,23 @@ const Footer: React.FC = () => {
                   </>
                 )}
               </motion.button>
+              <Web3FormsCaptcha
+                captchaRef={captchaRef}
+                onTokenChange={setCaptchaToken}
+              />
+              <p className="form-privacy-note">
+                We use your email only for this subscription request. See our{" "}
+                <Link to="/privacy">Privacy Policy</Link>.
+              </p>
+              {formStatus && (
+                <p
+                  className={`newsletter-status newsletter-status-${formStatus.type}`}
+                  role={formStatus.type === "error" ? "alert" : "status"}
+                  aria-live="polite"
+                >
+                  {formStatus.message}
+                </p>
+              )}
             </form>
 
             <div className="footer-contact-info">

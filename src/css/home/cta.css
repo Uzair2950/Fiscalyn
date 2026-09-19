@@ -200,6 +200,21 @@
   margin: 0;
 }
 
+.cta-form-status {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.cta-form-status-success {
+  color: #22c55e;
+}
+
+.cta-form-status-error {
+  color: #f87171;
+}
+
 /* Features */
 .cta-features {
   display: flex;

@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
+import Web3FormsCaptcha, {
+  HCaptchaInstance,
+} from "../common/Web3FormsCaptcha";
+import { submitWeb3Form } from "../../lib/web3forms";
 import "../../css/collaboration/collaboration-cta.css";
 
 const CollaborationCTA: React.FC = () => {
@@ -15,32 +20,42 @@ const CollaborationCTA: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<HCaptchaInstance>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMsg(null);
 
-    const bodyFormData = new FormData(e.currentTarget);
-    const apiKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "90e33005-9188-488c-94c9-f77126a0b480";
-    bodyFormData.append("access_key", apiKey);
+    if (!captchaToken) {
+      setErrorMsg("Please complete the CAPTCHA verification.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: bodyFormData,
+      await submitWeb3Form({
+        practice_name: formData.practiceName,
+        contact_name: formData.contactName,
+        email: formData.email,
+        phone: formData.phone,
+        services_needed: formData.servicesNeeded,
+        message: formData.message,
+        subject: "Practice outsourcing proposal request",
+        from_name: "47 Accountants Website",
+        request_type: "Collaboration enquiry",
+        botcheck: "",
+        "h-captcha-response": captchaToken,
       });
 
-      const data = await response.json();
-      if (data.success) {
-        setSubmitted(true);
-      } else {
-        setErrorMsg(data.message || "Failed to submit proposal. Please try again.");
-      }
-    } catch (error) {
+      setSubmitted(true);
+    } catch {
       setErrorMsg("An error occurred while submitting your request. Please try again.");
     } finally {
       setIsSubmitting(false);
+      setCaptchaToken("");
+      captchaRef.current?.resetCaptcha();
     }
   };
 
@@ -75,6 +90,8 @@ const CollaborationCTA: React.FC = () => {
           <form className="collab-cta-form" onSubmit={handleSubmit}>
             {errorMsg && (
               <div
+                role="alert"
+                aria-live="polite"
                 style={{
                   gridColumn: "1 / -1",
                   padding: "14px 18px",
@@ -99,6 +116,7 @@ const CollaborationCTA: React.FC = () => {
                 className="collab-input"
                 value={formData.practiceName}
                 onChange={(e) => setFormData({ ...formData, practiceName: e.target.value })}
+                autoComplete="organization"
               />
             </div>
             <div>
@@ -110,6 +128,7 @@ const CollaborationCTA: React.FC = () => {
                 className="collab-input"
                 value={formData.contactName}
                 onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+                autoComplete="name"
               />
             </div>
             <div>
@@ -121,6 +140,7 @@ const CollaborationCTA: React.FC = () => {
                 className="collab-input"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                autoComplete="email"
               />
             </div>
             <div>
@@ -132,6 +152,7 @@ const CollaborationCTA: React.FC = () => {
                 className="collab-input"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                autoComplete="tel"
               />
             </div>
             <div className="collab-form-full">
@@ -157,6 +178,16 @@ const CollaborationCTA: React.FC = () => {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />
             </div>
+            <div className="collab-form-full">
+              <Web3FormsCaptcha
+                captchaRef={captchaRef}
+                onTokenChange={setCaptchaToken}
+              />
+            </div>
+            <p className="collab-form-full form-privacy-note">
+              By submitting, you agree that we may process your details to
+              respond to this enquiry. See our <Link to="/privacy">Privacy Policy</Link>.
+            </p>
             <div className="collab-form-full">
               <button
                 type="submit"

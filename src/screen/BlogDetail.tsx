@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import NavBar from "../component/common/Navbar";
 import Footer from "../component/common/Footer";
 import { motion } from "framer-motion";
@@ -9,8 +9,6 @@ import "../css/blog/blog-detail.css";
 
 const BlogDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
-
   // Find article by slug or id
   const post = ALL_BLOG_POSTS.find((p) => p.slug === slug || p.id === slug);
 

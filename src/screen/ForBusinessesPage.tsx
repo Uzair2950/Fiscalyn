@@ -6,7 +6,6 @@ import {
   ArrowRight,
   CheckCircle2,
   PhoneCall,
-  Sparkles,
   HelpCircle,
   Plus,
   Minus,

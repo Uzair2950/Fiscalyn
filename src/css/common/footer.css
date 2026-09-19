@@ -246,6 +246,20 @@
   cursor: not-allowed;
 }
 
+.newsletter-status {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.newsletter-status-success {
+  color: #22c55e;
+}
+
+.newsletter-status-error {
+  color: #f87171;
+}
+
 /* Contact Info */
 .footer-contact-info {
   display: flex;

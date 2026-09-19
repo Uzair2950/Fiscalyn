@@ -1,17 +1,12 @@
 import {
-  Building2,
   Users2,
   ShieldCheck,
   Zap,
   TrendingUp,
-  Clock,
-  CheckCircle2,
   Lock,
   FileCheck,
   Sparkles,
-  BarChart3,
   Award,
-  Layers,
   LucideIcon,
 } from "lucide-react";
 
