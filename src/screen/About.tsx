@@ -9,10 +9,12 @@ const About: React.FC = () => {
   return (
     <>
       <NavBar />
-      <AboutHero />
-      {/* <OurStory /> */}
-      <ValuesSection />
-      <TeamSection />
+      <main>
+        <AboutHero />
+        {/* <OurStory /> */}
+        <ValuesSection />
+        <TeamSection />
+      </main>
       <Footer />
     </>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import OptimizedImage from "../common/OptimizedImage";
 import { ArrowRight, CheckCircle, Zap, Shield } from "lucide-react";
 import "../../css/services/services-hero.css";
 
@@ -126,10 +127,14 @@ const ServicesHero: React.FC = () => {
           transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="services-hero-image-wrapper">
-            <img
+            <OptimizedImage
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop"
               alt="Financial Analysis & Accounting"
               className="services-hero-image"
+              width={1200}
+              height={800}
+              sizes="(max-width: 900px) 100vw, 48vw"
+              priority
             />
             <div className="services-hero-image-overlay" />
           </div>

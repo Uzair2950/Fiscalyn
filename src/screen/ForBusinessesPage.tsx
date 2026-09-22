@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import NavBar from "../component/common/Navbar";
 import Footer from "../component/common/Footer";
+import Breadcrumbs from "../component/common/Breadcrumbs";
+import OptimizedImage from "../component/common/OptimizedImage";
 import { engagementData } from "../data/engagementData";
 import "../css/solutions/solutions-page.css";
 import "../css/services/service-page.css";
@@ -52,6 +54,14 @@ const ForBusinessesPage: React.FC = () => {
   return (
     <div className="solutions-page">
       <NavBar />
+      <div className="page-breadcrumb-container solutions-breadcrumbs">
+        <Breadcrumbs
+          items={[
+            { label: "Solutions" },
+            { label: "For Businesses" },
+          ]}
+        />
+      </div>
 
       {/* ---------------- Hero Section ---------------- */}
       <section className="solutions-hero-section">
@@ -96,10 +106,14 @@ const ForBusinessesPage: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <img
+            <OptimizedImage
               src={data.heroImage}
               alt={data.title}
               className="solutions-hero-image"
+              width={1200}
+              height={800}
+              sizes="(max-width: 900px) 100vw, 44vw"
+              priority
             />
           </motion.div>
         </div>

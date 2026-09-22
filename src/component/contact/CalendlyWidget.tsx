@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, CheckCircle2, RefreshCw } from "lucide-react";
+import { trackConversion } from "../../lib/analytics";
 
 interface CalendlyWidgetProps {
   url?: string;
@@ -84,6 +85,7 @@ const CalendlyWidget: React.FC<CalendlyWidgetProps> = ({
         e.data?.event === "calendly.event_scheduled"
       ) {
         setEventBooked(true);
+        trackConversion("calendly_booking");
       }
     };
 

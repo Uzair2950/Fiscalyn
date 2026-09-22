@@ -9,13 +9,13 @@ import "../css/legal/legal.css";
 const primaryLinks = [
   ["Home", "/"],
   ["About", "/about"],
+  ["Services", "/services"],
   ["Industries", "/industries"],
-  ["Pricing", "/pricing"],
   ["Contact", "/contact"],
-  ["Collaboration", "/collaboration"],
   ["For Businesses", "/solutions/for-businesses"],
   ["Workload Outsourcing", "/solutions/outsource-workload"],
   ["Blog", "/blog"],
+  ["Editorial Policy", "/editorial-policy"],
   ["Privacy Policy", "/privacy"],
   ["Terms of Service", "/terms"],
 ] as const;

@@ -2,10 +2,10 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
-import Web3FormsCaptcha, {
-  HCaptchaInstance,
-} from "../common/Web3FormsCaptcha";
+import DeferredCaptcha from "../common/DeferredCaptcha";
+import type { HCaptchaInstance } from "../common/Web3FormsCaptcha";
 import { submitWeb3Form } from "../../lib/web3forms";
+import { trackConversion } from "../../lib/analytics";
 import "../../css/collaboration/collaboration-cta.css";
 
 const CollaborationCTA: React.FC = () => {
@@ -20,19 +20,12 @@ const CollaborationCTA: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [captchaToken, setCaptchaToken] = useState("");
+  const [showCaptcha, setShowCaptcha] = useState(false);
   const captchaRef = useRef<HCaptchaInstance>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setErrorMsg(null);
-
-    if (!captchaToken) {
-      setErrorMsg("Please complete the CAPTCHA verification.");
-      return;
-    }
-
+  const submitEnquiry = async (captchaToken: string) => {
     setIsSubmitting(true);
+    setErrorMsg(null);
 
     try {
       await submitWeb3Form({
@@ -50,13 +43,24 @@ const CollaborationCTA: React.FC = () => {
       });
 
       setSubmitted(true);
+      setShowCaptcha(false);
+      trackConversion("outsourcing_enquiry");
     } catch {
       setErrorMsg("An error occurred while submitting your request. Please try again.");
     } finally {
       setIsSubmitting(false);
-      setCaptchaToken("");
       captchaRef.current?.resetCaptcha();
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setErrorMsg(null);
+    setShowCaptcha(true);
+  };
+
+  const handleCaptchaToken = (token: string) => {
+    if (token && !isSubmitting) void submitEnquiry(token);
   };
 
   return (
@@ -73,7 +77,7 @@ const CollaborationCTA: React.FC = () => {
             Ready to Scale Your Accounting Practice?
           </h2>
           <p className="collab-cta-desc">
-            Fill out the form below or email <strong style={{ color: 'var(--color-gold-primary)' }}>info@47accountants.com</strong> to discuss white-label outsourcing, peak season subcontracting, or custom SLA pricing for your firm.
+            Fill out the form below or email <strong style={{ color: 'var(--color-gold-primary)' }}>info@47accountants.com</strong> to discuss white-label outsourcing, peak season subcontracting, or custom SLA requirements for your firm.
           </p>
         </motion.div>
 
@@ -179,9 +183,10 @@ const CollaborationCTA: React.FC = () => {
               />
             </div>
             <div className="collab-form-full">
-              <Web3FormsCaptcha
+              <DeferredCaptcha
+                visible={showCaptcha}
                 captchaRef={captchaRef}
-                onTokenChange={setCaptchaToken}
+                onTokenChange={handleCaptchaToken}
               />
             </div>
             <p className="collab-form-full form-privacy-note">

@@ -1,1 +1,10 @@
-/*    /index.html   200
+http://47accountants.com/*      https://47accountants.com/:splat   301!
+http://www.47accountants.com/*  https://47accountants.com/:splat   301!
+https://www.47accountants.com/* https://47accountants.com/:splat   301!
+
+/pricing        /contact                         301!
+/collaboration  /solutions/outsource-workload   301!
+
+# Existing pre-rendered routes are served before this fallback.
+# Unknown URLs return a real 404 instead of a soft-404 application shell.
+/*              /404.html                       404

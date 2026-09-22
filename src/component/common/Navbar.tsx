@@ -19,6 +19,7 @@ import {
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useTheme } from "../../hooks/useTheme";
 import LogoBadge from "../../assets/image/LogoBadge.webp";
+import OptimizedImage from "./OptimizedImage";
 import "../../css/common/navbar.css";
 
 interface ServiceDropdownItem {
@@ -79,6 +80,12 @@ const NavBar: React.FC = () => {
   }, []);
 
   const serviceDropdownItems: ServiceDropdownItem[] = [
+    {
+      name: "All Accounting Services",
+      path: "/services",
+      icon: BookOpen,
+      desc: "Compare our complete service range",
+    },
     {
       name: "Managed Bookkeeping",
       path: "/services/bookkeeping",
@@ -196,10 +203,13 @@ const NavBar: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <img
+            <OptimizedImage
               src={LogoBadge}
               alt="47 Accountants logo badge"
               className="nav-logo-badge"
+              width={283}
+              height={310}
+              priority
             />
           </motion.div>
           <span className="logo-text">47 Accountants</span>
@@ -371,21 +381,6 @@ const NavBar: React.FC = () => {
               </Link>
             </motion.li>
 
-            <motion.li whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-              <Link
-                to="/collaboration"
-                className={location.pathname === "/collaboration" ? "active" : ""}
-              >
-                Collaboration
-                {location.pathname === "/collaboration" && (
-                  <motion.span
-                    className="active-indicator"
-                    layoutId="activeIndicator"
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  />
-                )}
-              </Link>
-            </motion.li>
           </ul>
 
           {/* Theme Toggle Button */}
@@ -578,21 +573,6 @@ const NavBar: React.FC = () => {
                 >
                   Blog
                   {location.pathname.startsWith("/blog") && (
-                    <motion.div
-                      className="mobile-active-dot"
-                      layoutId="mobileActiveDot"
-                    />
-                  )}
-                </Link>
-              </motion.div>
-
-              <motion.div variants={linkVariants} className="mobile-menu-item">
-                <Link
-                  to="/collaboration"
-                  className={location.pathname === "/collaboration" ? "active-mobile" : ""}
-                >
-                  Collaboration
-                  {location.pathname === "/collaboration" && (
                     <motion.div
                       className="mobile-active-dot"
                       layoutId="mobileActiveDot"

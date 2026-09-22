@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import NavBar from "../component/common/Navbar";
 import Footer from "../component/common/Footer";
+import OptimizedImage from "../component/common/OptimizedImage";
 import { industriesData, IndustryData } from "../data/industriesData";
 import "../css/industries/industries.css";
 
@@ -122,10 +123,13 @@ const Industries: React.FC = () => {
                 variants={itemVariants}
               >
                 <div className="industry-card-media">
-                  <img
+                  <OptimizedImage
                     src={industry.image}
                     alt={industry.title}
                     className="industry-card-img"
+                    width={800}
+                    height={520}
+                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                   />
                   <div className="industry-card-badge-tag">
                     <industry.icon size={14} />

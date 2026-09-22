@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../component/common/Navbar";
 import Footer from "../component/common/Footer";
+import OptimizedImage from "../component/common/OptimizedImage";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Clock, ChevronLeft, ChevronRight, BookOpen, Tag } from "lucide-react";
 import { ALL_BLOG_POSTS, BLOG_CATEGORIES, BlogCategory } from "../data/blogData";
@@ -138,7 +139,7 @@ const Blog: React.FC = () => {
 
         {/* Blog Post Grid */}
         <section className="blog-grid" aria-label="Blog Post List">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {paginatedPosts.length > 0 ? (
               paginatedPosts.map((post, idx) => (
                 <motion.article
@@ -152,10 +153,13 @@ const Blog: React.FC = () => {
                   <Link to={`/blog/${post.slug}`} style={{ textDecoration: "none", color: "inherit", display: "flex", flexDirection: "column", height: "100%" }}>
                     <div>
                       <div className="blog-card-img-wrapper">
-                        <img
+                        <OptimizedImage
                           src={post.image}
                           alt={post.title}
                           className="blog-card-img"
+                          width={800}
+                          height={520}
+                          sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                           loading="lazy"
                           onError={(e) => {
                             (e.target as HTMLImageElement).src =
@@ -173,10 +177,12 @@ const Blog: React.FC = () => {
 
                     <div className="blog-card-footer" style={{ marginTop: "auto" }}>
                       <div className="author-info">
-                        <img
+                        <OptimizedImage
                           src={post.author.avatar}
                           alt={post.author.name}
                           className="author-avatar"
+                          width={96}
+                          height={96}
                         />
                         <div>
                           <span className="author-name">{post.author.name}</span>

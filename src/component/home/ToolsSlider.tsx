@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import OptimizedImage from "../common/OptimizedImage";
 import "../../css/home/tools-slider.css";
 
 import xeroLogo from "../../assets/image/toolsSlider/xero_logo.webp";
@@ -109,9 +110,12 @@ const ToolsSlider: React.FC = () => {
             {duplicatedTools.map((tool, index) => (
               <div key={`${tool.id}-${index}`} className="tool-logo-item">
                 <div className="tool-logo-wrapper">
-                  <img
+                  <OptimizedImage
                     src={tool.logo}
                     alt={`${tool.name} logo`}
+                    width={180}
+                    height={100}
+                    sizes="180px"
                     onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                       const target = e.currentTarget;
                       target.style.display = "none";

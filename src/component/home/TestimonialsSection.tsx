@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import OptimizedImage from "../common/OptimizedImage";
 import "../../css/home/testimonials.css";
 
 interface Testimonial {
@@ -205,10 +206,13 @@ const TestimonialsSection: React.FC = () => {
 
               <div className="testimonial-footer">
                 <div className="testimonial-author-info">
-                  <img
+                  <OptimizedImage
                     src={activeTestimonial.image}
                     alt={activeTestimonial.name}
                     className="testimonial-author-image"
+                    width={400}
+                    height={400}
+                    sizes="64px"
                   />
                   <div className="testimonial-author-details">
                     <div className="testimonial-author-name">

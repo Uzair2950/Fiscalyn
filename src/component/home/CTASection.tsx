@@ -2,10 +2,10 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
 import { ArrowRight, CheckCircle, Zap, Shield, LucideIcon } from "lucide-react";
-import Web3FormsCaptcha, {
-  HCaptchaInstance,
-} from "../common/Web3FormsCaptcha";
+import DeferredCaptcha from "../common/DeferredCaptcha";
+import type { HCaptchaInstance } from "../common/Web3FormsCaptcha";
 import { submitWeb3Form } from "../../lib/web3forms";
+import { trackConversion } from "../../lib/analytics";
 import "../../css/home/cta.css";
 
 interface CTAFeature {
@@ -21,27 +21,15 @@ interface CTAStat {
 const CTASection: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [captchaToken, setCaptchaToken] = useState("");
+  const [showCaptcha, setShowCaptcha] = useState(false);
   const captchaRef = useRef<HCaptchaInstance>(null);
   const [formStatus, setFormStatus] = useState<
     { type: "success" | "error"; message: string } | null
   >(null);
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>,
-  ): Promise<void> => {
-    e.preventDefault();
-    setFormStatus(null);
-
-    if (!captchaToken) {
-      setFormStatus({
-        type: "error",
-        message: "Please complete the CAPTCHA verification.",
-      });
-      return;
-    }
-
+  const submitConsultation = async (captchaToken: string): Promise<void> => {
     setIsSubmitting(true);
+    setFormStatus(null);
 
     try {
       await submitWeb3Form({
@@ -54,6 +42,8 @@ const CTASection: React.FC = () => {
       });
 
       setEmail("");
+      setShowCaptcha(false);
+      trackConversion("consultation_request");
       setFormStatus({
         type: "success",
         message: "Thank you. Your consultation request has been received.",
@@ -66,9 +56,18 @@ const CTASection: React.FC = () => {
       });
     } finally {
       setIsSubmitting(false);
-      setCaptchaToken("");
       captchaRef.current?.resetCaptcha();
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    setFormStatus(null);
+    setShowCaptcha(true);
+  };
+
+  const handleCaptchaToken = (token: string): void => {
+    if (token && !isSubmitting) void submitConsultation(token);
   };
 
   const containerVariants: Variants = {
@@ -178,9 +177,10 @@ const CTASection: React.FC = () => {
                 <ArrowRight size={20} />
               </motion.button>
             </div>
-            <Web3FormsCaptcha
+            <DeferredCaptcha
+              visible={showCaptcha}
               captchaRef={captchaRef}
-              onTokenChange={setCaptchaToken}
+              onTokenChange={handleCaptchaToken}
             />
             <p className="cta-form-note">
               Free consultation • No obligation • ACCA qualified accountants

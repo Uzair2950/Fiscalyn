@@ -1,9 +1,9 @@
-import teamMember1 from "../assets/image/team/teamMember1.webp";
-import teamMember2 from "../assets/image/team/teamMember2.webp";
-import teamMember3 from "../assets/image/team/teamMember3.webp";
-import teamMember4 from "../assets/image/team/teamMember4.webp";
-import teamMember5 from "../assets/image/team/teamMember5.webp";
-import teamMember6 from "../assets/image/team/teamMember6.webp";
+import teamMember1 from "../assets/image/team/teamMember1-optimized.webp";
+import teamMember2 from "../assets/image/team/teamMember2-optimized.webp";
+import teamMember3 from "../assets/image/team/teamMember3-optimized.webp";
+import teamMember4 from "../assets/image/team/teamMember4-optimized.webp";
+import teamMember5 from "../assets/image/team/teamMember5-optimized.webp";
+import teamMember6 from "../assets/image/team/teamMember6-optimized.webp";
 
 export interface BlogSection {
   heading: string;
@@ -16,6 +16,8 @@ export interface BlogPost {
   title: string;
   category: string;
   date: string;
+  publishedAt: string;
+  modifiedAt: string;
   readTime: string;
   author: {
     name: string;
@@ -33,6 +35,7 @@ export interface BlogPost {
 
 export const BLOG_CATEGORIES = [
   "All",
+  "Managed Bookkeeping",
   "Global Tax 2026",
   "International Compliance",
   "Corporate Tax",
@@ -256,6 +259,8 @@ export const FEATURED_OUTSOURCED_BOOKKEEPING_BLOG: BlogPost = {
   title: "Beyond Cost Cutting: Why Global Businesses Are Re-Thinking Outsourced Bookkeeping",
   category: "Managed Bookkeeping",
   date: "February 10, 2026",
+  publishedAt: "2026-02-10",
+  modifiedAt: "2026-02-10",
   readTime: "5 min read",
   author: AUTHORS[3], // Mahmood Alam - Chief Business Development Officer
   image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80&fm=jpg&fit=crop",
@@ -305,62 +310,43 @@ export const FEATURED_OUTSOURCED_BOOKKEEPING_BLOG: BlogPost = {
   ],
 };
 
-export const generate100BlogPosts = (): BlogPost[] => {
-  const posts: BlogPost[] = [FEATURED_OUTSOURCED_BOOKKEEPING_BLOG];
-  const variations = [
-    "Masterclass Edition",
-    "Executive Strategy Brief",
-    "Global Practitioner Playbook",
-    "Comprehensive 2026 Review",
-    "Strategic Insights & Action Plan",
-    "HMRC & Global Regulatory Focus",
-    "Enterprise Advisory Playbook",
-    "Best Practices & Risk Management",
-    "In-Depth Financial Analysis",
-    "Leadership & Growth Edition"
-  ];
+const ORIGINAL_TOPIC_DATES = [
+  { display: "February 2, 2026", iso: "2026-02-02" },
+  { display: "March 3, 2026", iso: "2026-03-03" },
+  { display: "April 4, 2026", iso: "2026-04-04" },
+  { display: "May 5, 2026", iso: "2026-05-05" },
+  { display: "June 6, 2026", iso: "2026-06-06" },
+  { display: "July 7, 2026", iso: "2026-07-07" },
+] as const;
 
-  for (let i = 1; i <= 100; i++) {
-    const baseTopic = BASE_TOPICS[(i - 1) % BASE_TOPICS.length];
-    const author = AUTHORS[(i - 1) % AUTHORS.length];
-    // Assign unique image sequentially from array using modulo
-    const image = UNIQUE_FINANCE_IMAGES[(i - 1) % UNIQUE_FINANCE_IMAGES.length];
-    const variation = variations[Math.floor((i - 1) / BASE_TOPICS.length) % variations.length];
+const toSlug = (title: string): string =>
+  title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-    const day = (i % 28) + 1;
-    const monthIndex = (i % 7);
-    const months = ["January", "February", "March", "April", "May", "June", "July"];
-    const month = months[monthIndex];
-    const dateStr = `${month} ${day < 10 ? "0" + day : day}, 2026`;
+/**
+ * Only genuinely distinct editorial topics are published. The previous build
+ * expanded these six source articles into 100 near-duplicate variations; those
+ * synthetic variants are intentionally excluded from navigation and indexing.
+ */
+export const ORIGINAL_BLOG_POSTS: BlogPost[] = BASE_TOPICS.map((topic, index) => ({
+  id: `blog-post-${index + 1}`,
+  slug: toSlug(topic.title),
+  title: topic.title,
+  category: topic.category,
+  date: ORIGINAL_TOPIC_DATES[index].display,
+  publishedAt: ORIGINAL_TOPIC_DATES[index].iso,
+  modifiedAt: ORIGINAL_TOPIC_DATES[index].iso,
+  readTime: `${7 + (index % 3)} min read`,
+  author: AUTHORS[index],
+  excerpt: topic.excerpt,
+  intro: topic.intro,
+  sections: topic.sections,
+  keyTakeaways: topic.keyTakeaways,
+  keywords: topic.keywords,
+  image: UNIQUE_FINANCE_IMAGES[index],
+  featured: index === 3,
+}));
 
-    const title = i <= 6 ? baseTopic.title : `${baseTopic.title} (${variation} #${Math.ceil(i / 6)})`;
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-
-    // Deepen content further with topic-specific paragraph details
-    const customizedSections = baseTopic.sections.map((sec, secIdx) => ({
-      heading: sec.heading,
-      body: `${sec.body} In addition, accounting teams must establish real-time reporting dashboards, automated reconciliation schedules, and multi-currency validation routines to maintain enterprise accuracy. (Detailed Analysis Part ${secIdx + 1}.${i})`
-    }));
-
-    posts.push({
-      id: `blog-post-${i}`,
-      slug,
-      title,
-      category: baseTopic.category,
-      date: dateStr,
-      readTime: `${6 + (i % 4)} min read`,
-      author,
-      excerpt: baseTopic.excerpt,
-      intro: baseTopic.intro,
-      sections: customizedSections,
-      keyTakeaways: baseTopic.keyTakeaways,
-      keywords: baseTopic.keywords,
-      image,
-      featured: i === 4 || i === 8,
-    });
-  }
-
-  return posts;
-};
-
-export const ALL_BLOG_POSTS: BlogPost[] = generate100BlogPosts();
+export const ALL_BLOG_POSTS: BlogPost[] = [
+  FEATURED_OUTSOURCED_BOOKKEEPING_BLOG,
+  ...ORIGINAL_BLOG_POSTS,
+];

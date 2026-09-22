@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import NavBar from "../component/common/Navbar";
 import Footer from "../component/common/Footer";
+import Breadcrumbs from "../component/common/Breadcrumbs";
+import OptimizedImage from "../component/common/OptimizedImage";
 import NotFound from "./NotFound";
 import { servicesData, ServiceData } from "../data/servicesData";
 import "../css/services/service-page.css";
@@ -32,6 +34,10 @@ const ServiceDetailPage: React.FC = () => {
   if (!service) {
     return <NotFound />;
   }
+
+  const relatedServices = Object.values(servicesData)
+    .filter((item) => item.slug !== service.slug)
+    .slice(0, 3);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -77,6 +83,14 @@ const ServiceDetailPage: React.FC = () => {
   return (
     <div className="service-page">
       <NavBar />
+      <div className="page-breadcrumb-container">
+        <Breadcrumbs
+          items={[
+            { label: "Services", path: "/services" },
+            { label: service.title },
+          ]}
+        />
+      </div>
 
       {/* ---------------- Hero Section ---------------- */}
       <section className="service-hero-section">
@@ -123,10 +137,14 @@ const ServiceDetailPage: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <img
+            <OptimizedImage
               src={service.heroImage}
               alt={service.title}
               className="service-hero-image"
+              width={1200}
+              height={800}
+              sizes="(max-width: 900px) 100vw, 44vw"
+              priority
             />
           </motion.div>
         </div>
@@ -379,6 +397,19 @@ const ServiceDetailPage: React.FC = () => {
                 </motion.div>
               );
             })}
+          </div>
+
+          <div className="related-services" aria-labelledby="related-services-title">
+            <h2 id="related-services-title">Explore Related Services</h2>
+            <div className="related-services-grid">
+              {relatedServices.map((item) => (
+                <Link key={item.slug} to={`/services/${item.slug}`}>
+                  <span>{item.title}</span>
+                  <ArrowRight size={17} aria-hidden="true" />
+                  <small>{item.shortDesc}</small>
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* ---------------- CTA Banner ---------------- */}

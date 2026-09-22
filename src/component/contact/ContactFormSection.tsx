@@ -2,10 +2,10 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Phone, MessageCircle, Calendar, Send } from "lucide-react";
-import Web3FormsCaptcha, {
-  HCaptchaInstance,
-} from "../common/Web3FormsCaptcha";
+import DeferredCaptcha from "../common/DeferredCaptcha";
+import type { HCaptchaInstance } from "../common/Web3FormsCaptcha";
 import { submitWeb3Form } from "../../lib/web3forms";
+import { trackConversion } from "../../lib/analytics";
 import CalendlyWidget from "./CalendlyWidget";
 import "../../css/contact/contact-form.css";
 
@@ -23,7 +23,7 @@ const ContactFormSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [resultMsg, setResultMsg] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const [captchaToken, setCaptchaToken] = useState("");
+  const [showCaptcha, setShowCaptcha] = useState(false);
   const captchaRef = useRef<HCaptchaInstance>(null);
 
   const handleChange = (
@@ -37,17 +37,9 @@ const ContactFormSection: React.FC = () => {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setResultMsg(null);
-
-    if (!captchaToken) {
-      setIsSuccess(false);
-      setResultMsg("Please complete the CAPTCHA verification.");
-      return;
-    }
-
+  const submitMessage = async (captchaToken: string) => {
     setIsSubmitting(true);
+    setResultMsg(null);
 
     try {
       await submitWeb3Form({
@@ -65,6 +57,8 @@ const ContactFormSection: React.FC = () => {
       });
 
       setIsSuccess(true);
+      setShowCaptcha(false);
+      trackConversion("contact_message");
       setResultMsg("Thank you! Your message has been sent successfully. We will get back to you shortly.");
       setFormData({
         firstName: "",
@@ -80,9 +74,18 @@ const ContactFormSection: React.FC = () => {
       setResultMsg("An error occurred while sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);
-      setCaptchaToken("");
       captchaRef.current?.resetCaptcha();
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setResultMsg(null);
+    setShowCaptcha(true);
+  };
+
+  const handleCaptchaToken = (token: string) => {
+    if (token && !isSubmitting) void submitMessage(token);
   };
 
   const contactInfo = [
@@ -338,9 +341,10 @@ const ContactFormSection: React.FC = () => {
                   />
                 </div>
 
-                <Web3FormsCaptcha
+                <DeferredCaptcha
+                  visible={showCaptcha}
                   captchaRef={captchaRef}
-                  onTokenChange={setCaptchaToken}
+                  onTokenChange={handleCaptchaToken}
                 />
 
                 <p className="form-privacy-note">

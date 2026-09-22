@@ -5,17 +5,15 @@ import {
   ArrowRight,
   Mail,
   Phone,
-  Linkedin,
-  Instagram,
-  LucideIcon,
 } from "lucide-react";
-import Web3FormsCaptcha, {
-  HCaptchaInstance,
-} from "./Web3FormsCaptcha";
+import DeferredCaptcha from "./DeferredCaptcha";
+import type { HCaptchaInstance } from "./Web3FormsCaptcha";
 import { submitWeb3Form } from "../../lib/web3forms";
+import { trackConversion } from "../../lib/analytics";
 import "../../css/common/footer.css";
 
 import LogoBadge from "../../assets/image/LogoBadge.webp";
+import OptimizedImage from "./OptimizedImage";
 
 interface FooterLink {
   name: string;
@@ -30,36 +28,18 @@ interface FooterLinks {
   legal: FooterLink[];
 }
 
-interface SocialLink {
-  icon: LucideIcon;
-  url: string;
-  label: string;
-}
-
 const Footer: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [captchaToken, setCaptchaToken] = useState("");
+  const [showCaptcha, setShowCaptcha] = useState(false);
   const captchaRef = useRef<HCaptchaInstance>(null);
   const [formStatus, setFormStatus] = useState<
     { type: "success" | "error"; message: string } | null
   >(null);
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>,
-  ): Promise<void> => {
-    e.preventDefault();
-    setFormStatus(null);
-
-    if (!captchaToken) {
-      setFormStatus({
-        type: "error",
-        message: "Please complete the CAPTCHA verification.",
-      });
-      return;
-    }
-
+  const submitSubscription = async (captchaToken: string): Promise<void> => {
     setIsSubmitting(true);
+    setFormStatus(null);
 
     try {
       await submitWeb3Form({
@@ -72,6 +52,8 @@ const Footer: React.FC = () => {
       });
 
       setEmail("");
+      setShowCaptcha(false);
+      trackConversion("newsletter_subscription");
       setFormStatus({
         type: "success",
         message: "Thank you. Your subscription request has been received.",
@@ -83,13 +65,23 @@ const Footer: React.FC = () => {
       });
     } finally {
       setIsSubmitting(false);
-      setCaptchaToken("");
       captchaRef.current?.resetCaptcha();
     }
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    setFormStatus(null);
+    setShowCaptcha(true);
+  };
+
+  const handleCaptchaToken = (token: string): void => {
+    if (token && !isSubmitting) void submitSubscription(token);
+  };
+
   const footerLinks: FooterLinks = {
     platform: [
+      { name: "All Services", path: "/services" },
       { name: "Managed Bookkeeping", path: "/services/bookkeeping" },
       { name: "Tax & Compliance", path: "/services/tax-compliance" },
       { name: "Business Advisory", path: "/services/business-advisory" },
@@ -110,13 +102,9 @@ const Footer: React.FC = () => {
     legal: [
       { name: "Privacy Policy", path: "/privacy" },
       { name: "Terms of Service", path: "/terms" },
+      { name: "Editorial Policy", path: "/editorial-policy" },
     ],
   };
-
-  const socialLinks: SocialLink[] = [
-    { icon: Linkedin, url: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Instagram, url: "https://instagram.com", label: "Instagram" },
-  ];
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -151,10 +139,12 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <motion.div className="footer-brand" variants={itemVariants}>
             <div className="footer-logo">
-              <img
+              <OptimizedImage
                 src={LogoBadge}
                 alt="47 Accountants logo badge"
                 className="footer-logo-badge"
+                width={283}
+                height={310}
               />
               <span className="footer-logo-text">47 Accountants</span>
             </div>
@@ -165,22 +155,6 @@ const Footer: React.FC = () => {
               focus on growth.
             </p>
 
-            <div className="footer-social">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label={social.label}
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <social.icon size={20} />
-                </motion.a>
-              ))}
-            </div>
           </motion.div>
 
           {/* Links Columns */}
@@ -282,9 +256,10 @@ const Footer: React.FC = () => {
                   </>
                 )}
               </motion.button>
-              <Web3FormsCaptcha
+              <DeferredCaptcha
+                visible={showCaptcha}
                 captchaRef={captchaRef}
-                onTokenChange={setCaptchaToken}
+                onTokenChange={handleCaptchaToken}
               />
               <p className="form-privacy-note">
                 We use your email only for this subscription request. See our{" "}

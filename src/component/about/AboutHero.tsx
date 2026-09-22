@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Users, Target } from "lucide-react";
+import OptimizedImage from "../common/OptimizedImage";
 import "../../css/about/about-hero.css";
 
 const AboutHero: React.FC = () => {
@@ -130,10 +131,14 @@ const AboutHero: React.FC = () => {
           transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="about-hero-image-wrapper">
-            <img
+            <OptimizedImage
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop"
               alt="47 Accountants Team"
               className="about-hero-image"
+              width={1200}
+              height={800}
+              sizes="(max-width: 900px) 100vw, 48vw"
+              priority
             />
             <div className="about-hero-image-overlay" />
           </div>

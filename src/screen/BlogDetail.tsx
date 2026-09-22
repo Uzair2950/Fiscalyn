@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import NavBar from "../component/common/Navbar";
 import Footer from "../component/common/Footer";
+import Breadcrumbs from "../component/common/Breadcrumbs";
+import OptimizedImage from "../component/common/OptimizedImage";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, Clock, CheckCircle2, Tag, ArrowRight, ShieldCheck } from "lucide-react";
 import { ALL_BLOG_POSTS } from "../data/blogData";
@@ -39,11 +41,26 @@ const BlogDetail: React.FC = () => {
     );
   }
 
+  const relatedPosts = [
+    ...ALL_BLOG_POSTS.filter(
+      (item) => item.slug !== post.slug && item.category === post.category,
+    ),
+    ...ALL_BLOG_POSTS.filter(
+      (item) => item.slug !== post.slug && item.category !== post.category,
+    ),
+  ].slice(0, 3);
+
   return (
     <>
       <NavBar />
       <main className="blog-detail-page">
         <article className="blog-detail-container">
+          <Breadcrumbs
+            items={[
+              { label: "Insights", path: "/blog" },
+              { label: post.title },
+            ]}
+          />
           {/* Navigation link back */}
           <motion.div
             initial={{ opacity: 0, x: -15 }}
@@ -68,13 +85,18 @@ const BlogDetail: React.FC = () => {
 
               <div className="blog-detail-meta">
                 <div className="author-detail-wrapper">
-                  <img
+                  <OptimizedImage
                     src={post.author.avatar}
                     alt={post.author.name}
                     className="author-detail-avatar"
+                    width={96}
+                    height={96}
+                    priority
                   />
                   <div>
-                    <span className="author-detail-name">{post.author.name}</span>
+                    <Link to="/about" className="author-detail-name">
+                      {post.author.name}
+                    </Link>
                     <span className="author-detail-role">{post.author.role}</span>
                   </div>
                 </div>
@@ -82,7 +104,7 @@ const BlogDetail: React.FC = () => {
                 <div className="blog-detail-stats">
                   <div className="blog-detail-stat-item">
                     <Calendar size={16} style={{ color: "var(--color-gold-primary)" }} />
-                    <span>{post.date}</span>
+                    <time dateTime={post.publishedAt}>{post.date}</time>
                   </div>
                   <div className="blog-detail-stat-item">
                     <Clock size={16} style={{ color: "var(--color-gold-primary)" }} />
@@ -100,10 +122,14 @@ const BlogDetail: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="blog-detail-hero-img-wrapper"
           >
-            <img
+            <OptimizedImage
               src={post.image}
               alt={post.title}
               className="blog-detail-hero-img"
+              width={1200}
+              height={720}
+              sizes="(max-width: 980px) 100vw, 920px"
+              priority
               onError={(e) => {
                 (e.target as HTMLImageElement).src =
                   "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80&fm=jpg&fit=crop";
@@ -152,6 +178,19 @@ const BlogDetail: React.FC = () => {
                   </span>
                 ))}
               </div>
+
+              <aside className="related-articles" aria-labelledby="related-articles-title">
+                <h2 id="related-articles-title">Related Insights</h2>
+                <div className="related-articles-grid">
+                  {relatedPosts.map((item) => (
+                    <Link key={item.slug} to={`/blog/${item.slug}`}>
+                      <span>{item.category}</span>
+                      <strong>{item.title}</strong>
+                      <small>Read article <ArrowRight size={14} /></small>
+                    </Link>
+                  ))}
+                </div>
+              </aside>
 
               {/* Consultation Call to Action */}
               <div className="blog-consultation-cta">

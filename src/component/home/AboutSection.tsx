@@ -9,6 +9,7 @@ import {
   Zap,
   LucideIcon,
 } from "lucide-react";
+import OptimizedImage from "../common/OptimizedImage";
 import "../../css/home/about.css";
 
 interface Value {
@@ -167,9 +168,12 @@ const AboutSection: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="visual-card-stack" style={{ position: 'relative', width: '100%', height: '100%', minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img
+            <OptimizedImage
               src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1000&h=800&fit=crop"
               alt="Senior accounting partner reviewing client financial reports"
+              width={1000}
+              height={800}
+              sizes="(max-width: 900px) 100vw, 48vw"
               style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '24px', boxShadow: 'var(--shadow-card)', border: '1px solid var(--border-gold)' }}
             />
           </div>

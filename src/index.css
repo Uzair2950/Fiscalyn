@@ -1,5 +1,67 @@
 @import "./css/theme.css";
 
+.page-breadcrumb-container {
+  width: min(1300px, 100%);
+  margin: 0 auto;
+  padding: 22px 5vw 0;
+}
+
+.solutions-breadcrumbs {
+  padding-top: 112px;
+}
+
+.breadcrumbs {
+  width: 100%;
+  margin-bottom: 22px;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs li,
+.breadcrumbs a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.breadcrumbs a {
+  color: var(--color-gold-primary);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.breadcrumbs [aria-current="page"] {
+  display: inline-block;
+  max-width: min(58ch, 65vw);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .page-breadcrumb-container {
+    padding-top: 16px;
+  }
+
+  .solutions-breadcrumbs {
+    padding-top: 96px;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -106,6 +168,32 @@ button:focus-visible {
   width: 100%;
   min-height: 78px;
   overflow: visible;
+}
+
+.deferred-captcha {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  background: var(--color-gold-soft);
+}
+
+.deferred-captcha > p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.captcha-loading {
+  min-height: 78px;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font-size: 0.82rem;
 }
 
 .form-privacy-note {

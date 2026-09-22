@@ -1,58 +1,52 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Instagram } from "lucide-react";
+import OptimizedImage from "../common/OptimizedImage";
 import "../../css/about/team-section.css";
 
-import teamMember1 from "../../assets/image/team/teamMember1.webp";
-import teamMember2 from "../../assets/image/team/teamMember2.webp";
-import teamMember3 from "../../assets/image/team/teamMember3.webp";
-import teamMember4 from "../../assets/image/team/teamMember4.webp";
-import teamMember5 from "../../assets/image/team/teamMember5.webp";
-import teamMember6 from "../../assets/image/team/teamMember6.webp";
+import teamMember1 from "../../assets/image/team/teamMember1-optimized.webp";
+import teamMember2 from "../../assets/image/team/teamMember2-optimized.webp";
+import teamMember3 from "../../assets/image/team/teamMember3-optimized.webp";
+import teamMember4 from "../../assets/image/team/teamMember4-optimized.webp";
+import teamMember5 from "../../assets/image/team/teamMember5-optimized.webp";
+import teamMember6 from "../../assets/image/team/teamMember6-optimized.webp";
 
 const TeamSection: React.FC = () => {
   const team = [
     {
       name: "Muhammad Sheheryar Khan",
+      id: "muhammad-sheheryar-khan",
       role: "Managing Partner",
       image: teamMember1,
-      linkedin: "#",
-      instagram: "#",
     },
     {
       name: "Khurram iqbal",
+      id: "khurram-iqbal",
       role: "Portfolio Manager",
       image: teamMember2,
-      linkedin: "#",
-      instagram: "#",
     },
     {
       name: "Bilal Ahmed",
+      id: "bilal-ahmed",
       role: "Portfolio Manager",
       image: teamMember3,
-      linkedin: "#",
-      instagram: "#",
     },
     {
       name: "Mahmood Alam",
+      id: "mahmood-alam",
       role: "Chief Business Development Officer",
       image: teamMember4,
-      linkedin: "#",
-      instagram: "#",
     },
     {
       name: "Zeeshan Ghafoor",
+      id: "zeeshan-ghafoor",
       role: "Portfolio Manager",
       image: teamMember6,
-      linkedin: "#",
-      instagram: "#",
     },
     {
       name: "Uzair Muhammad",
+      id: "uzair-muhammad",
       role: "Chief Technology Officer",
       image: teamMember5,
-      linkedin: "#",
-      instagram: "#",
     },
   ];
 
@@ -86,6 +80,7 @@ const TeamSection: React.FC = () => {
           {team.map((member, index) => (
             <motion.div
               key={index}
+              id={member.id}
               className="team-card"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -94,21 +89,14 @@ const TeamSection: React.FC = () => {
               whileHover={{ y: -10 }}
             >
               <div className="team-image-wrapper">
-                <img
+                <OptimizedImage
                   src={member.image}
                   alt={member.name}
                   className="team-image"
+                  width={600}
+                  height={720}
+                  sizes="(max-width: 680px) 100vw, (max-width: 1050px) 50vw, 33vw"
                 />
-                <div className="team-overlay">
-                  <div className="team-social">
-                    <a href={member.linkedin} className="team-social-link" aria-label="LinkedIn">
-                      <Linkedin size={18} />
-                    </a>
-                    <a href={member.instagram} className="team-social-link" aria-label="Instagram">
-                      <Instagram size={18} />
-                    </a>
-                  </div>
-                </div>
               </div>
               <div className="team-info">
                 <h3 className="team-name">{member.name}</h3>

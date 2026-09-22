@@ -14,14 +14,16 @@ const Home: React.FC = () => {
   return (
     <>
       <NavBar />
-      <HeroSection />
-      <ServicesOverview />
-      <AssuranceScorecard />
-      <ToolsSlider />
-      <AboutSection />
-      <TestimonialsSection />
-      <FAQSection />
-      <CTASection />
+      <main>
+        <HeroSection />
+        <ServicesOverview />
+        <AssuranceScorecard />
+        <ToolsSlider />
+        <AboutSection />
+        <TestimonialsSection />
+        <FAQSection />
+        <CTASection />
+      </main>
       <Footer />
     </>
   );

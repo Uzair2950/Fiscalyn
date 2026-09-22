@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { ArrowRight, Shield, Zap, TrendingUp, LucideIcon } from "lucide-react";
+import OptimizedImage from "../common/OptimizedImage";
 import "../../css/home/hero.css";
 
 interface FloatingBadge {
@@ -136,9 +137,13 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img 
+            <OptimizedImage
               src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=900&fit=crop" 
               alt="Accounting professionals collaborating" 
+              width={1200}
+              height={900}
+              sizes="(max-width: 900px) 100vw, 48vw"
+              priority
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '24px', border: '1px solid var(--border-gold)', boxShadow: 'var(--shadow-card)' }} 
             />
           </motion.div>

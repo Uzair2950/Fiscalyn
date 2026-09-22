@@ -8,8 +8,10 @@ const Contact: React.FC = () => {
   return (
     <>
       <NavBar />
-      <ContactHero />
-      <ContactFormSection />
+      <main>
+        <ContactHero />
+        <ContactFormSection />
+      </main>
       <Footer />
     </>
   );
