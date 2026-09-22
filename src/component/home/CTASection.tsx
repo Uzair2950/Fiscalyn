@@ -13,10 +13,12 @@ interface CTAFeature {
   text: string;
 }
 
+/*
 interface CTAStat {
   value: string;
   label: string;
 }
+*/
 
 const CTASection: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -93,12 +95,14 @@ const CTASection: React.FC = () => {
     { icon: Shield, text: "Fixed monthly fees" },
   ];
 
+  /* Deferred until supporting evidence is available.
   const stats: CTAStat[] = [
     { value: "1,200+", label: "Clients" },
     { value: "100%", label: "On-Time Filing" },
     { value: "24/7", label: "Support" },
     { value: "97%", label: "Retention" },
   ];
+  */
 
   return (
     <section className="cta-section">
@@ -213,6 +217,7 @@ const CTASection: React.FC = () => {
             ))}
           </motion.div>
 
+          {/* Deferred until client, filing, support and retention evidence is available.
           <motion.div variants={itemVariants} className="cta-stats">
             {stats.map((stat, index) => (
               <motion.div
@@ -240,6 +245,7 @@ const CTASection: React.FC = () => {
               <div className="cta-trust-text">4.9/5 Rating</div>
             </div>
           </motion.div>
+          */}
         </motion.div>
       </div>
 
